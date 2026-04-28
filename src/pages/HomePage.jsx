@@ -25,12 +25,12 @@ const featuredProduct = {
 export default function HomePage() {
   useDocumentTitle('Home');
   return (
-    <div className="flex flex-col gap-20 pb-20">
+    <div className="flex flex-col gap-10">
       <HeroSection />
 
       {/* Category Grid */}
-      <section className="px-6 max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section className="px-2 max-w-7xl mx-auto w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
           {categories.map((cat) => (
             <CategoryTile 
               key={cat.title} 

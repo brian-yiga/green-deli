@@ -1,4 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+import { useParams } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+import { products, formatPrice } from '../data/products';
+
+// UI Components
 import HeatScale from '../components/HeatScale';
 import FlavorComplexity from '../components/FlavorComplexity';
 import QuantityToggle from '../components/QuantityToggle';
@@ -8,33 +13,44 @@ import Badge from '../components/Badge';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function ProductDetailPage() {
-    useDocumentTitle('Product Details');
+  const { id } = useParams(); // 'id' corresponds to the :id (slug) in your Route
+  const { addToCart } = useCart();
   const [qty, setQty] = useState(1);
 
-  // Mock product data based on the "African Bird's Eye"
-  const product = {
-    name: "African Bird's Eye",
-    origin: "Mount Elgon, Uganda",
-    price: 25000,
-    description: "Known locally as 'Akabirigiti', this chili is legendary for its clean, piercing heat and citrus undertones. Wild-harvested at 1,200m altitude.",
-    heatRating: 4,
-    complexityRating: 3,
-    ingredients: "100% Organic Sun-dried Bird's Eye Chili",
-    weight: "50g / 1.7oz"
+  // 1. Fetch real product data from our database
+  const product = useMemo(() => {
+    return products.find((p) => p.slug === id);
+  }, [id]);
+
+  // Set page title dynamically
+  useDocumentTitle(product ? `${product.name} | Green Deli` : 'Product Details');
+
+  // Handle case where product isn't found
+  if (!product) {
+    return (
+      <div className="h-screen flex items-center justify-center font-display uppercase tracking-widest">
+        Product Not Found
+      </div>
+    );
+  }
+
+  // 2. Wrap the Add to Cart logic
+  const handleAddToCart = () => {
+    addToCart({ ...product, quantity: qty });
   };
 
   return (
-    <div className="flex flex-col pb-24 md:pb-12">
+    <div className="flex flex-col pb-24 md:pb-12 bg-deli-cream min-h-screen">
       {/* Mobile-First Image Gallery */}
-      <section className="relative w-full aspect-square bg-deli-cream md:aspect-[16/9] md:max-h-[600px] overflow-hidden">
+      <section className="relative w-full aspect-square bg-deli-charcoal/5 md:aspect-[16/9] md:max-h-[600px] overflow-hidden">
         <img 
-          src="/assets/chili-detail.jpg" 
+          src={product.image} 
           alt={product.name}
-          className="w-full h-full object-cover mix-blend-multiply"
+          className="w-full h-full object-cover"
         />
         <div className="absolute top-6 left-6 flex gap-2">
-          <Badge variant="hot">Hot Release</Badge>
-          <Badge variant="organic">Single Origin</Badge>
+          {product.isHot && <Badge variant="hot">High Heat</Badge>}
+          {product.isOrganic && <Badge variant="organic">Single Origin</Badge>}
         </div>
       </section>
 
@@ -51,8 +67,8 @@ export default function ProductDetailPage() {
           </h1>
           
           <div className="flex gap-8 mb-8 border-y border-deli-charcoal/5 py-6">
-            <HeatScale rating={product.heatRating} label="Heat Level" />
-            <FlavorComplexity rating={product.complexityRating} label="Complexity" />
+            <HeatScale rating={product.heatRating || 1} label="Heat Level" />
+            <FlavorComplexity rating={product.complexity || 3} label="Complexity" />
           </div>
 
           <p className="font-sans text-sm leading-relaxed text-deli-charcoal/70 mb-8">
@@ -60,13 +76,13 @@ export default function ProductDetailPage() {
           </p>
 
           <div className="flex flex-col gap-2 mb-10">
-            <h4 className="font-sans text-[10px] uppercase tracking-widest font-bold opacity-40">Details</h4>
+            <h4 className="font-sans text-[10px] uppercase tracking-widest font-bold opacity-40">Specifications</h4>
             <ul className="text-xs font-sans flex flex-col gap-2">
               <li className="flex justify-between border-b border-deli-charcoal/5 pb-2">
-                <span>Weight</span> <span className="font-bold">{product.weight}</span>
+                <span>Category</span> <span className="font-bold uppercase tracking-widest text-[10px]">{product.category}</span>
               </li>
               <li className="flex justify-between border-b border-deli-charcoal/5 pb-2">
-                <span>Ingredients</span> <span className="font-bold">{product.ingredients}</span>
+                <span>Ingredients</span> <span className="font-bold">100% Organic {product.name}</span>
               </li>
             </ul>
           </div>
@@ -74,8 +90,9 @@ export default function ProductDetailPage() {
 
         {/* Purchase Column (Sticky on Desktop) */}
         <div className="md:sticky md:top-32 h-fit">
-          <div className="bg-deli-cream p-8 rounded-[2rem] border border-deli-charcoal/5">
-            <PriceDisplay price={product.price} className="text-2xl mb-8" />
+          <div className="bg-white md:bg-transparent p-8 md:p-0 rounded-[2rem] border border-deli-charcoal/5 md:border-none">
+            {/* Using our real formatPrice helper */}
+            <h2 className="font-display text-3xl mb-8">{formatPrice(product.price)}</h2>
             
             <div className="flex flex-col gap-6">
               <div className="flex items-center justify-between">
@@ -87,10 +104,16 @@ export default function ProductDetailPage() {
                 />
               </div>
               
-              <Button variant="primary">Add to Cart • {(product.price * qty).toLocaleString()} UGX</Button>
+              <Button 
+                variant="primary" 
+                onClick={handleAddToCart}
+                className="w-full bg-deli-red text-white py-4 rounded-full font-sans text-[10px] uppercase tracking-widest font-bold shadow-xl active:scale-95 transition-all"
+              >
+                Add to Cart • {formatPrice(product.price * qty)}
+              </Button>
               
               <p className="text-[9px] uppercase tracking-widest text-center opacity-40 font-sans">
-                Free Delivery within Kampala for orders above 100k
+                Delivery within Kampala: 24 - 48 Hours
               </p>
             </div>
           </div>

@@ -13,7 +13,7 @@ export default function FeatureBlock({
       className={`flex flex-col ${reversed ? "md:flex-row-reverse" : "md:flex-row"} items-center gap-8 md:gap-20 py-12 px-6 max-w-7xl mx-auto`}
     >
       {/* Image Side */}
-      <div className="w-full md:w-1/2 aspect-[4/5] rounded-[3rem] overflow-hidden">
+      <div className="w-full md:w-1/2 lg:w-2/5 aspect-[4/5] rounded-[3rem] overflow-hidden">
         <img src={image} alt={title} className="w-full h-full object-cover" />
       </div>
 
