@@ -1,0 +1,58 @@
+[
+  {
+    "id": "gd-001",
+    "name": "African Bird's Eye Chili",
+    "slug": "african-birds-eye",
+    "category": "Whole Chilies",
+    "heatLevel": 5,
+    "scovilleRating": "100,000 - 225,000 SHU",
+    "price": 12000,
+    "weight": "100g",
+    "flavorProfile": ["Intense", "Sharp", "Peppery"],
+    "image": "/images/birds-eye.jpg",
+    "description": "Small but mighty. These hand-picked chilies deliver the authentic 'African Heat' Green Deli is known for.",
+    "inStock": true
+  },
+  {
+    "id": "gd-002",
+    "name": "Ground Earth Turmeric",
+    "slug": "ground-earth-turmeric",
+    "category": "Ground Spices",
+    "heatLevel": 0,
+    "scovilleRating": "0 SHU",
+    "price": 8500,
+    "weight": "150g",
+    "flavorProfile": ["Earthy", "Warm", "Woody"],
+    "image": "/images/turmeric.jpg",
+    "description": "Grown in rich Ugandan soil, our turmeric is ground to a fine powder, retaining its natural oils and vibrant earth-brown hue.",
+    "inStock": true
+  },
+  {
+    "id": "gd-003",
+    "name": "Smoked Paprika Flakes",
+    "slug": "smoked-paprika-flakes",
+    "category": "Spice Blends",
+    "heatLevel": 2,
+    "scovilleRating": "500 - 1,500 SHU",
+    "price": 10000,
+    "weight": "120g",
+    "flavorProfile": ["Smoky", "Sweet", "Mellow"],
+    "image": "/images/paprika.jpg",
+    "description": "Slow-smoked over local hardwood to bring a deep, rustic flavor to any stews or meats.",
+    "inStock": true
+  },
+  {
+    "id": "gd-004",
+    "name": "Habenero Heat Dust",
+    "slug": "habanero-heat-dust",
+    "category": "Ground Spices",
+    "heatLevel": 4,
+    "scovilleRating": "150,000 - 350,000 SHU",
+    "price": 14000,
+    "weight": "80g",
+    "flavorProfile": ["Floral", "Fruity", "Stinging"],
+    "image": "/images/habanero-dust.jpg",
+    "description": "A concentrated burst of flavor. Perfect for those who want heat without changing the texture of the dish.",
+    "inStock": false
+  }
+]

@@ -1,21 +1,23 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+    './.storybook/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       colors: {
-        'deli-red': '#D32F2F',    // Vibrant Chili Red
-        'deli-green': '#388E3C',  // Fresh Leaf Green
-        'deli-brown': '#5D4037',  // Rich Earth/Dirt Brown
-        'deli-dark': '#212121',   // Deep Charcoal for text
-        'deli-cream': '#FFFBF0',  // Soft background to make colors pop
+          'deli-red': '#B11E23',
+          'deli-cream': '#F9F5EB',
+          'deli-charcoal': '#1A1A1A',
+          'deli-botanical': '#4B6B40',
+          'deli-gold': '#C5A059',
       },
       fontFamily: {
-        // You can add custom food-style fonts here later
-      }
+        display: ['"Playfair Display"', 'serif'],
+        body: ['Inter', 'sans-serif'],
+      },
     },
   },
   plugins: [],
