@@ -6,9 +6,9 @@ import FeatureBlock from '../components/FeatureBlock';
 
 // Temporary Mock Data
 const categories = [
-  { title: "Chilies", count: 12, img: "/assets/blackPepper.png" },
-  { title: "Masalas", count: 8, img: "/assets/flakes.png" },
-  { title: "Powders", count: 15, img: "/assets/Homey.png" }
+  { title: "Chillies", count: 12, img: "/assets/fresh-red-peppers.png" },
+  { title: "Masalas", count: 8, img: "/assets/masalas.webp" },
+  { title: "Powders", count: 15, img: "/assets/powders.png" }
 ];
 
 const featuredProduct = {
@@ -16,7 +16,7 @@ const featuredProduct = {
   origin: "Mount Elgon, Uganda",
   price: 25000,
   rating: 4,
-  image: "/assets/product-chili.jpg",
+  image: "/assets/blackPepper.png",
   isHot: true
 };
 
@@ -44,7 +44,7 @@ export default function HomePage() {
         subtitle="The Apothecary"
         title="Biologically Potent Spices"
         description="Our spices are harvested at peak potency, ensuring the highest concentration of essential oils and health benefits."
-        image="/assets/apothecary-feature.jpg"
+        image="/assets/garlicPowder.jpeg"
       />
 
       {/* Best Sellers Preview */}

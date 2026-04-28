@@ -20,10 +20,8 @@ const MainHeader = () => {
           </button>
 
           {/* Logo - Centered on Mobile, Left on Desktop */}
-          <div className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
-            <h1 className="font-display text-xl md:text-2xl font-bold text-deli-charcoal uppercase tracking-tighter">
-              Green Deli
-            </h1>
+          <div className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 w-32 h-auto">
+            <img src="/assets/green-deli-logo.png" alt="Green Deli Logo" />
           </div>
 
           {/* Desktop Navigation (Hidden on Mobile) */}
