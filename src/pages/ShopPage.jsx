@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import ProductCard from '../components/ProductCard';
 import Badge from '../components/Badge';
+import HeatScale from '../components/HeatScale';
+import PriceDisplay from '../components/PriceDisplay';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 // Mock Data for the Shop
 const products = [
@@ -12,6 +15,7 @@ const products = [
 ];
 
 export default function ShopPage() {
+    useDocumentTitle('Apothecary');
   const [activeCategory, setActiveCategory] = useState('All');
   const categories = ['All', 'Chilies', 'Masalas', 'Powders', 'Apothecary'];
 

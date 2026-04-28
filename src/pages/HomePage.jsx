@@ -3,6 +3,7 @@ import HeroSection from '../components/HeroSection';
 import CategoryTile from '../components/CategoryTile';
 import ProductCard from '../components/ProductCard';
 import FeatureBlock from '../components/FeatureBlock';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 // Temporary Mock Data
 const categories = [
@@ -21,6 +22,7 @@ const featuredProduct = {
 };
 
 export default function HomePage() {
+  useDocumentTitle('Home');
   return (
     <div className="flex flex-col gap-20 pb-20">
       <HeroSection />

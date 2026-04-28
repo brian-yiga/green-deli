@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { use } from 'react';
 import FormInput from '../components/FormInput';
 import FormSelect from '../components/FormSelect';
 import OrderSummary from '../components/OrderSummary';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function CheckoutPage() {
+    useDocumentTitle('Checkout');
   const districts = [
     { label: 'Kampala', value: 'kampala' },
     { label: 'Entebbe', value: 'entebbe' },

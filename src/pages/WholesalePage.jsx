@@ -1,8 +1,10 @@
 import React from 'react';
 import WholesaleForm from '../components/WholesaleForm';
 import Badge from '../components/Badge';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function WholesalePage() {
+    useDocumentTitle('Wholesalers');
   const benefits = [
     { title: "Custom Blends", desc: "Tailored spice profiles for your specific restaurant menu or product line." },
     { title: "Ethical Sourcing", desc: "Direct-from-farm partnerships ensuring fair wages and peak biological potency." },

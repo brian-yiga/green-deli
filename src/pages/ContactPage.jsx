@@ -2,8 +2,10 @@ import React from 'react';
 import FormInput from '../components/FormInput';
 import FormSelect from '../components/FormSelect';
 import Button from '../components/Button';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function ContactPage() {
+    useDocumentTitle('Contact Us');
   return (
     <div className="max-w-7xl mx-auto px-6 py-16">
       <header className="text-center mb-16">

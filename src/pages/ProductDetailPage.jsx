@@ -5,8 +5,10 @@ import QuantityToggle from '../components/QuantityToggle';
 import Button from '../components/Button';
 import PriceDisplay from '../components/PriceDisplay';
 import Badge from '../components/Badge';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function ProductDetailPage() {
+    useDocumentTitle('Product Details');
   const [qty, setQty] = useState(1);
 
   // Mock product data based on the "African Bird's Eye"
