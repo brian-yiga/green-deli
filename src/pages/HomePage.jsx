@@ -14,7 +14,7 @@ const categories = [
 ];
 
 const featuredProduct = {
-  name: "African Bird's Eye",
+  name: "Black Pepper",
   origin: "Mount Elgon, Uganda",
   price: 25000,
   rating: 4,

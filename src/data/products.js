@@ -11,11 +11,11 @@ export const products = [
     slug: "hot-chilli-powder",
     category: "Chillies",
     price: 15000,
+    rating: 4.5,
     origin: "Bududa",
-    image: "/assets/products/chillies.png",
+    image: "/assets/products/chillis.png",
     description: "Pure African Bird's Eye chilies, sun-dried and milled for a sharp, clean heat.",
     isHot: true,
-    isOrganic: true
   },
   {
     id: 'gd-02',
@@ -23,6 +23,7 @@ export const products = [
     slug: "lake-salt-chilli",
     category: "Chillies",
     price: 15000,
+    rating: 1.5,
     origin: "Lake Katwe",
     image: "/assets/products/lake-salt-chilli.png",
     description: "Mineral-rich salt from the craters of Katwe, infused with crushed bird's eye flakes.",
@@ -34,6 +35,7 @@ export const products = [
     slug: "chilli-flakes",
     category: "Chillies",
     price: 12000,
+    rating: 3.5,
     origin: "Bududa",
     image: "/assets/products/flakes.png",
     description: "Coarsely crushed chilies for a slow-releasing heat on pizza, pasta, or local stews.",
@@ -50,6 +52,7 @@ export const products = [
     origin: "Deli Atelier",
     image: "/assets/products/pilau.png",
     description: "A fragrant, warm blend of cloves, cardamom, and cinnamon for the perfect celebratory rice.",
+    isOrganic: true
   },
   {
     id: 'gd-05',
@@ -60,6 +63,7 @@ export const products = [
     origin: "Deli Atelier",
     image: "/assets/products/beefMasala.jpg",
     description: "A robust blend of warm spices designed to elevate roasted and stewed meats.",
+    isOrganic: true
   },
   {
     id: 'gd-06',
@@ -70,6 +74,7 @@ export const products = [
     origin: "Deli Atelier",
     image: "/assets/products/curry.jpeg",
     description: "Our balanced house blend of turmeric, cumin, and coriander.",
+    isOrganic: true
   },
   {
     id: 'gd-07',
@@ -80,6 +85,7 @@ export const products = [
     origin: "Deli Atelier",
     image: "/assets/products/mchuzi-mix.jpg",
     description: "A premium, thick-base seasoning for rich Ugandan gravies and stews.",
+    isOrganic: true
   },
   {
     id: 'gd-08',
@@ -90,6 +96,7 @@ export const products = [
     origin: "Deli Atelier",
     image: "/assets/products/delish-seasoning.jpg",
     description: "Our all-purpose flavor enhancer. The secret ingredient for every professional meal.",
+    isOrganic: true
   },
 
   // --- POWDERS ---
@@ -102,6 +109,7 @@ export const products = [
     origin: "Kasese",
     image: "/assets/products/ginger.jpg",
     description: "Zesty mountain ginger powder, essential for both the spice rack and medicinal teas.",
+    isOrganic: true
   },
   {
     id: 'gd-10',
@@ -123,6 +131,7 @@ export const products = [
     origin: "Kabale",
     image: "/assets/products/onion.png",
     description: "Pure, dehydrated red onions for a sweet, savory base without the prep work.",
+    isOrganic: true
   },
   {
     id: 'gd-12',
@@ -133,6 +142,7 @@ export const products = [
     origin: "Mbarara",
     image: "/assets/products/tomato powder.png",
     description: "Concentrated tomato essence, perfect for thickening sauces and adding deep umami.",
+    isOrganic: true
   },
   {
     id: 'gd-13',
@@ -143,6 +153,7 @@ export const products = [
     origin: "Bundibugyo",
     image: "/assets/products/cinnamon-powder.jpg",
     description: "Sweet and warm aromatic bark, freshly ground for peak essential oil retention.",
+    isOrganic: true   
   },
   {
     id: 'gd-14',
@@ -164,6 +175,7 @@ export const products = [
     origin: "Deli Atelier",
     image: "/assets/products/lemon.png",
     description: "Bright citrus notes paired with the sharp bite of premium cracked black pepper.",
+    isOrganic: true
   },
 
   // --- THE LARDER ---
