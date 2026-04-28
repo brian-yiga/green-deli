@@ -1,107 +1,50 @@
 import React from 'react';
-import { Flame, ShoppingBag } from 'lucide-react';
+import HeatScale from './HeatScale';
+import PriceDisplay from './PriceDisplay';
+import Badge from './Badge';
 
-const ProductCard = ({ product }) => {
-  const { 
-    name, 
-    price, 
-    image, 
-    heatLevel, 
-    scovilleRating, 
-    flavorProfile, 
-    inStock,
-    weight 
-  } = product;
-
-  const getHeatColor = (level) => {
-    if (level === 0) return 'text-deli-brown/20'; // Neutral for turmeric/non-heat
-    if (level <= 2) return 'text-deli-green'; 
-    if (level === 3) return 'text-orange-500';
-    return 'text-deli-red'; 
-  };
+export default function ProductCard({ product }) {
+  const { name, origin, price, salePrice, rating, image, isHot, isOrganic } = product;
 
   return (
-    <div className={`group flex flex-col bg-deli-cream border border-deli-brown/10 rounded-xl overflow-hidden transition-all duration-300 ${!inStock ? 'opacity-75' : 'hover:shadow-xl hover:-translate-y-1'}`}>
-      
+    <div className="group relative flex flex-col bg-white rounded-2xl p-3 shadow-sm hover:shadow-md transition-shadow">
       {/* Image Container */}
-      <div className="relative aspect-square overflow-hidden bg-[#F5F5F5]">
+      <div className="relative aspect-square mb-4 bg-deli-cream rounded-xl overflow-hidden">
         <img 
           src={image} 
           alt={name} 
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
         />
         
-        {/* Scoville Badge - Only show if there is heat */}
-        {heatLevel > 0 && (
-          <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm px-2 py-1 rounded shadow-sm">
-            <p className="text-[10px] font-black tracking-tighter uppercase text-deli-brown">
-              {scovilleRating}
-            </p>
-          </div>
-        )}
+        {/* Badges Overlay */}
+        <div className="absolute top-2 left-2 flex flex-col gap-1">
+          {isHot && <Badge variant="hot">Hot</Badge>}
+          {isOrganic && <Badge variant="organic">Organic</Badge>}
+        </div>
 
-        {!inStock && (
-          <div className="absolute inset-0 bg-deli-brown/40 flex items-center justify-center">
-            <span className="bg-white text-deli-brown px-3 py-1 font-bold text-xs uppercase tracking-widest">
-              Out of Stock
-            </span>
-          </div>
-        )}
+        {/* Quick Add Button */}
+        <button className="absolute bottom-2 right-2 bg-deli-charcoal text-white w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 md:opacity-100 transition-opacity">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M7 1V13M1 7H13" />
+          </svg>
+        </button>
       </div>
 
-      {/* Content */}
-      <div className="p-5 flex flex-col flex-grow">
-        <div className="flex justify-between items-start mb-2">
-          <div>
-            <h3 className="font-serif text-xl text-deli-brown font-bold leading-tight uppercase tracking-tight">
-              {name}
-            </h3>
-            <span className="text-[10px] text-deli-brown/50 font-bold uppercase tracking-widest">
-              {weight}
-            </span>
-          </div>
-          <span className="text-deli-green font-black text-sm">
-            UGX {price.toLocaleString()}
-          </span>
+      {/* Info Section */}
+      <div className="flex flex-col gap-1">
+        <span className="text-[9px] uppercase tracking-widest text-deli-charcoal/40 font-bold">
+          {origin}
+        </span>
+        <h3 className="font-display text-base text-deli-charcoal leading-tight">
+          {name}
+        </h3>
+        
+        <div className="mt-1 mb-2">
+          <HeatScale rating={rating} label="" />
         </div>
 
-        {/* Flavor Profile Pills */}
-        <div className="flex flex-wrap gap-1 mt-2 mb-4">
-          {flavorProfile.map((note) => (
-            <span key={note} className="text-[9px] bg-deli-brown/5 px-2 py-0.5 rounded-full text-deli-brown/80 font-medium">
-              {note}
-            </span>
-          ))}
-        </div>
-
-        {/* Heat Indicator & Action */}
-        <div className="mt-auto pt-4 flex items-center justify-between border-t border-deli-brown/10">
-          <div className="flex items-center gap-0.5" title={`Heat Level: ${heatLevel}/5`}>
-            {[...Array(5)].map((_, i) => (
-              <Flame 
-                key={i} 
-                size={14} 
-                className={`${i < heatLevel ? getHeatColor(heatLevel) : 'text-deli-brown/10'}`}
-                fill={i < heatLevel ? 'currentColor' : 'none'}
-              />
-            ))}
-          </div>
-          
-          <button 
-            disabled={!inStock}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all
-              ${inStock 
-                ? 'bg-deli-red text-white hover:bg-red-700 shadow-md active:scale-95' 
-                : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-              }`}
-          >
-            <ShoppingBag size={14} />
-            ADD TO BAG
-          </button>
-        </div>
+        <PriceDisplay price={price} salePrice={salePrice} />
       </div>
     </div>
   );
-};
-
-export default ProductCard;
+}
