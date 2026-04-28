@@ -1,26 +1,28 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function Button({ 
-  children, 
-  variant = 'primary', 
-  className = '', 
-  ...props 
-}) {
-  // Base styles: Mobile-first height, center text, uppercase tracking
-  const baseStyles = "w-full py-4 px-6 text-[11px] font-sans font-bold uppercase tracking-[0.25em] transition-all duration-300 active:scale-[0.98]";
+export default function Button({ children, variant = 'primary', to, onClick, className = '' }) {
+  const baseStyles = "px-8 py-4 font-sans text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 text-center";
   
-  // Variant styles from your design
   const variants = {
-    primary: "bg-deli-red text-white hover:bg-deli-red/90",
-    secondary: "bg-transparent text-deli-charcoal border border-deli-charcoal/20 hover:border-deli-red hover:text-deli-red",
-    outline: "bg-transparent text-white border border-white hover:bg-white hover:text-deli-red"
+    primary: "bg-deli-red text-deli-cream hover:text-white hover:bg-red-400 shadow-lg hover:shadow-red-900/20",
+    outline: "border border-white text-white hover:bg-white hover:text-deli-charcoal",
+    secondary: "bg-deli-charcoal text-white hover:bg-deli-red"
   };
 
+  const combinedStyles = `${baseStyles} ${variants[variant]} ${className}`;
+
+  // If "to" prop exists, render as a Link for routing
+  if (to) {
+    return (
+      <Link to={to} className={combinedStyles}>
+        {children}
+      </Link>
+    );
+  }
+
   return (
-    <button 
-      className={`${baseStyles} ${variants[variant]} ${className}`}
-      {...props}
-    >
+    <button onClick={onClick} className={combinedStyles}>
       {children}
     </button>
   );

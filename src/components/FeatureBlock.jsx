@@ -1,17 +1,20 @@
-import React from 'react';
-import Button from './Button';
+import React from "react";
+import Button from "./Button";
 
-export default function FeatureBlock({ title, subtitle, description, image, reversed = false }) {
+export default function FeatureBlock({
+  title,
+  subtitle,
+  description,
+  image,
+  reversed = false,
+}) {
   return (
-    <section className={`flex flex-col ${reversed ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8 md:gap-20 py-12 px-6 max-w-7xl mx-auto`}>
-      
+    <section
+      className={`flex flex-col ${reversed ? "md:flex-row-reverse" : "md:flex-row"} items-center gap-8 md:gap-20 py-12 px-6 max-w-7xl mx-auto`}
+    >
       {/* Image Side */}
       <div className="w-full md:w-1/2 aspect-[4/5] rounded-[3rem] overflow-hidden">
-        <img 
-          src={image} 
-          alt={title} 
-          className="w-full h-full object-cover"
-        />
+        <img src={image} alt={title} className="w-full h-full object-cover" />
       </div>
 
       {/* Text Side */}
@@ -25,7 +28,7 @@ export default function FeatureBlock({ title, subtitle, description, image, reve
         <p className="font-sans text-sm leading-relaxed text-deli-charcoal/60 mb-8 max-w-md">
           {description}
         </p>
-        <Button variant="secondary" className="w-fit">
+        <Button variant="primary" to="/shop">
           Explore More
         </Button>
       </div>

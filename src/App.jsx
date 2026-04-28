@@ -1,46 +1,49 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CartProvider } from "./context/CartContext";
 
 // Layout Components
-import MainHeader from './components/MainHeader';
-import MobileBottomNav from './components/MobileBottomNav';
-import Footer from './components/Footer';
+import MainHeader from "./components/MainHeader";
+import MobileBottomNav from "./components/MobileBottomNav";
+import Footer from "./components/Footer";
 
 // Pages
-import HomePage from './pages/HomePage';
-import ShopPage from './pages/ShopPage';
-import ProductDetailPage from './pages/ProductDetailPage';
-import WholesalePage from './pages/WholesalePage';
-import ContactPage from './pages/ContactPage';
-import CheckoutPage from './pages/CheckoutPage';
-import TermsPrivacyPage from './pages/TermsPrivacyPage';
-import StoryPage from './pages/StoryPage';
+import HomePage from "./pages/HomePage";
+import ShopPage from "./pages/ShopPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
+import WholesalePage from "./pages/WholesalePage";
+import ContactPage from "./pages/ContactPage";
+import CheckoutPage from "./pages/CheckoutPage";
+import TermsPrivacyPage from "./pages/TermsPrivacyPage";
+import StoryPage from "./pages/StoryPage";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="min-h-screen bg-deli-cream text-deli-charcoal font-body">
-        <MainHeader />
-        
-        {/* main container with padding for fixed header and mobile nav */}
-        <main className="pt-16 pb-20 md:pb-0">
-          <Routes>
-            {/* The "index" or "/" path will now show your HomePage */}
-            <Route path="/" element={<HomePage />} />
-            <Route path="/shop" element={<ShopPage />} />
-            <Route path="/product/:id" element={<ProductDetailPage />} />
-            <Route path="/wholesale" element={<WholesalePage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/terms" element={<TermsPrivacyPage />} />
-            <Route path="/story" element={<StoryPage />} />
-          </Routes>
-        </main>
+    <CartProvider>
+      <BrowserRouter>
+        <div className="min-h-screen bg-deli-cream text-deli-charcoal font-body">
+          <MainHeader />
 
-        <Footer />
-        <MobileBottomNav />
-      </div>
-    </BrowserRouter>
+          {/* main container with padding for fixed header and mobile nav */}
+          <main className="pt-16 pb-20 md:pb-0">
+            <Routes>
+              {/* The "index" or "/" path will now show your HomePage */}
+              <Route path="/" element={<HomePage />} />
+              <Route path="/shop" element={<ShopPage />} />
+              <Route path="/product/:id" element={<ProductDetailPage />} />
+              <Route path="/wholesale" element={<WholesalePage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/terms" element={<TermsPrivacyPage />} />
+              <Route path="/story" element={<StoryPage />} />
+            </Routes>
+          </main>
+
+          <Footer />
+          <MobileBottomNav />
+        </div>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

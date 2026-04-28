@@ -4,12 +4,13 @@ import CategoryTile from '../components/CategoryTile';
 import ProductCard from '../components/ProductCard';
 import FeatureBlock from '../components/FeatureBlock';
 import useDocumentTitle from '../hooks/useDocumentTitle';
+import BestSellersSection from '../components/BestSellersSection';
 
 // Temporary Mock Data
 const categories = [
-  { title: "Chillies", count: 12, img: "/assets/fresh-red-peppers.png" },
-  { title: "Masalas", count: 8, img: "/assets/masalas.webp" },
-  { title: "Powders", count: 15, img: "/assets/powders.png" }
+  { title: "Chillies", count: 12, img: "/assets/products/fresh-red-peppers.png" },
+  { title: "Masalas", count: 8, img: "/assets/products/masalas.webp" },
+  { title: "Powders", count: 15, img: "/assets/products/powders.png" }
 ];
 
 const featuredProduct = {
@@ -17,7 +18,7 @@ const featuredProduct = {
   origin: "Mount Elgon, Uganda",
   price: 25000,
   rating: 4,
-  image: "/assets/blackPepper.png",
+  image: "/assets/products/blackPepper.png",
   isHot: true
 };
 
@@ -45,23 +46,12 @@ export default function HomePage() {
       <FeatureBlock 
         subtitle="The Apothecary"
         title="Biologically Potent Spices"
-        description="Our spices are harvested at peak potency, ensuring the highest concentration of essential oils and health benefits."
-        image="/assets/garlicPowder.jpeg"
+        description="Our spices are captured at their biological zenith. Harvesting at peak potency means timing the collection to the exact moment when a plant’s essential oils are at their most concentrated. These volatile oils are the lifeblood of the spice, containing the complex aromatic top notes and deep flavors that industrial farming often loses. By respecting these natural cycles, we ensure that every gram of our harvest is dense with antioxidants and bioactive compounds."
+        image="/assets/products/garlicPowder.jpeg"
       />
 
       {/* Best Sellers Preview */}
-      <section className="px-6 max-w-7xl mx-auto w-full">
-        <div className="flex justify-between items-end mb-10">
-          <h2 className="font-display text-3xl uppercase">Best Sellers</h2>
-          <span className="font-sans text-[10px] uppercase tracking-widest border-b border-deli-charcoal pb-1 cursor-pointer">View All</span>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <ProductCard product={featuredProduct} />
-          <ProductCard product={featuredProduct} />
-          <ProductCard product={featuredProduct} />
-          <ProductCard product={featuredProduct} />
-        </div>
-      </section>
+      < BestSellersSection />
     </div>
   );
 }

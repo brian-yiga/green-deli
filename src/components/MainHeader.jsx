@@ -8,7 +8,7 @@ const MainHeader = () => {
   const closeMenu = () => setIsMenuOpen(false);
 
   const navLinks = [
-    { name: 'Shop', path: '/shop' },
+    { name: 'Apothecary', path: '/shop' },
     { name: 'Wholesale', path: '/wholesale' },
     { name: 'Contact', path: '/contact' },
     { name: 'Our Story', path: '/story' },
