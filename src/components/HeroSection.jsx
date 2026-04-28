@@ -6,7 +6,7 @@ export default function HeroSection() {
     <section className="relative w-full h-[85vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <img 
-        src="/assets/hero-spices.jpg" // You'll replace this with your actual image path
+        src="/assets/HomeHeroBg.jpg"
         className="absolute inset-0 w-full h-full object-cover"
         alt="Green Deli Spices"
       />
