@@ -1,32 +1,54 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useMemo, useEffect } from 'react';
 
 const CartContext = createContext();
 
-export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+export function CartProvider({ children }) {
+  // 1. Initialize state by checking localStorage first
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem('greenDeliCart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+  // 2. Save to localStorage every time the cart updates
+  useEffect(() => {
+    localStorage.setItem('greenDeliCart', JSON.stringify(cart));
+  }, [cart]);
+
+  // ... (keep your existing addToCart, cartTotal, etc.)
+
+  const cartTotal = useMemo(() => {
+    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+  }, [cart]);
 
   const addToCart = (product) => {
-    setCart((prevCart) => {
-      // Check if item exists to increment quantity instead of duplicating
-      const existingItem = prevCart.find(item => item.id === product.id);
-      if (existingItem) {
-        return prevCart.map(item =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+    setCart((prev) => {
+      const existing = prev.find((item) => item.id === product.id);
+      if (existing) {
+        return prev.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + (product.quantity || 1) } : item
         );
       }
-      return [...prevCart, { ...product, quantity: 1 }];
+      return [...prev, { ...product, quantity: product.quantity || 1 }];
     });
-    console.log(`${product.name} added to cart!`);
   };
 
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const removeFromCart = (id) => {
+    setCart((prev) => prev.filter(item => item.id !== id));
+  };
+
+  const updateQuantity = (id, newQty) => {
+    if (newQty < 1) return;
+    setCart((prev) => prev.map(item => item.id === id ? { ...item, quantity: newQty } : item));
+  };
+
+  // 3. Add a clearCart function for after the order is placed
+  const clearCart = () => setCart([]);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, totalItems, totalPrice }}>
+    <CartContext.Provider value={{ cart, addToCart, cartTotal, removeFromCart, updateQuantity, clearCart }}>
       {children}
     </CartContext.Provider>
   );
-};
+}
 
 export const useCart = () => useContext(CartContext);

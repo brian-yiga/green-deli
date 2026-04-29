@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext'; // 1. Import the hook
 
 const MainHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  // 2. Connect to the Cart Logic
+  const { cart } = useCart();
+  
+  // 3. Sum up all quantities (so 2 jars of salt + 1 chili = 3)
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-  // Helper to close menu on link click
   const closeMenu = () => setIsMenuOpen(false);
 
   const navLinks = [
@@ -30,7 +36,7 @@ const MainHeader = () => {
             </svg>
           </button>
 
-          {/* Logo - Centered on Mobile, Left on Desktop */}
+          {/* Logo */}
           <Link 
             to="/" 
             className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 w-32 h-auto"
@@ -38,7 +44,7 @@ const MainHeader = () => {
             <img src="/assets/green-deli-logo.png" alt="Green Deli Logo" />
           </Link>
 
-          {/* Desktop Navigation (Hidden on Mobile) */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8 ml-12">
             {navLinks.map((link) => (
               <Link 
@@ -58,13 +64,18 @@ const MainHeader = () => {
                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
               </svg>
             </button>
-            <Link to="/checkout" className="p-2 text-deli-charcoal relative">
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+
+            {/* 4. Updated Link to /cart and dynamic badge */}
+            <Link to="/cart" className="p-2 text-deli-charcoal relative group">
+              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" className="group-hover:text-deli-red transition-colors">
                 <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
               </svg>
-              <span className="absolute top-1 right-0.5 bg-deli-red text-white text-[8px] font-bold px-1 rounded-full min-w-[12px] h-3 flex items-center justify-center">
-                0
-              </span>
+              
+              {totalItems > 0 && (
+                <span className="absolute top-1 right-0.5 bg-deli-red text-white text-[8px] font-bold px-1 rounded-full min-w-[12px] h-3 flex items-center justify-center animate-in zoom-in duration-300">
+                  {totalItems}
+                </span>
+              )}
             </Link>
           </div>
         </div>
@@ -93,7 +104,6 @@ const MainHeader = () => {
                   {link.name}
                 </Link>
               ))}
-              {/* Additional link for Terms just for easy access */}
               <Link 
                 to="/terms" 
                 onClick={closeMenu}

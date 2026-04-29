@@ -1,139 +1,185 @@
-import React, { use } from "react";
-import FormInput from "../components/FormInput";
-import FormSelect from "../components/FormSelect";
-import OrderSummary from "../components/OrderSummary";
-import useDocumentTitle from "../hooks/useDocumentTitle";
+import React, { useState } from 'react';
+import { useCart } from '../context/CartContext';
+import { formatPrice } from '../data/products';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function CheckoutPage() {
-  useDocumentTitle("Checkout");
-  const districts = [
-    { label: "Kampala", value: "kampala" },
-    { label: "Entebbe", value: "entebbe" },
-    { label: "Jinja", value: "jinja" },
-    { label: "Wakiso", value: "wakiso" },
-  ];
+  useDocumentTitle('Checkout | Green Deli');
+  const { cart, cartTotal, clearCart } = useCart(); // Added clearCart
+  const [orderStatus, setOrderStatus] = useState('idle');
+
+  // 1. State to track form inputs
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    phone: '',
+    address: ''
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setOrderStatus('loading');
+
+    // 2. Calculate final numbers
+    const deliveryFee = cartTotal >= 100000 ? 0 : 10000;
+    const finalTotal = cartTotal + deliveryFee;
+
+    // 3. Format the spice list for WhatsApp (using %0A for line breaks)
+    const itemsList = cart.map(item => `- ${item.quantity}x ${item.name}`).join('%0A');
+
+    // 4. Construct the professional message
+    const message = `*NEW ORDER - GREEN DELI*%0A%0A` +
+      `*Customer:* ${formData.firstName} ${formData.lastName}%0A` +
+      `*Phone:* ${formData.phone}%0A` +
+      `*Address:* ${formData.address}%0A%0A` +
+      `*Items Order:*%0A${itemsList}%0A%0A` +
+      `*Total Amount:* UGX ${finalTotal.toLocaleString()}%0A%0A` +
+      `_I would like to confirm my order and arrange delivery._`;
+
+    // 5. Replace with the real business number (Uganda format: 256...)
+    const businessNumber = "256700000000"; 
+
+    // Simulate a brief delay for a better UX
+    setTimeout(() => {
+      // 6. Launch WhatsApp
+      window.open(`https://wa.me/${businessNumber}?text=${message}`, '_blank');
+      
+      setOrderStatus('success');
+      clearCart(); // Wipes the cart and localStorage after order is sent
+    }, 1500);
+  };
+
+  if (orderStatus === 'success') {
+    return (
+      <div className="h-[80vh] flex flex-col items-center justify-center text-center px-6 animate-in fade-in zoom-in duration-500">
+        <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h2 className="font-display text-4xl uppercase mb-4">Order Sent!</h2>
+        <p className="font-sans text-sm opacity-60 max-w-xs mb-8">
+          Your order has been sent via WhatsApp. We will reply shortly to confirm your delivery slot.
+        </p>
+        <button onClick={() => window.location.href = '/'} className="text-deli-red font-sans text-[10px] uppercase tracking-widest font-bold border-b border-deli-red pb-1">
+          Back to Apothecary
+        </button>
+      </div>
+    );
+  }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-10 py-10">
-      <header className="mb-12 border-b border-deli-charcoal/5 pb-8">
-        <h1 className="font-display text-3xl md:text-5xl uppercase tracking-tighter">
-          Secure Checkout
-        </h1>
-      </header>
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        {/* Left Column: Details & Shipping */}
-        <div className="lg:col-span-7 flex flex-col gap-12">
-          {/* Section 1: Contact */}
-          <section>
-            <div className="flex items-center gap-4 mb-8">
-              <span className="w-6 h-6 rounded-full bg-deli-charcoal text-white text-[10px] flex items-center justify-center font-bold">
-                1
-              </span>
-              <h2 className="font-sans text-[10px] uppercase tracking-[0.3em] font-bold">
-                Contact Information
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FormInput
-                label="Email Address"
-                type="email"
-                placeholder="you@example.com"
-              />
-              <FormInput
-                label="Phone Number"
-                type="tel"
-                placeholder="+256..."
-              />
-            </div>
-          </section>
-
-          {/* Section 2: Shipping */}
-          <section>
-            <div className="flex items-center gap-4 mb-8">
-              <span className="w-6 h-6 rounded-full bg-deli-charcoal text-white text-[10px] flex items-center justify-center font-bold">
-                2
-              </span>
-              <h2 className="font-sans text-[10px] uppercase tracking-[0.3em] font-bold">
-                Shipping Address
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="md:col-span-2">
-                <FormInput
-                  label="Street Address"
-                  placeholder="Apartment, suite, plot number"
+    <div className="px-6 md:px-10 py-10 max-w-6xl mx-auto min-h-screen mt-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+        
+        {/* Left Side: Delivery Form */}
+        <div>
+          <h1 className="font-display text-4xl uppercase mb-8">Delivery Details</h1>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex flex-col gap-2">
+                <label className="font-sans text-[10px] uppercase tracking-widest opacity-40">First Name</label>
+                <input 
+                  required 
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  type="text" 
+                  className="bg-white border border-deli-charcoal/10 rounded-xl px-4 py-3 outline-none focus:border-deli-red transition-colors" 
                 />
               </div>
-              <FormSelect label="District / City" options={districts} />
-              <FormInput
-                label="Delivery Instructions (Optional)"
-                placeholder="e.g. Near the big mango tree"
-              />
-            </div>
-          </section>
-
-          {/* Section 3: Payment Method */}
-          <section className="bg-deli-cream/50 p-6 rounded-2xl border border-deli-charcoal/5">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="w-6 h-6 rounded-full bg-deli-charcoal text-white text-[10px] flex items-center justify-center font-bold">
-                3
-              </span>
-              <h2 className="font-sans text-[10px] uppercase tracking-[0.3em] font-bold">
-                Payment
-              </h2>
-            </div>
-            <div className="space-y-4">
-              <label className="flex items-center justify-between p-4 bg-white rounded-xl border border-deli-red cursor-pointer">
-                <div className="flex items-center gap-3">
-                  <div className="w-4 h-4 rounded-full border-4 border-deli-red" />
-                  <span className="font-sans text-xs font-bold uppercase tracking-widest">
-                    mtn momo pay
-                  </span>
-                </div>
-                <div className="flex gap-2">
-                  <img
-                    src="/assets/mtn-momo-pay.png"
-                    alt="MTN"
-                    className="w-20 h-auto object-contain"
-                  />
-                </div>
-              </label>
-            </div>
-          </section>
-        </div>
-
-        {/* Right Column: Order Summary */}
-        <aside className="lg:col-span-5">
-          <div className="lg:sticky lg:top-24">
-            <OrderSummary subtotal={75000} shipping={5000} />
-
-            {/* Cart Preview (Simple list) */}
-            <div className="mt-8 px-2">
-              <h4 className="font-sans text-[10px] uppercase tracking-widest font-bold opacity-30 mb-4">
-                Your Selection
-              </h4>
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-deli-cream rounded-lg overflow-hidden">
-                  <img
-                    src="/assets/products/chillis.png"
-                    className="w-full h-full object-cover mix-blend-multiply"
-                    alt="item"
-                  />
-                </div>
-                <div className="flex-1">
-                  <p className="font-display text-sm uppercase">
-                    African Bird's Eye
-                  </p>
-                  <p className="font-sans text-[10px] opacity-50">
-                    50g • Qty 3
-                  </p>
-                </div>
-                <span className="font-sans text-xs font-bold">75,000 UGX</span>
+              <div className="flex flex-col gap-2">
+                <label className="font-sans text-[10px] uppercase tracking-widest opacity-40">Last Name</label>
+                <input 
+                  required 
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  type="text" 
+                  className="bg-white border border-deli-charcoal/10 rounded-xl px-4 py-3 outline-none focus:border-deli-red transition-colors" 
+                />
               </div>
             </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="font-sans text-[10px] uppercase tracking-widest opacity-40">Phone (MTN/Airtel)</label>
+              <input 
+                required 
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                type="tel" 
+                placeholder="07..." 
+                className="bg-white border border-deli-charcoal/10 rounded-xl px-4 py-3 outline-none focus:border-deli-red transition-colors" 
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="font-sans text-[10px] uppercase tracking-widest opacity-40">Delivery Address / Area</label>
+              <input 
+                required 
+                name="address"
+                value={formData.address}
+                onChange={handleInputChange}
+                type="text" 
+                placeholder="e.g. Muyenga, Tank Hill Rd" 
+                className="bg-white border border-deli-charcoal/10 rounded-xl px-4 py-3 outline-none focus:border-deli-red transition-colors" 
+              />
+            </div>
+
+            <div className="mt-4">
+              <h3 className="font-sans text-[10px] uppercase tracking-[0.2em] font-bold mb-4">Payment Method</h3>
+              <div className="flex flex-col gap-3">
+                <label className="flex items-center gap-4 p-4 border border-deli-red bg-deli-red/5 rounded-2xl cursor-pointer">
+                  <input type="radio" name="payment" checked readOnly className="accent-deli-red" />
+                  <span className="font-sans text-xs font-bold text-deli-charcoal">Cash on Delivery / Mobile Money</span>
+                </label>
+              </div>
+            </div>
+
+            <button 
+              disabled={orderStatus === 'loading' || cart.length === 0}
+              className="mt-6 bg-deli-red text-white py-5 rounded-full font-sans text-[10px] uppercase tracking-[0.2em] font-bold shadow-xl disabled:opacity-50 transition-transform active:scale-95"
+            >
+              {orderStatus === 'loading' ? 'Preparing Order...' : `Send Order via WhatsApp`}
+            </button>
+          </form>
+        </div>
+
+        {/* Right Side: Order Summary */}
+        <div className="bg-deli-charcoal/5 p-8 rounded-[3rem] h-fit sticky top-32">
+          <h3 className="font-display text-2xl uppercase mb-8">Your Order</h3>
+          <div className="flex flex-col gap-6 mb-8 max-h-[400px] overflow-y-auto pr-2">
+            {cart.map((item) => (
+              <div key={item.id} className="flex justify-between items-center border-b border-deli-charcoal/5 pb-4">
+                <div className="flex gap-4">
+                  <span className="font-sans text-xs font-bold opacity-40">{item.quantity}x</span>
+                  <span className="font-sans text-xs font-bold">{item.name}</span>
+                </div>
+                <span className="font-sans text-xs">{formatPrice(item.price * item.quantity)}</span>
+              </div>
+            ))}
           </div>
-        </aside>
+
+          <div className="flex flex-col gap-4 border-t border-deli-charcoal/10 pt-6">
+            <div className="flex justify-between font-sans text-xs opacity-60">
+              <span>Subtotal</span>
+              <span>{formatPrice(cartTotal)}</span>
+            </div>
+            <div className="flex justify-between font-sans text-xs opacity-60">
+              <span>Delivery</span>
+              <span>{cartTotal >= 100000 ? 'Free' : '10,000 UGX'}</span>
+            </div>
+            <div className="flex justify-between font-display text-xl uppercase pt-4 border-t border-deli-charcoal/5">
+              <span>Grand Total</span>
+              <span className="text-deli-red">{formatPrice(cartTotal + (cartTotal >= 100000 ? 0 : 10000))}</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );
