@@ -76,18 +76,16 @@ export default function ContactPage() {
               </span>
             </a>
             <a
-              href="https://instagram.com/greendelispices"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white p-6 rounded-[2rem] border border-deli-charcoal/10 flex flex-col items-center justify-center text-center cursor-pointer hover:shadow-md transition-all"
+              href="mailto:greendeli525@gmail.com"
+              className="bg-white p-6 rounded-[2rem] border border-deli-charcoal/10 flex flex-col items-center justify-center text-center cursor-pointer hover:shadow-md transition-all group"
             >
               <img
                 src="assets/email-icon.png"
                 alt="Email"
-                className="w-16 h-auto"
+                className="w-16 h-auto group-hover:scale-105 transition-transform"
               />
               <span className="font-sans text-[10px] uppercase tracking-widest font-bold mt-2 opacity-60">
-                @greendelispices
+                greendeli525@gmail.com
               </span>
             </a>
           </div>
