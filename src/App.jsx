@@ -17,11 +17,13 @@ import CheckoutPage from "./pages/CheckoutPage";
 import TermsPrivacyPage from "./pages/TermsPrivacyPage";
 import StoryPage from "./pages/StoryPage";
 import CartPage from "./pages/CartPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <CartProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <div className="min-h-screen bg-deli-cream text-deli-charcoal font-body">
           <MainHeader />
 

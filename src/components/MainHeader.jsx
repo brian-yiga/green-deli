@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useCart } from '../context/CartContext'; // 1. Import the hook
+import { useCart } from '../context/CartContext';
 
 const MainHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-  // 2. Connect to the Cart Logic
   const { cart } = useCart();
   
-  // 3. Sum up all quantities (so 2 jars of salt + 1 chili = 3)
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-
   const closeMenu = () => setIsMenuOpen(false);
 
+  // Added Home to the start of the array
   const navLinks = [
+    { name: 'Home', path: '/' },
     { name: 'Apothecary', path: '/shop' },
     { name: 'Wholesale', path: '/wholesale' },
     { name: 'Contact', path: '/contact' },
@@ -36,7 +34,7 @@ const MainHeader = () => {
             </svg>
           </button>
 
-          {/* Logo */}
+          {/* Logo - Still links to Home as well */}
           <Link 
             to="/" 
             className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 w-32 h-auto"
@@ -44,7 +42,7 @@ const MainHeader = () => {
             <img src="/assets/green-deli-logo.png" alt="Green Deli Logo" />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation (Now includes Home) */}
           <nav className="hidden md:flex items-center gap-8 ml-12">
             {navLinks.map((link) => (
               <Link 
@@ -65,7 +63,6 @@ const MainHeader = () => {
               </svg>
             </button>
 
-            {/* 4. Updated Link to /cart and dynamic badge */}
             <Link to="/cart" className="p-2 text-deli-charcoal relative group">
               <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" className="group-hover:text-deli-red transition-colors">
                 <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
@@ -81,7 +78,7 @@ const MainHeader = () => {
         </div>
       </header>
 
-      {/* Mobile Drawer Overlay */}
+      {/* Mobile Drawer Overlay (Now includes Home) */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-[60] bg-deli-charcoal/20 backdrop-blur-sm md:hidden" onClick={closeMenu}>
           <aside className="w-64 h-full bg-deli-cream p-6 shadow-xl" onClick={e => e.stopPropagation()}>

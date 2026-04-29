@@ -22,16 +22,16 @@ export default function CategoryTile({ title, image, itemCount }) {
 
       {/* Text Content */}
       <div className="absolute bottom-8 left-8 right-8">
-        <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-deli-red mb-2 block transform transition-transform duration-500 group-hover:-translate-y-1">
+        <span className="text-[14px] font-sans font-bold uppercase tracking-[0.2em] text-deli-gold mb-2 block transform transition-transform duration-500 group-hover:-translate-y-1">
           {itemCount} Products
         </span>
-        <h3 className="font-display text-2xl md:text-4xl text-white uppercase leading-none mb-4">
+        <h3 className="font-display text-5xl md:text-4xl text-white uppercase leading-none mb-4">
           {title}
         </h3>
         
         {/* Animated "Explore Collection" link */}
         <div className="flex items-center gap-3 text-white/40 group-hover:text-white transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
-          <span className="text-[9px] uppercase tracking-[0.3em] font-sans font-bold">
+          <span className="text-[12px] uppercase tracking-[0.3em] font-sans font-bold">
             Explore Collection
           </span>
           <div className="w-8 h-[1px] bg-deli-red transform origin-left transition-transform duration-500 scale-x-0 group-hover:scale-x-100" />

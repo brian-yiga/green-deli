@@ -26,7 +26,7 @@ export default function ShopPage() {
         <h1 className="font-display text-4xl md:text-6xl uppercase mb-4 tracking-tighter">
           The Collection
         </h1>
-        <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-deli-charcoal/40">
+        <p className="font-sans text-lg uppercase tracking-[0.3em] text-deli-charcoal/40">
           Sourced from the fertile soils of Uganda
         </p>
       </header>

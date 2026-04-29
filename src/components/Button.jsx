@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Button({ children, variant = 'primary', to, onClick, className = '' }) {
-  const baseStyles = "px-8 py-4 font-sans text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 text-center";
+  const baseStyles = "px-8 py-4 font-sans text-[12px] font-bold uppercase tracking-[0.2em] transition-all duration-300 text-center";
   
   const variants = {
     primary: "bg-deli-red text-deli-cream hover:text-white hover:bg-red-400 shadow-lg hover:shadow-red-900/20",

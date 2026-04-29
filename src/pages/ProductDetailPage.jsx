@@ -38,7 +38,7 @@ export default function ProductDetailPage() {
   };
 
   return (
-    <div className="flex flex-col pb-24 md:pb-12 bg-deli-cream min-h-screen">
+    <div className="flex flex-col md:pb-12 bg-deli-cream min-h-screen">
       
       {/* 1. Back to Shop Navigation - Floating Overlay */}
       <div className="absolute top-24 left-6 z-20 md:left-10">
@@ -72,10 +72,10 @@ export default function ProductDetailPage() {
       </section>
 
       {/* Product Content Container */}
-      <section className="max-w-7xl mx-auto px-6 -mt-10 md:mt-12 relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-12">
+      <section className="max-w-7xl mx-auto p-3 -mt-10 md:mt-12 relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-12">
         
         {/* Info Column */}
-        <div className="bg-white p-8 md:p-0 rounded-[2.5rem] md:rounded-none shadow-xl md:shadow-none">
+        <div className="bg-white p-6 md:p-0 rounded-[2.5rem] md:rounded-none shadow-xl md:shadow-none md:p-10">
           <span className="font-sans text-[10px] uppercase tracking-[0.4em] text-deli-red mb-3 block">
             {product.origin}
           </span>
@@ -88,17 +88,17 @@ export default function ProductDetailPage() {
             <FlavorComplexity rating={product.complexity || 3} label="Complexity" />
           </div>
 
-          <p className="font-sans text-sm leading-relaxed text-deli-charcoal/70 mb-8">
+          <p className="font-sans text-lg leading-relaxed text-deli-charcoal/70 mb-8">
             {product.description}
           </p>
 
           <div className="flex flex-col gap-2 mb-10">
-            <h4 className="font-sans text-[10px] uppercase tracking-widest font-bold opacity-40">Specifications</h4>
-            <ul className="text-xs font-sans flex flex-col gap-2">
-              <li className="flex justify-between border-b border-deli-charcoal/5 pb-2">
-                <span>Category</span> <span className="font-bold uppercase tracking-widest text-[10px]">{product.category}</span>
+            <h4 className="font-sans text-sm uppercase tracking-widest font-bold opacity-40">Specifications</h4>
+            <ul className="text-sm font-sans flex flex-col gap-2">
+              <li className="flex justify-between border-b border-deli-charcoal/5 pb-2 text-sm">
+                <span>Category</span> <span className="font-bold uppercase tracking-widest text-sm">{product.category}</span>
               </li>
-              <li className="flex justify-between border-b border-deli-charcoal/5 pb-2">
+              <li className="flex justify-between border-b border-deli-charcoal/5 pb-2 text-sm">
                 <span>Ingredients</span> <span className="font-bold">100% Organic {product.name}</span>
               </li>
             </ul>
@@ -112,7 +112,7 @@ export default function ProductDetailPage() {
             
             <div className="flex flex-col gap-6">
               <div className="flex items-center justify-between">
-                <span className="font-sans text-[10px] uppercase tracking-widest font-bold">Select Quantity</span>
+                <span className="font-sans text-sm uppercase tracking-widest font-bold">Select Quantity</span>
                 <QuantityToggle 
                   quantity={qty} 
                   onIncrease={() => setQty(qty + 1)}

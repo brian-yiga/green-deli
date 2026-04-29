@@ -20,7 +20,7 @@ export default function HeroSection() {
           Established 2022 • Uganda
         </span>
 
-        <h2 className="font-display text-4xl md:text-6xl text-white leading-none uppercase mb-8 ">
+        <h2 className="font-display text-5xl md:text-6xl text-white leading-none uppercase mb-8 ">
           Explore <br />
           <span className="text-deli-red">Uganda's</span> <br />
           Larder

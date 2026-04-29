@@ -5,6 +5,7 @@ import ProductCard from '../components/ProductCard';
 import FeatureBlock from '../components/FeatureBlock';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import BestSellersSection from '../components/BestSellersSection';
+import BackToTop from '../components/BackToTop';
 
 // Temporary Mock Data
 const categories = [
@@ -52,6 +53,7 @@ export default function HomePage() {
 
       {/* Best Sellers Preview */}
       < BestSellersSection />
+      <BackToTop />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import WholesaleForm from '../components/WholesaleForm';
 import Badge from '../components/Badge';
 import useDocumentTitle from '../hooks/useDocumentTitle';
+import BackToTop from '../components/BackToTop';
 
 export default function WholesalePage() {
     useDocumentTitle('Wholesalers');
@@ -12,7 +13,7 @@ export default function WholesalePage() {
   ];
 
   return (
-    <div className="flex flex-col gap-16 pb-24">
+    <div className="flex flex-col gap-16">
       {/* Editorial Hero Header */}
       <section className="bg-[url('/assets/wholesaleHeroBg.webp')] bg-cover bg-center text-deli-cream pt-20 pb-16 px-6 text-center md:text-left">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10">
@@ -42,7 +43,7 @@ export default function WholesalePage() {
           {benefits.map((benefit) => (
             <div key={benefit.title} className="flex flex-col gap-4 border-l border-deli-red/20 pl-6">
               <h3 className="font-display text-xl uppercase text-deli-charcoal">{benefit.title}</h3>
-              <p className="font-sans text-xs text-deli-charcoal/60 leading-relaxed uppercase tracking-wider">
+              <p className="font-sans text-sm text-deli-charcoal/60 leading-relaxed uppercase tracking-wider">
                 {benefit.desc}
               </p>
             </div>
@@ -58,12 +59,13 @@ export default function WholesalePage() {
       {/* Logistics Note */}
       <section className="px-6 text-center">
         <div className="bg-deli-cream inline-block p-8 rounded-[2rem] border border-deli-charcoal/5">
-          <h4 className="font-sans text-[10px] uppercase tracking-[.3em] font-bold text-deli-red mb-2">Global Shipping</h4>
-          <p className="font-sans text-xs text-deli-charcoal/50 max-w-xs mx-auto uppercase tracking-widest">
+          <h4 className="font-sans text-[16px] uppercase tracking-[.3em] font-bold text-deli-red mb-2">Global Shipping</h4>
+          <p className="font-sans text-sm text-deli-charcoal/50 max-w-xs mx-auto uppercase tracking-widest">
             Dispatching weekly from Kampala via air freight and courier to over 20 countries.
           </p>
         </div>
       </section>
+      <BackToTop />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="bg-deli-charcoal text-deli-cream px-6 pt-16 pb-32 md:pb-12 mt-20">
+    <footer className="bg-deli-charcoal text-deli-cream px-6 pt-16 pb-32 md:pb-12">
       <div className="max-w-7xl mx-auto">
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -12,7 +12,7 @@ export default function Footer() {
             <div>
              <h1 className='uppercase mb-5 text-3xl font-bold text-deli-botanical'>Green Deli</h1>
             </div>
-            <p className="font-sans text-xs leading-relaxed opacity-70 tracking-wide uppercase">
+            <p className="font-sans text-sm leading-relaxed opacity-70 tracking-wide uppercase">
               Uganda's finest spice apothecary. Sustainably sourced, 
               artisanal quality, and biologically potent botanicals 
               from the heart of the pearl.
@@ -22,7 +22,7 @@ export default function Footer() {
           {/* Navigation Links */}
           <div className="grid grid-cols-2 gap-8 col-span-1 md:col-span-2">
             <div>
-              <h3 className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] mb-6 text-deli-red">Shop</h3>
+              <h3 className="font-sans text-sm font-bold uppercase tracking-[0.2em] mb-6 text-deli-red">Shop</h3>
               <ul className="flex flex-col gap-4 font-sans text-[11px] uppercase tracking-widest opacity-80">
                 <li><Link to="/shop" className="hover:text-deli-red transition-colors">All Spices</Link></li>
                 <li><Link to="/shop" className="hover:text-deli-red transition-colors">Chili Oils</Link></li>
@@ -31,7 +31,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] mb-6 text-deli-red">Company</h3>
+              <h3 className="font-sans text-sm font-bold uppercase tracking-[0.2em] mb-6 text-deli-red">Company</h3>
               <ul className="flex flex-col gap-4 font-sans text-[11px] uppercase tracking-widest opacity-80">
                 <li><Link to="/story" className="hover:text-deli-red transition-colors">Our Story</Link></li>
                 <li><Link to="/wholesale" className="hover:text-deli-red transition-colors">Wholesale</Link></li>
@@ -43,20 +43,20 @@ export default function Footer() {
 
           {/* Newsletter / Social */}
           <div className="col-span-1">
-            <h3 className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] mb-6 text-deli-red">Connect</h3>
+            <h3 className="font-sans text-sm font-bold uppercase tracking-[0.2em] mb-6 text-deli-red">Connect</h3>
             <div className="flex gap-4 mb-8">
               <div className="w-8 h-8 rounded-full border border-deli-cream/20 flex items-center justify-center hover:bg-deli-red transition-colors cursor-pointer group">
-                <span className="text-[10px] group-hover:text-white">IG</span>
+                <img src="/assets/instagram-icon.webp" alt="Instagram" />
               </div>
               <div className="w-8 h-8 rounded-full border border-deli-cream/20 flex items-center justify-center hover:bg-deli-red transition-colors cursor-pointer group">
-                <span className="text-[10px] group-hover:text-white">FB</span>
+                <img src="/assets/facebook-icon.webp" alt="Facebook" />
               </div>
             </div>
             <Link 
               to="/terms" 
-              className="font-sans text-[10px] font-bold uppercase tracking-widest text-deli-red hover:underline underline-offset-4 decoration-1"
+              className="font-sans text-sm font-bold uppercase tracking-widest text-deli-red hover:underline underline-offset-4 decoration-1"
             >
-              View Our Terms & Privacy Policy
+              Terms & Privacy Policy
             </Link>
           </div>
         </div>

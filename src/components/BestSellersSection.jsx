@@ -56,7 +56,7 @@ export default function BestSellersSection() {
   ];
 
   return (
-    <section className="px-6 max-w-7xl mx-auto w-full my-20">
+    <section className="px-6 max-w-7xl mx-auto w-full my-5">
       <div className="flex justify-between items-end mb-10">
         <h2 className="font-display text-3xl uppercase">Best Sellers</h2>
 

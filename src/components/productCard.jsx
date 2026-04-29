@@ -53,7 +53,7 @@ export default function ProductCard({ product }) {
               {product.name}
             </h4>
           </Link>
-          <p className="font-sans text-xs font-bold text-deli-charcoal">
+          <p className="font-sans text-lg font-bold text-deli-charcoal">
             {formatPrice(product.price)}
           </p>
         </div>
@@ -70,7 +70,7 @@ export default function ProductCard({ product }) {
                      md:translate-x-0 md:opacity-100"
           aria-label={`Add ${product.name} to cart`}
         >
-          <span className="font-sans text-[8px] uppercase tracking-[0.25em] font-bold">
+          <span className="font-sans text-[10px] uppercase tracking-[0.25em] font-bold">
             Cart +
           </span>
         </button>

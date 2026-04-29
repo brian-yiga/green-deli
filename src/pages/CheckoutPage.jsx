@@ -64,7 +64,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="px-6 md:px-10 py-10 max-w-6xl mx-auto min-h-screen mt-16">
+    <div className="px-6 md:px-10 max-w-6xl mx-auto min-h-screen mt-16">
       {/* 2. Back to Cart Link Section */}
       <div className="mb-8">
         <Link 
@@ -144,7 +144,7 @@ export default function CheckoutPage() {
               <div className="flex flex-col gap-3">
                 <label className="flex items-center gap-4 p-4 border border-deli-red bg-deli-red/5 rounded-2xl cursor-pointer">
                   <input type="radio" name="payment" checked readOnly className="accent-deli-red" />
-                  <span className="font-sans text-xs font-bold text-deli-charcoal">Cash on Delivery / Mobile Money</span>
+                  <span className="font-sans text-xs font-bold text-deli-charcoal">MTN MoMo Pay</span>
                 </label>
               </div>
             </div>
