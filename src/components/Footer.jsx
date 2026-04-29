@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand Mission */}
           <div className="col-span-1">
             <div>
-              <img src="/assets/green-deli-logo.png" alt="Green Deli Logo" />
+             <h1 className='uppercase mb-5 text-3xl font-bold text-deli-botanical'>Green Deli</h1>
             </div>
             <p className="font-sans text-xs leading-relaxed opacity-70 tracking-wide uppercase">
               Uganda's finest spice apothecary. Sustainably sourced, 

@@ -14,22 +14,22 @@ export default function WholesalePage() {
   return (
     <div className="flex flex-col gap-16 pb-24">
       {/* Editorial Hero Header */}
-      <section className="bg-deli-charcoal text-deli-cream pt-20 pb-16 px-6 text-center md:text-left">
+      <section className="bg-[url('/assets/wholesaleHeroBg.webp')] bg-cover bg-center text-deli-cream pt-20 pb-16 px-6 text-center md:text-left">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10">
           <div>
             <Badge variant="hot" className="mb-4">B2B Partnerships</Badge>
-            <h1 className="font-display text-4xl md:text-7xl uppercase leading-tight mb-6">
+            <h1 className="font-display text-5xl md:text-7xl uppercase leading-tight mb-6">
               Spice the <br/> <span className="text-deli-red">Hospitality</span> Sector
             </h1>
-            <p className="font-sans text-sm opacity-70 max-w-md leading-relaxed tracking-wide">
+            <p className="font-sans text-[18px] text-deli-cream max-w-md leading-relaxed tracking-wide">
               Supplying Uganda's top chefs, lodges, and retailers with the most vibrant, 
               biologically active botanicals from the region.
             </p>
           </div>
           <div className="hidden md:block aspect-video rounded-[2rem] overflow-hidden">
             <img 
-              src="/assets/wholesale-hero.jpg" 
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              src="/assets/HomeHeroBg.jpg" 
+              className="w-full h-full object-cover transition-all duration-700"
               alt="Bulk Spices"
             />
           </div>

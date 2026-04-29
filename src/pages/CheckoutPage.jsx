@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // 1. Added Link import
 import { useCart } from '../context/CartContext';
 import { formatPrice } from '../data/products';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function CheckoutPage() {
   useDocumentTitle('Checkout | Green Deli');
-  const { cart, cartTotal, clearCart } = useCart(); // Added clearCart
+  const { cart, cartTotal, clearCart } = useCart();
   const [orderStatus, setOrderStatus] = useState('idle');
 
-  // 1. State to track form inputs
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -25,14 +25,10 @@ export default function CheckoutPage() {
     e.preventDefault();
     setOrderStatus('loading');
 
-    // 2. Calculate final numbers
     const deliveryFee = cartTotal >= 100000 ? 0 : 10000;
     const finalTotal = cartTotal + deliveryFee;
-
-    // 3. Format the spice list for WhatsApp (using %0A for line breaks)
     const itemsList = cart.map(item => `- ${item.quantity}x ${item.name}`).join('%0A');
 
-    // 4. Construct the professional message
     const message = `*NEW ORDER - GREEN DELI*%0A%0A` +
       `*Customer:* ${formData.firstName} ${formData.lastName}%0A` +
       `*Phone:* ${formData.phone}%0A` +
@@ -41,16 +37,12 @@ export default function CheckoutPage() {
       `*Total Amount:* UGX ${finalTotal.toLocaleString()}%0A%0A` +
       `_I would like to confirm my order and arrange delivery._`;
 
-    // 5. Replace with the real business number (Uganda format: 256...)
     const businessNumber = "256700000000"; 
 
-    // Simulate a brief delay for a better UX
     setTimeout(() => {
-      // 6. Launch WhatsApp
       window.open(`https://wa.me/${businessNumber}?text=${message}`, '_blank');
-      
       setOrderStatus('success');
-      clearCart(); // Wipes the cart and localStorage after order is sent
+      clearCart();
     }, 1500);
   };
 
@@ -73,6 +65,23 @@ export default function CheckoutPage() {
 
   return (
     <div className="px-6 md:px-10 py-10 max-w-6xl mx-auto min-h-screen mt-16">
+      {/* 2. Back to Cart Link Section */}
+      <div className="mb-8">
+        <Link 
+          to="/cart" 
+          className="group inline-flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.2em] font-bold text-deli-charcoal/40 hover:text-deli-red transition-colors"
+        >
+          <svg 
+            width="14" height="14" viewBox="0 0 24 24" fill="none" 
+            stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+            className="transform group-hover:-translate-x-1 transition-transform"
+          >
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+          Back to Cart
+        </Link>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
         
         {/* Left Side: Delivery Form */}
@@ -144,7 +153,7 @@ export default function CheckoutPage() {
               disabled={orderStatus === 'loading' || cart.length === 0}
               className="mt-6 bg-deli-red text-white py-5 rounded-full font-sans text-[10px] uppercase tracking-[0.2em] font-bold shadow-xl disabled:opacity-50 transition-transform active:scale-95"
             >
-              {orderStatus === 'loading' ? 'Preparing Order...' : `Send Order via WhatsApp`}
+              {orderStatus === 'loading' ? 'Preparing Order...' : `Send Order via WhatsApp — ${formatPrice(cartTotal + (cartTotal >= 100000 ? 0 : 10000))}`}
             </button>
           </form>
         </div>

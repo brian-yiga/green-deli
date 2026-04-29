@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom'; // Added Link
 import { useCart } from '../context/CartContext';
 import { products, formatPrice } from '../data/products';
 
@@ -8,47 +8,64 @@ import HeatScale from '../components/HeatScale';
 import FlavorComplexity from '../components/FlavorComplexity';
 import QuantityToggle from '../components/QuantityToggle';
 import Button from '../components/Button';
-import PriceDisplay from '../components/PriceDisplay';
 import Badge from '../components/Badge';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function ProductDetailPage() {
-  const { id } = useParams(); // 'id' corresponds to the :id (slug) in your Route
+  const { id } = useParams();
   const { addToCart } = useCart();
   const [qty, setQty] = useState(1);
 
-  // 1. Fetch real product data from our database
   const product = useMemo(() => {
     return products.find((p) => p.slug === id);
   }, [id]);
 
-  // Set page title dynamically
   useDocumentTitle(product ? `${product.name} | Green Deli` : 'Product Details');
 
-  // Handle case where product isn't found
   if (!product) {
     return (
-      <div className="h-screen flex items-center justify-center font-display uppercase tracking-widest">
-        Product Not Found
+      <div className="h-screen flex flex-col items-center justify-center gap-6">
+        <div className="font-display uppercase tracking-widest text-xl opacity-40">Product Not Found</div>
+        <Link to="/shop" className="text-deli-red font-sans text-[10px] uppercase tracking-[0.2em] font-bold border-b border-deli-red pb-1">
+          Return to Shop
+        </Link>
       </div>
     );
   }
 
-  // 2. Wrap the Add to Cart logic
   const handleAddToCart = () => {
     addToCart({ ...product, quantity: qty });
   };
 
   return (
     <div className="flex flex-col pb-24 md:pb-12 bg-deli-cream min-h-screen">
-      {/* Mobile-First Image Gallery */}
+      
+      {/* 1. Back to Shop Navigation - Floating Overlay */}
+      <div className="absolute top-24 left-6 z-20 md:left-10">
+        <Link 
+          to="/shop" 
+          className="group flex items-center gap-3 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-sm hover:bg-white transition-all border border-deli-charcoal/5"
+        >
+          <svg 
+            width="14" height="14" viewBox="0 0 24 24" fill="none" 
+            stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
+            className="transform group-hover:-translate-x-1 transition-transform text-deli-charcoal"
+          >
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+          <span className="font-sans text-[9px] uppercase tracking-[0.2em] font-bold text-deli-charcoal">Back to Shop</span>
+        </Link>
+      </div>
+
+      {/* Image Gallery */}
       <section className="relative w-full aspect-square bg-deli-charcoal/5 md:aspect-[16/9] md:max-h-[600px] overflow-hidden">
         <img 
           src={product.image} 
           alt={product.name}
           className="w-full h-full object-cover"
         />
-        <div className="absolute top-6 left-6 flex gap-2">
+        {/* Adjusted Badge position to not overlap with the back button */}
+        <div className="absolute bottom-6 left-6 flex gap-2">
           {product.isHot && <Badge variant="hot">High Heat</Badge>}
           {product.isOrganic && <Badge variant="organic">Single Origin</Badge>}
         </div>
@@ -88,10 +105,9 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
-        {/* Purchase Column (Sticky on Desktop) */}
+        {/* Purchase Column */}
         <div className="md:sticky md:top-32 h-fit">
-          <div className="bg-white md:bg-transparent p-8 md:p-0 rounded-[2rem] border border-deli-charcoal/5 md:border-none">
-            {/* Using our real formatPrice helper */}
+          <div className="bg-white md:bg-transparent p-8 md:p-0 rounded-[2rem] border border-deli-charcoal/5 md:border-none shadow-lg md:shadow-none">
             <h2 className="font-display text-3xl mb-8">{formatPrice(product.price)}</h2>
             
             <div className="flex flex-col gap-6">
