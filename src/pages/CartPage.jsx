@@ -6,7 +6,8 @@ import BackToTop from "../components/BackToTop";
 
 
 export default function CartPage() {
-  const { cart, removeFromCart, updateQuantity, cartTotal } = useCart();
+  // 1. Destructure emptyCart from useCart
+  const { cart, removeFromCart, updateQuantity, cartTotal, emptyCart } = useCart();
 
   if (cart.length === 0) {
     return (
@@ -30,7 +31,6 @@ export default function CartPage() {
   return (
     <div className="px-6 md:px-10 max-w-5xl mx-auto min-h-screen mt-16">
       <header className="mb-6 border-b border-deli-charcoal/10 pb-8">
-        {/* 2. Back to Cart Link Section */}
         <div className="mb-8">
           <Link
             to="/shop"
@@ -53,12 +53,24 @@ export default function CartPage() {
           </Link>
         </div>
 
-        <h1 className="font-display text-4xl md:text-6xl uppercase">
-          Your Selection
-        </h1>
-        <span className="font-sans text-[10px] uppercase tracking-widest opacity-40">
-          {cart.length} unique items in bag
-        </span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <h1 className="font-display text-4xl md:text-6xl uppercase leading-none">
+              Your Selection
+            </h1>
+            <span className="font-sans text-[10px] uppercase tracking-widest opacity-40">
+              {cart.length} unique items in bag
+            </span>
+          </div>
+
+          {/* 2. Added the Empty Cart Link here */}
+          <button
+            onClick={emptyCart}
+            className="font-sans text-[10px] uppercase tracking-[0.2em] font-bold text-deli-red/40 hover:text-deli-red transition-colors text-left md:text-right"
+          >
+            [ Empty Cart ]
+          </button>
+        </div>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
@@ -167,6 +179,7 @@ export default function CartPage() {
           </div>
         </div>
       </div>
+      <BackToTop />
     </div>
   );
 }

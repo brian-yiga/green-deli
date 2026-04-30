@@ -16,6 +16,7 @@ const MainHeader = () => {
     { name: 'Wholesale', path: '/wholesale' },
     { name: 'Contact', path: '/contact' },
     { name: 'Our Story', path: '/story' },
+    { name: 'Careers', path: '/careers' },
   ];
 
   return (

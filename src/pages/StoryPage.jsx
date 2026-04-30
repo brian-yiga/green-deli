@@ -34,10 +34,10 @@ export default function StoryPage() {
 
   const custodians = [
     {
-      name: "Elias Okollo",
-      role: "Lead Cumin Harvester",
-      region: "Kasese District",
-      img: "/assets/custodian-1.jpg",
+      name: "Michael Bembe",
+      role: "Founder, CEO",
+      region: "Kampala District",
+      img: "/assets/michael-bembe.png",
     },
     {
       name: "Maria Mukasa",

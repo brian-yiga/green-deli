@@ -2,19 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 
-export default function BestSellersSection() {
-  // 1. Create an array of different products
-  const featuredProducts = [
+export default function PromotionsSection() {
+  // 1. Updated data with oldPrice to trigger the promotion UI
+  const promoProducts = [
     {
       id: "gd-15",
       name: "Lemon Pepper",
       slug: "lemon-pepper",
       category: "Powders",
-      price: 22000,
+      price: 18000, // New Price
+      oldPrice: 22000, // Original Price
       origin: "Deli Atelier",
       image: "/assets/products/lemon.png",
-      description:
-        "Bright citrus notes paired with the sharp bite of premium cracked black pepper.",
+      description: "Bright citrus notes paired with the sharp bite of premium cracked black pepper.",
       isOrganic: true,
     },
     {
@@ -22,11 +22,11 @@ export default function BestSellersSection() {
       name: "Onion Powder",
       slug: "onion-powder",
       category: "Powders",
-      price: 15000,
+      price: 12000,
+      oldPrice: 15000,
       origin: "Kabale",
       image: "/assets/products/onion.png",
-      description:
-        "Pure, dehydrated red onions for a sweet, savory base without the prep work.",
+      description: "Pure, dehydrated red onions for a sweet, savory base without the prep work.",
       isOrganic: true,
     },
     {
@@ -34,11 +34,11 @@ export default function BestSellersSection() {
       name: "Tomato Powder",
       slug: "tomato-powder",
       category: "Powders",
-      price: 18000,
+      price: 15000,
+      oldPrice: 18000,
       origin: "Mbarara",
       image: "/assets/products/tomato powder.png",
-      description:
-        "Concentrated tomato essence, perfect for thickening sauces and adding deep umami.",
+      description: "Concentrated tomato essence, perfect for thickening sauces and adding deep umami.",
       isOrganic: true,
     },
     {
@@ -46,21 +46,25 @@ export default function BestSellersSection() {
       name: "Cinnamon Powder",
       slug: "cinnamon-powder",
       category: "Powders",
-      price: 20000,
+      price: 17000,
+      oldPrice: 20000,
       origin: "Bundibugyo",
       image: "/assets/products/cinnamon-powder.jpg",
-      description:
-        "Sweet and warm aromatic bark, freshly ground for peak essential oil retention.",
+      description: "Sweet and warm aromatic bark, freshly ground for peak essential oil retention.",
       isOrganic: true,
     },
   ];
 
   return (
-    <section className="px-6 max-w-7xl mx-auto w-full my-5">
+    <section className="px-6 max-w-7xl mx-auto w-full my-20">
       <div className="flex justify-between items-end mb-10">
-        <h2 className="font-display text-3xl uppercase">Best Sellers</h2>
+        <div>
+           <h2 className="font-display text-3xl uppercase leading-none">Limited Promotions</h2>
+           <p className="font-sans text-[9px] uppercase tracking-[0.2em] opacity-40 mt-2">
+             Special pricing on seasonal powders
+           </p>
+        </div>
 
-        {/* 2. Link "View All" to the shop */}
         <Link
           to="/shop"
           className="font-sans text-[10px] uppercase tracking-widest border-b border-deli-charcoal pb-1 hover:text-deli-red hover:border-deli-red transition-colors"
@@ -70,8 +74,7 @@ export default function BestSellersSection() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {/* 3. Map through the array to show different cards */}
-        {featuredProducts.map((item) => (
+        {promoProducts.map((item) => (
           <ProductCard key={item.id} product={item} />
         ))}
       </div>

@@ -4,8 +4,9 @@ import CategoryTile from '../components/CategoryTile';
 import ProductCard from '../components/ProductCard';
 import FeatureBlock from '../components/FeatureBlock';
 import useDocumentTitle from '../hooks/useDocumentTitle';
-import BestSellersSection from '../components/BestSellersSection';
+import PromotionsSection from '../components/promotionsSection';
 import BackToTop from '../components/BackToTop';
+import CatalogueSection from '../components/CatalogueSection';
 
 // Temporary Mock Data
 const categories = [
@@ -28,6 +29,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col gap-10">
       <HeroSection />
+      <CatalogueSection />
 
       {/* Category Grid */}
       <section className="px-2 max-w-7xl mx-auto w-full">
@@ -52,7 +54,7 @@ export default function HomePage() {
       />
 
       {/* Best Sellers Preview */}
-      < BestSellersSection />
+      < PromotionsSection />
       <BackToTop />
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import ProductCard from '../components/ProductCard';
 import useDocumentTitle from '../hooks/useDocumentTitle';
+import CatalogueSection from '../components/CatalogueSection';
 
 // Import your real data
 import { products } from '../data/products';
@@ -30,6 +31,7 @@ export default function ShopPage() {
           Sourced from the fertile soils of Uganda
         </p>
       </header>
+      <CatalogueSection />
 
       <div className="flex flex-col md:flex-row gap-10">
         {/* Desktop Sidebar / Mobile Nav */}

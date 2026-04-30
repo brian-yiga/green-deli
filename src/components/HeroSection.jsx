@@ -23,7 +23,7 @@ export default function HeroSection() {
         <h2 className="font-display text-5xl md:text-6xl text-white leading-none uppercase mb-8 ">
           Explore <br />
           <span className="text-deli-red">Uganda's</span> <br />
-          Larder
+          finest
         </h2>
 
         {/* Added justify-center for desktop and items-center for mobile */}

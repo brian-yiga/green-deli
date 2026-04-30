@@ -18,6 +18,7 @@ import TermsPrivacyPage from "./pages/TermsPrivacyPage";
 import StoryPage from "./pages/StoryPage";
 import CartPage from "./pages/CartPage";
 import ScrollToTop from "./components/ScrollToTop";
+import CareersPage from "./pages/CareersPage";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
               <Route path="/terms" element={<TermsPrivacyPage />} />
               <Route path="/story" element={<StoryPage />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/careers" element={<CareersPage />} />
             </Routes>
           </main>
 
