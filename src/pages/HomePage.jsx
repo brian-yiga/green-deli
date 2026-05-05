@@ -10,9 +10,9 @@ import CatalogueSection from '../components/CatalogueSection';
 
 // Temporary Mock Data
 const categories = [
-  { title: "Chillies", count: 12, img: "/assets/products/fresh-red-peppers.png" },
-  { title: "Masalas", count: 8, img: "/assets/products/masalas.webp" },
-  { title: "Powders", count: 15, img: "/assets/products/powders.png" }
+  { title: "Chillies", count: 12, img: "/assets/red-chillies.png" },
+  { title: "Masalas", count: 8, img: "/assets/blended-spices.jpg" },
+  { title: "Powders", count: 15, img: "/assets/red-onion-powder.jpg" }
 ];
 
 const featuredProduct = {
@@ -20,7 +20,7 @@ const featuredProduct = {
   origin: "Mount Elgon, Uganda",
   price: 25000,
   rating: 4,
-  image: "/assets/products/blackPepper.png",
+  image: "/assets/allProducts/black-pepper-powder-100gms.png",
   isHot: true
 };
 
@@ -50,7 +50,7 @@ export default function HomePage() {
         subtitle="The Apothecary"
         title="Biologically Potent Spices"
         description="Our spices are captured at their biological zenith. Harvesting at peak potency means timing the collection to the exact moment when a plant’s essential oils are at their most concentrated. These volatile oils are the lifeblood of the spice, containing the complex aromatic top notes and deep flavors that industrial farming often loses. By respecting these natural cycles, we ensure that every gram of our harvest is dense with antioxidants and bioactive compounds."
-        image="/assets/products/beef-masala-100gms.png"
+        image="/assets/homePageChilli.jpeg"
       />
 
       {/* Best Sellers Preview */}
