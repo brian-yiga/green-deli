@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 
@@ -19,8 +19,19 @@ import StoryPage from "./pages/StoryPage";
 import CartPage from "./pages/CartPage";
 import ScrollToTop from "./components/ScrollToTop";
 import CareersPage from "./pages/CareersPage";
+import FeedbackModal from "./components/FeedbackModal";
 
 function App() {
+  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
+
+  const onOpenFeedback = () => {
+    setIsFeedbackModalOpen(true);
+  };
+
+  const closeFeedbackModal = () => {
+    setIsFeedbackModalOpen(false);
+  };
+
   return (
     <CartProvider>
       <BrowserRouter>
@@ -45,8 +56,13 @@ function App() {
             </Routes>
           </main>
 
-          <Footer />
+          <Footer onOpenFeedback={onOpenFeedback} />
           <MobileBottomNav />
+
+          <FeedbackModal
+            isOpen={isFeedbackModalOpen}
+            onClose={closeFeedbackModal}
+          />
         </div>
       </BrowserRouter>
     </CartProvider>
