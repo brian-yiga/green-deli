@@ -66,7 +66,7 @@ export default function CartPage() {
           {/* 2. Added the Empty Cart Link here */}
           <button
             onClick={emptyCart}
-            className="font-sans text-[10px] uppercase tracking-[0.2em] font-bold text-deli-red/40 hover:text-deli-red transition-colors text-left md:text-right"
+            className="font-sans text-[18px] uppercase tracking-[0.2em] font-bold text-deli-red/40 hover:text-deli-red transition-colors text-left md:text-right"
           >
             [ Empty Cart ]
           </button>

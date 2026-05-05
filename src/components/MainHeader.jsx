@@ -1,15 +1,35 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
 const MainHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const searchInputRef = useRef(null);
+  const navigate = useNavigate();
   const { cart } = useCart();
   
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   const closeMenu = () => setIsMenuOpen(false);
 
-  // Added Home to the start of the array
+  // Auto-focus search input when opened
+  useEffect(() => {
+    if (isSearchOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [isSearchOpen]);
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      // Redirect to shop with search query as a URL parameter
+      navigate(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
+      setIsSearchOpen(false);
+      setSearchQuery('');
+    }
+  };
+
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Spice Shop', path: '/shop' },
@@ -35,7 +55,7 @@ const MainHeader = () => {
             </svg>
           </button>
 
-          {/* Logo - Still links to Home as well */}
+          {/* Logo */}
           <Link 
             to="/" 
             className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 w-32 h-auto"
@@ -43,7 +63,7 @@ const MainHeader = () => {
             <img src="/assets/green-deli-logo.png" alt="Green Deli Logo" />
           </Link>
 
-          {/* Desktop Navigation (Now includes Home) */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8 ml-12">
             {navLinks.map((link) => (
               <Link 
@@ -58,7 +78,10 @@ const MainHeader = () => {
 
           {/* Action Icons */}
           <div className="flex items-center gap-1 md:gap-4">
-            <button className="p-2 text-deli-charcoal">
+            <button 
+              onClick={() => setIsSearchOpen(true)}
+              className="p-2 text-deli-charcoal hover:text-deli-red transition-colors"
+            >
               <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
               </svg>
@@ -77,9 +100,32 @@ const MainHeader = () => {
             </Link>
           </div>
         </div>
+
+        {/* --- SEARCH OVERLAY --- */}
+        <div className={`absolute inset-0 bg-deli-cream z-[60] transition-transform duration-500 flex items-center px-4 md:px-12 ${isSearchOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+          <form onSubmit={handleSearchSubmit} className="flex-1 max-w-4xl mx-auto flex items-center gap-4">
+            <input 
+              ref={searchInputRef}
+              type="text" 
+              placeholder="SEARCH THE APOTHECARY..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="flex-1 bg-transparent border-none focus:ring-0 font-display text-2xl md:text-4xl uppercase placeholder:text-deli-charcoal/20 text-deli-charcoal"
+            />
+            <button 
+              type="button" 
+              onClick={() => setIsSearchOpen(false)}
+              className="p-2 text-deli-charcoal/40 hover:text-deli-red"
+            >
+              <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                <path d="M18 6 6 18M6 6l12 12"/>
+              </svg>
+            </button>
+          </form>
+        </div>
       </header>
 
-      {/* Mobile Drawer Overlay (Now includes Home) */}
+      {/* Mobile Drawer Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-[60] bg-deli-charcoal/20 backdrop-blur-sm md:hidden" onClick={closeMenu}>
           <aside className="w-64 h-full bg-deli-cream p-6 shadow-xl" onClick={e => e.stopPropagation()}>
@@ -102,13 +148,6 @@ const MainHeader = () => {
                   {link.name}
                 </Link>
               ))}
-              <Link 
-                to="/terms" 
-                onClick={closeMenu}
-                className="font-sans text-[10px] uppercase tracking-[0.2em] text-deli-charcoal/40 mt-4"
-              >
-                Terms & Privacy
-              </Link>
             </nav>
           </aside>
         </div>

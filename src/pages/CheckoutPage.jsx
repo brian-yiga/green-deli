@@ -37,7 +37,7 @@ export default function CheckoutPage() {
       `*Total Amount:* UGX ${finalTotal.toLocaleString()}%0A%0A` +
       `_I would like to confirm my order and arrange delivery._`;
 
-    const businessNumber = "256700000000"; 
+    const businessNumber = "256772502605"; 
 
     setTimeout(() => {
       window.open(`https://wa.me/${businessNumber}?text=${message}`, '_blank');

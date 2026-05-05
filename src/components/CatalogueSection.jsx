@@ -6,7 +6,7 @@ export default function TreasurySection() {
   const navigate = useNavigate();
 
   return (
-    <section className="px-6 py-5 bg-deli-charcoal text-white rounded-[3rem] mx-4 md:mx-10 overflow-hidden relative">
+    <section className="px-6 py-10 bg-deli-charcoal text-white rounded-[3rem] mx-4 md:mx-10 overflow-hidden relative">
       {/* Decorative Background Element */}
       <div className="absolute right-0 bottom-0 opacity-10 pointer-events-none">
         <svg width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.5">
@@ -14,7 +14,7 @@ export default function TreasurySection() {
         </svg>
       </div>
 
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-16 relative z-10">
+      <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10 relative z-10">
         
         {/* Left Side: Minimalist QR Focus */}
         <div className="w-full md:w-2/5 flex justify-center">
