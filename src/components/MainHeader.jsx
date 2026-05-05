@@ -12,8 +12,8 @@ const MainHeader = () => {
   // Added Home to the start of the array
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Apothecary', path: '/shop' },
-    { name: 'Wholesale', path: '/wholesale' },
+    { name: 'Spice Shop', path: '/shop' },
+    { name: 'Partners', path: '/wholesale' },
     { name: 'Contact', path: '/contact' },
     { name: 'Our Story', path: '/story' },
     { name: 'Careers', path: '/careers' },

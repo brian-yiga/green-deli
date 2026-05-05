@@ -3,56 +3,51 @@ import { Link } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 
 export default function PromotionsSection() {
-  // 1. Updated data with oldPrice to trigger the promotion UI
   const promoProducts = [
     {
-      id: "gd-15",
-      name: "Lemon Pepper",
-      slug: "lemon-pepper",
-      category: "Powders",
-      price: 18000, // New Price
-      oldPrice: 22000, // Original Price
-      origin: "Deli Atelier",
-      image: "/assets/allProducts/lemon-pepper-200gms.png",
-      description: "Bright citrus notes paired with the sharp bite of premium cracked black pepper.",
-      isOrganic: true,
-    },
-    {
-      id: "gd-11",
-      name: "Onion Powder",
-      slug: "onion-powder",
-      category: "Powders",
-      price: 12000,
-      oldPrice: 15000,
-      origin: "Kabale",
-      image: "/assets/allProducts/onion-powder-100gms.png",
-      description: "Pure, dehydrated red onions for a sweet, savory base without the prep work.",
-      isOrganic: true,
-    },
-    {
-      id: "gd-12",
-      name: "Tomato Powder",
-      slug: "tomato-powder",
-      category: "Powders",
-      price: 15000,
-      oldPrice: 18000,
-      origin: "Mbarara",
-      image: "/assets/allProducts/tomato-powder-natural-170gms.png",
-      description: "Concentrated tomato essence, perfect for thickening sauces and adding deep umami.",
-      isOrganic: true,
-    },
-    {
-      id: "gd-13",
-      name: "Cinnamon Powder",
-      slug: "cinnamon-powder",
-      category: "Powders",
-      price: 17000,
-      oldPrice: 20000,
-      origin: "Bundibugyo",
-      image: "/assets/allProducts/cinnamon-100gms.png",
-      description: "Sweet and warm aromatic bark, freshly ground for peak essential oil retention.",
-      isOrganic: true,
-    },
+    id: 'gd-08',
+    name: "Pilau Masala (100gms)",
+    slug: "pilau-masala-100gms",
+    category: "Masalas",
+    price: 25000,
+    origin: "Deli Atelier",
+    image: "/assets/allProducts/pilau-masala-100gms.png",
+    description: "A fragrant, warm blend of cloves, cardamom, and cinnamon for the perfect rice.",
+    isOrganic: true
+  },
+  {
+    id: 'gd-09',
+    name: "Curry Powder (130gms)",
+    slug: "curry-powder-130gms",
+    category: "Masalas",
+    price: 15000,
+    origin: "Deli Atelier",
+    image: "/assets/allProducts/curry-powder-130gms.png",
+    description: "Our balanced house blend of turmeric, cumin, and coriander.",
+    isOrganic: true
+  },
+  {
+    id: 'gd-10',
+    name: "Garam Masala (100gms)",
+    slug: "garam-masala-100gms",
+    category: "Masalas",
+    price: 22000,
+    origin: "Deli Atelier",
+    image: "/assets/allProducts/garam-masala-100gms.png",
+    description: "A finishing spice blend to add warmth and depth to any North Indian-style dish.",
+    isOrganic: true
+  },
+  {
+    id: 'gd-11',
+    name: "Deli Mchuzi Mix Beef (100gms)",
+    slug: "deli-mchuzi-mix-beef-100gms",
+    category: "Masalas",
+    price: 22000,
+    origin: "Deli Atelier",
+    image: "/assets/allProducts/deli-mchuzi-mix-beef-100gms.png",
+    description: "Rich gravy base specifically formulated for red meat stews.",
+    isOrganic: true
+  },
   ];
 
   return (
