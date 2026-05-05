@@ -12,7 +12,7 @@ export default function ShopPage() {
   const [activeCategory, setActiveCategory] = useState('All');
   
   // Define your tabs based on the categories we used in products.js
-  const tabs = ['All', 'Chillies', 'Masalas', 'Powders', 'The Larder'];
+  const tabs = ['All', 'Chillies', 'Masalas', 'Powders', 'Pantry'];
 
   // Filter logic: This recalculates whenever activeCategory changes
   const filteredProducts = useMemo(() => {
@@ -31,7 +31,6 @@ export default function ShopPage() {
           Sourced from the fertile soils of Uganda
         </p>
       </header>
-      <CatalogueSection />
 
       <div className="flex flex-col md:flex-row gap-10">
         {/* Desktop Sidebar / Mobile Nav */}
