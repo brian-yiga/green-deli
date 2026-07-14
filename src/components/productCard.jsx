@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import { formatPrice } from "../data/products";
+// formatPrice import is kept or can be commented out to avoid unused variable warnings
+// import { formatPrice } from "../data/products";
 
 export default function ProductCard({ product }) {
   const { addToCart } = useCart();
@@ -49,7 +50,7 @@ export default function ProductCard({ product }) {
           </span>
 
           <Link to={`/product/${product.slug}`}>
-            <h4 className="font-display text-lg uppercase leading-tight hover:text-deli-red transition-colors">
+            <h4 className="font-display sm:text-base md:text-lg uppercase leading-tight hover:text-deli-red transition-colors">
               {product.name}
             </h4>
           </Link>
@@ -57,9 +58,12 @@ export default function ProductCard({ product }) {
 
         {/* Price + Cart */}
         <div className="flex flex-col gap-3">
+          {/* CLIENT REQUEST: Temporarily disabled product price layout */}
+          {/* 
           <p className="font-sans text-xl font-bold text-deli-charcoal">
             {formatPrice(product.price)}
-          </p>
+          </p> 
+          */}
 
           <button
             onClick={handleQuickAdd}

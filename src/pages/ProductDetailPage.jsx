@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { useParams, Link } from "react-router-dom"; // Added Link
 import { useCart } from "../context/CartContext";
-import { products, formatPrice } from "../data/products";
+import { products } from "../data/products"; // formatPrice can be omitted if unused elsewhere
 
 // UI Components
 import HeatScale from "../components/HeatScale";
@@ -130,9 +130,15 @@ export default function ProductDetailPage() {
         {/* Purchase Column */}
         <div className="md:sticky md:top-32 h-fit">
           <div className="bg-white md:bg-transparent p-8 md:p-0 rounded-[2rem] border border-deli-charcoal/5 md:border-none shadow-lg md:shadow-none">
+            {/* CLIENT REQUEST: Temporarily disabled main product price tag */}
+            {/* 
             <h2 className="font-display text-3xl mb-8">
               {formatPrice(product.price)}
-            </h2>
+            </h2> 
+            */}
+            
+            {/* Spacer replacement to keep layout balance clean */}
+            <div className="h-4 md:h-0" />
 
             <div className="flex flex-col gap-6">
               <div className="flex items-center justify-between">
@@ -146,12 +152,13 @@ export default function ProductDetailPage() {
                 />
               </div>
 
+              {/* CLIENT REQUEST: Modified action button to avoid displaying price calculations */}
               <Button
                 variant="primary"
                 onClick={handleAddToCart}
                 className="w-full bg-deli-red text-white py-4 rounded-full font-sans text-[10px] uppercase tracking-widest font-bold shadow-xl active:scale-95 transition-all"
               >
-                Add to Cart • {formatPrice(product.price * qty)}
+                Add {qty} to Cart
               </Button>
 
               <p className="text-[9px] uppercase tracking-widest text-center opacity-40 font-sans">

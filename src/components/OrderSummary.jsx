@@ -3,11 +3,17 @@ import Button from './Button';
 import PriceDisplay from './PriceDisplay';
 
 export default function OrderSummary({ subtotal = 0, shipping = 0 }) {
+  // We keep this calculation active so the JS doesn't break anywhere, 
+  // but we won't render it in the UI.
   const total = subtotal + shipping;
 
   return (
     <div className="bg-deli-cream p-6 rounded-3xl border border-deli-charcoal/5">
       <h3 className="font-display text-xl uppercase mb-6">Order Summary</h3>
+      
+      {/* 
+        CLIENT REQUEST: Temporarily hiding price breakdowns and total layout.
+        We've commented these out so they can be easily restored later.
       
       <div className="flex flex-col gap-4 border-b border-deli-charcoal/10 pb-6 mb-6">
         <div className="flex justify-between items-center">
@@ -23,9 +29,17 @@ export default function OrderSummary({ subtotal = 0, shipping = 0 }) {
       <div className="flex justify-between items-center mb-8">
         <span className="font-sans text-xs font-bold uppercase tracking-[0.2em]">Total</span>
         <PriceDisplay price={total} className="text-lg" />
+      </div> 
+      */}
+
+      <div className="mb-6">
+        <p className="font-sans text-xs text-deli-charcoal/70 italic">
+          Review your products in the list before placing your order.
+        </p>
       </div>
 
       <Button variant="primary">Place Order</Button>
+      
       <p className="mt-4 text-center text-[9px] font-sans uppercase tracking-widest opacity-40">
         Secure Mobile Payments via Airtel & MTN
       </p>

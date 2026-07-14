@@ -1,13 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import { formatPrice } from "../data/products";
+// import { formatPrice } from "../data/products"; // Commented out to avoid build warnings
 import BackToTop from "../components/BackToTop";
 
-
 export default function CartPage() {
-  // 1. Destructure emptyCart from useCart
-  const { cart, removeFromCart, updateQuantity, cartTotal, emptyCart } = useCart();
+  const { cart, removeFromCart, updateQuantity, emptyCart } = useCart();
 
   if (cart.length === 0) {
     return (
@@ -63,7 +61,6 @@ export default function CartPage() {
             </span>
           </div>
 
-          {/* 2. Added the Empty Cart Link here */}
           <button
             onClick={emptyCart}
             className="font-sans text-[18px] uppercase tracking-[0.2em] font-bold text-deli-red/40 hover:text-deli-red transition-colors text-left md:text-right"
@@ -96,9 +93,12 @@ export default function CartPage() {
                   <h3 className="font-display text-xl uppercase leading-tight">
                     {item.name}
                   </h3>
+                  {/* CLIENT REQUEST: Price calculation hidden */}
+                  {/* 
                   <span className="font-sans text-sm font-bold">
                     {formatPrice(item.price * item.quantity)}
-                  </span>
+                  </span> 
+                  */}
                 </div>
 
                 <p className="font-sans text-[10px] uppercase tracking-widest opacity-40 mb-6">
@@ -142,6 +142,8 @@ export default function CartPage() {
           <div className="bg-white p-8 rounded-[2.5rem] shadow-xl border border-deli-charcoal/5 sticky top-32">
             <h3 className="font-display text-2xl uppercase mb-6">Summary</h3>
 
+            {/* CLIENT REQUEST: Financial calculations commented out */}
+            {/* 
             <div className="flex flex-col gap-4 mb-8">
               <div className="flex justify-between font-sans text-sm">
                 <span className="opacity-60 uppercase tracking-tighter">
@@ -164,6 +166,13 @@ export default function CartPage() {
               <span className="font-sans text-xl font-bold text-deli-red">
                 {formatPrice(cartTotal)}
               </span>
+            </div> 
+            */}
+
+            <div className="mb-8">
+              <p className="font-sans text-xs text-deli-charcoal/60 leading-relaxed italic">
+                You are submitting an order request for your selected spices. Standard delivery details will be arranged upon confirmation.
+              </p>
             </div>
 
             <Link

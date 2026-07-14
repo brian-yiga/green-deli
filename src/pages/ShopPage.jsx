@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import ProductCard from '../components/ProductCard';
 import useDocumentTitle from '../hooks/useDocumentTitle';
-import CatalogueSection from '../components/CatalogueSection';
+// import CatalogueSection from '../components/CatalogueSection'; // Commented out if unused
 
 // Import your real data
 import { products } from '../data/products';
@@ -11,14 +11,33 @@ export default function ShopPage() {
   
   const [activeCategory, setActiveCategory] = useState('All');
   
-  // Define your tabs based on the categories we used in products.js
+  // Sidebar filter states
+  const [organicOnly, setOrganicOnly] = useState(false);
+  const [highHeat, setHighHeat] = useState(false);
+  
+  // Categories for a balanced, multi-category spice store
   const tabs = ['All', 'Chillies', 'Masalas', 'Powders', 'Pantry'];
 
-  // Filter logic: This recalculates whenever activeCategory changes
+  // Filter logic: Handles Category, Organic, and Heat level states dynamically
   const filteredProducts = useMemo(() => {
-    if (activeCategory === 'All') return products;
-    return products.filter(product => product.category === activeCategory);
-  }, [activeCategory]);
+    return products.filter(product => {
+      // 1. Category Filter
+      const matchesCategory = activeCategory === 'All' || product.category === activeCategory;
+      
+      // 2. Organic Filter (checks product.isOrganic property)
+      const matchesOrganic = !organicOnly || product.isOrganic;
+      
+      // 3. Heat Filter (checks product.isHot property)
+      const matchesHeat = !highHeat || product.isHot;
+
+      return matchesCategory && matchesOrganic && matchesHeat;
+    });
+  }, [activeCategory, organicOnly, highHeat]);
+
+  // Helper to reset sidebar filters when switching categories (optional, premium UX detail)
+  const handleCategoryChange = (category) => {
+    setActiveCategory(category);
+  };
 
   return (
     <div className="px-4 md:px-10 py-10 max-w-7xl mx-auto">
@@ -39,7 +58,7 @@ export default function ShopPage() {
             {tabs.map((tab) => (
               <button
                 key={tab}
-                onClick={() => setActiveCategory(tab)}
+                onClick={() => handleCategoryChange(tab)}
                 className={`whitespace-nowrap font-sans text-[10px] uppercase tracking-[0.2em] font-bold pb-1 transition-all text-left
                   ${activeCategory === tab 
                     ? 'text-deli-red border-b-2 border-deli-red' 
@@ -51,15 +70,27 @@ export default function ShopPage() {
             ))}
           </div>
           
-          {/* Desktop Only: Functional Filters */}
+          {/* Desktop Only: Fully Functional Filters */}
           <div className="hidden md:block mt-12 pt-12 border-t border-deli-charcoal/10">
             <h4 className="font-sans text-[10px] uppercase tracking-widest font-bold mb-6">Filter By</h4>
             <div className="flex flex-col gap-4">
               <label className="flex items-center gap-3 font-sans text-[10px] uppercase tracking-widest cursor-pointer opacity-60 hover:opacity-100 transition-opacity">
-                <input type="checkbox" className="accent-deli-red h-3 w-3" /> Organic Only
+                <input 
+                  type="checkbox" 
+                  checked={organicOnly}
+                  onChange={(e) => setOrganicOnly(e.target.checked)}
+                  className="accent-deli-red h-3 w-3 rounded border-deli-charcoal/10 focus:ring-0 cursor-pointer" 
+                /> 
+                Single Origin
               </label>
               <label className="flex items-center gap-3 font-sans text-[10px] uppercase tracking-widest cursor-pointer opacity-60 hover:opacity-100 transition-opacity">
-                <input type="checkbox" className="accent-deli-red h-3 w-3" /> High Heat
+                <input 
+                  type="checkbox" 
+                  checked={highHeat}
+                  onChange={(e) => setHighHeat(e.target.checked)}
+                  className="accent-deli-red h-3 w-3 rounded border-deli-charcoal/10 focus:ring-0 cursor-pointer" 
+                /> 
+                High Heat
               </label>
             </div>
           </div>
@@ -73,7 +104,7 @@ export default function ShopPage() {
             </span>
           </div>
 
-          {/* Grid setup matches your premium ProductCard design */}
+          {/* Grid setup matching your premium ProductCard design */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-12 md:gap-x-8 md:gap-y-16">
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
@@ -84,8 +115,14 @@ export default function ShopPage() {
           {filteredProducts.length === 0 && (
             <div className="py-20 text-center">
               <p className="font-sans text-[10px] uppercase tracking-widest opacity-40">
-                No products found in this category.
+                No products match the selected filters.
               </p>
+              <button 
+                onClick={() => { setOrganicOnly(false); setHighHeat(false); setActiveCategory('All'); }}
+                className="mt-4 text-deli-red font-sans text-[9px] uppercase tracking-widest font-bold border-b border-deli-red pb-0.5"
+              >
+                Reset Filters
+              </button>
             </div>
           )}
         </main>

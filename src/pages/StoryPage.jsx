@@ -39,12 +39,6 @@ export default function StoryPage() {
       region: "Kampala District",
       img: "/assets/michael-bembe.png",
     },
-    {
-      name: "Maria Mukasa",
-      role: "Organic Ginger Lead",
-      region: "Mukono District",
-      img: "/assets/custodian-2.jpg",
-    },
   ];
 
   return (

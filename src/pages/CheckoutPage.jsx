@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // 1. Added Link import
+import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import { formatPrice } from '../data/products';
+// import { formatPrice } from '../data/products'; // Commented out to avoid unused variable warnings
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function CheckoutPage() {
   useDocumentTitle('Checkout | Green Deli');
-  const { cart, cartTotal, clearCart } = useCart();
+  const { cart, clearCart } = useCart();
   const [orderStatus, setOrderStatus] = useState('idle');
 
   const [formData, setFormData] = useState({
@@ -25,17 +25,15 @@ export default function CheckoutPage() {
     e.preventDefault();
     setOrderStatus('loading');
 
-    const deliveryFee = cartTotal >= 100000 ? 0 : 10000;
-    const finalTotal = cartTotal + deliveryFee;
+    // Structural calculations are bypassed for WhatsApp text since prices are disabled
     const itemsList = cart.map(item => `- ${item.quantity}x ${item.name}`).join('%0A');
 
     const message = `*NEW ORDER - GREEN DELI*%0A%0A` +
       `*Customer:* ${formData.firstName} ${formData.lastName}%0A` +
       `*Phone:* ${formData.phone}%0A` +
       `*Address:* ${formData.address}%0A%0A` +
-      `*Items Order:*%0A${itemsList}%0A%0A` +
-      `*Total Amount:* UGX ${finalTotal.toLocaleString()}%0A%0A` +
-      `_I would like to confirm my order and arrange delivery._`;
+      `*Items Ordered:*%0A${itemsList}%0A%0A` +
+      `_I would like to confirm my order and arrange delivery context._`;
 
     const businessNumber = "256772502605"; 
 
@@ -65,7 +63,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="px-6 md:px-10 max-w-6xl mx-auto min-h-screen mt-16">
-      {/* 2. Back to Cart Link Section */}
+      {/* Back to Cart Link Section */}
       <div className="mb-8">
         <Link 
           to="/cart" 
@@ -144,16 +142,17 @@ export default function CheckoutPage() {
               <div className="flex flex-col gap-3">
                 <label className="flex items-center gap-4 p-4 border border-deli-red bg-deli-red/5 rounded-2xl cursor-pointer">
                   <input type="radio" name="payment" checked readOnly className="accent-deli-red" />
-                  <span className="font-sans text-xs font-bold text-deli-charcoal">MTN MoMo Pay</span>
+                  <span className="font-sans text-xs font-bold text-deli-charcoal">Mobile Money on Delivery</span>
                 </label>
               </div>
             </div>
 
+            {/* CLIENT REQUEST: Price calculation removed from button label */}
             <button 
               disabled={orderStatus === 'loading' || cart.length === 0}
               className="mt-6 bg-deli-red text-white py-5 rounded-full font-sans text-[10px] uppercase tracking-[0.2em] font-bold shadow-xl disabled:opacity-50 transition-transform active:scale-95"
             >
-              {orderStatus === 'loading' ? 'Preparing Order...' : `Send Order via WhatsApp — ${formatPrice(cartTotal + (cartTotal >= 100000 ? 0 : 10000))}`}
+              {orderStatus === 'loading' ? 'Preparing Order...' : 'Send Order via WhatsApp'}
             </button>
           </form>
         </div>
@@ -168,11 +167,14 @@ export default function CheckoutPage() {
                   <span className="font-sans text-xs font-bold opacity-40">{item.quantity}x</span>
                   <span className="font-sans text-xs font-bold">{item.name}</span>
                 </div>
-                <span className="font-sans text-xs">{formatPrice(item.price * item.quantity)}</span>
+                {/* CLIENT REQUEST: Individual item price subtotal commented out */}
+                {/* <span className="font-sans text-xs">{formatPrice(item.price * item.quantity)}</span> */}
               </div>
             ))}
           </div>
 
+          {/* CLIENT REQUEST: Pricing breakdown and grand total commented out */}
+          {/* 
           <div className="flex flex-col gap-4 border-t border-deli-charcoal/10 pt-6">
             <div className="flex justify-between font-sans text-xs opacity-60">
               <span>Subtotal</span>
@@ -186,6 +188,13 @@ export default function CheckoutPage() {
               <span>Grand Total</span>
               <span className="text-deli-red">{formatPrice(cartTotal + (cartTotal >= 100000 ? 0 : 10000))}</span>
             </div>
+          </div> 
+          */}
+
+          <div className="border-t border-deli-charcoal/10 pt-6">
+            <p className="font-sans text-xs text-deli-charcoal/60 leading-relaxed italic">
+              Delivery logistics and any applicable fees will be calculated and finalized during order confirmation on WhatsApp.
+            </p>
           </div>
         </div>
 
