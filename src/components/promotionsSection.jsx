@@ -51,7 +51,7 @@ export default function PromotionsSection() {
   ];
 
   return (
-    <section className="px-6 max-w-7xl mx-auto w-full my-20">
+    <section className="px-6 max-w-7xl mx-auto w-full my-5">
       <div className="flex justify-between items-end mb-10">
         <div>
            <h2 className="font-display text-3xl uppercase leading-none">Limited Promotions</h2>
