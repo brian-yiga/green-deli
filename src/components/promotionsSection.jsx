@@ -11,7 +11,7 @@ export default function PromotionsSection() {
       category: "Masalas",
       // price: 25000,
       origin: "Luwero",
-      image: "/assets/newProducts/Cinnamon Sticks 100g.jpeg",
+      image: "/assets/newProducts/Cinnamon Sticks 100g.png",
       description: "A fragrant, warm blend of cloves, cardamom, and cinnamon for the perfect rice.",
       isOrganic: true
     },
@@ -22,7 +22,7 @@ export default function PromotionsSection() {
       category: "Powders",
       // price: 15000,
       origin: "Luwero",
-      image: "/assets/newProducts/Curry Powder 130g.jpeg",
+      image: "/assets/newProducts/Curry Powder 130g.png",
       description: "Our balanced house blend of turmeric, cumin, and coriander.",
       isOrganic: true
     },
@@ -33,7 +33,7 @@ export default function PromotionsSection() {
       category: "Masalas",
       // price: 22000,
       origin: "Luwero",
-      image: "/assets/newProducts/Deli Onion Flakes 100g.jpeg",
+      image: "/assets/newProducts/Deli Onion Flakes 100g.png",
       description: "A finishing spice blend to add warmth and depth to any North Indian-style dish.",
       isOrganic: true
     },
@@ -44,7 +44,7 @@ export default function PromotionsSection() {
       category: "Pantry",
       // price: 22000,
       origin: "Luwero",
-      image: "/assets/newProducts/Lake-Salt-Chilli-Spiced-250gms.jpeg",
+      image: "/assets/newProducts/Lake-Salt-Chilli-Spiced-250gms.png",
       description: "Rich gravy base specifically formulated for red meat stews.",
       isOrganic: true
     },

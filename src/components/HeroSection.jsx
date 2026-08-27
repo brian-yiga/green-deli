@@ -123,19 +123,19 @@ export default function HeroSection() {
               muted
               playsInline
               src="/hero-video.mp4"
-              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-700 ease-out"
             />
 
             {/* Top-Left Floating Badge */}
             <div className="absolute top-5 left-5 bg-black/45 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-deli-red animate-pulse" />
               <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-white font-bold">
-                Luwero Harvest
+                flavours of nature
               </span>
             </div>
 
             {/* Bottom Floating Info Pill */}
-            <div className="absolute bottom-5 left-5 right-5 bg-black/45 backdrop-blur-md p-4 rounded-xl border border-white/15 flex items-center justify-between text-white">
+            <div className="absolute bottom-2 left-5 right-5 bg-black/45 backdrop-blur-md rounded-xl p-2 border border-white/15 flex items-center justify-between text-white">
               <div>
                 <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-deli-gold font-bold block">
                   Peak-Potency Botanicals
