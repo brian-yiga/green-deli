@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // Pass onOpenFeedback as a prop from App.jsx
 export default function Footer({ onOpenFeedback }) {
   return (
-    <footer className="bg-deli-charcoal text-deli-cream px-6 pt-16 pb-22 md:pb-12">
+    <footer className="bg-gradient-to-r from-deli-charcoal via-[#1C2619] to-deli-charcoal text-deli-cream px-6 pt-16 pb-22 md:pb-12">
       <div className="max-w-7xl mx-auto">
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -35,7 +35,7 @@ export default function Footer({ onOpenFeedback }) {
               <h3 className="font-sans text-sm font-bold uppercase tracking-[0.2em] mb-6 text-deli-red">Company</h3>
               <ul className="flex flex-col gap-4 font-sans text-[11px] uppercase tracking-widest opacity-80">
                 <li><Link to="/story" className="hover:text-deli-red transition-colors">Our Story</Link></li>
-                <li><Link to="/careers" className="hover:text-deli-red transition-colors font-bold">Careers</Link></li>
+                <li><Link to="/gallery" className="hover:text-deli-red transition-colors font-bold">Gallery</Link></li>
                 <li><Link to="/wholesale" className="hover:text-deli-red transition-colors">Wholesale</Link></li>
                 <li><Link to="/contact" className="hover:text-deli-red transition-colors">Contact</Link></li>
               </ul>
@@ -71,12 +71,24 @@ export default function Footer({ onOpenFeedback }) {
             </button>
 
             <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-full border border-deli-cream/20 flex items-center justify-center hover:bg-deli-red transition-colors cursor-pointer group">
+              <a 
+                href="https://www.instagram.com/greendelispices?igsi=MXhjZTlkNmZ3N3Y4ag==" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full border border-deli-cream/20 flex items-center justify-center hover:bg-deli-red transition-colors cursor-pointer group"
+                aria-label="Instagram"
+              >
                 <img src="/assets/instagram-icon.webp" alt="Instagram" className="w-8 h-8 object-contain" />
-              </div>
-              <div className="w-12 h-12 rounded-full border border-deli-cream/20 flex items-center justify-center hover:bg-deli-red transition-colors cursor-pointer group">
-                <img src="/assets/facebook-icon.webp" alt="Facebook" className="w-8 h-8 object-contain" />
-              </div>
+              </a>
+              <a 
+                href="https://www.tiktok.com/@Greendeli256" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full border border-deli-cream/20 flex items-center justify-center hover:bg-deli-red transition-colors cursor-pointer group"
+                aria-label="TikTok"
+              >
+                <img src="/assets/tiktok-icon.webp" alt="TikTok" className="w-8 h-8 object-contain" />
+              </a>
             </div>
           </div>
         </div>
