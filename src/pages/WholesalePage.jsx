@@ -63,7 +63,7 @@ export default function WholesalePage() {
           >
             <div className="relative w-full aspect-[16/9] lg:aspect-[4/3] rounded-[2rem] overflow-hidden bg-deli-charcoal group border border-deli-charcoal/5 shadow-xl">
               <img 
-                src="/assets/HomeHeroBg.jpg" 
+                src="/assets/HomeHeroBg.webp" 
                 alt="Bulk Spices Wholesale"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />

@@ -58,9 +58,9 @@ const MainHeader = () => {
           {/* Logo */}
           <Link 
             to="/" 
-            className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 w-32 h-auto"
+            className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 w-24 h-auto"
           >
-            <img src="/assets/green-deli-logo.png" alt="Green Deli Logo" />
+            <img src="/assets/full-green-deli-logo1.webp" alt="Green Deli Logo" />
           </Link>
 
           {/* Desktop Navigation */}

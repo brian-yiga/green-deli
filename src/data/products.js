@@ -15,7 +15,7 @@ export const products = [
     category: "Chillies",
     // price: 8000,
     origin: "Luwero",
-    image: "/assets/newProducts/Chilli-Powder-50gms.png",
+    image: "/assets/newProducts/Chilli-Powder-50gms.webp",
     description: "Pure African Bird's Eye chilies, sun-dried and milled for a sharp, clean heat.",
     isHot: true,
   },
@@ -26,7 +26,7 @@ export const products = [
     category: "Chillies",
     // price: 18000,
     origin: "Luwero",
-    image: "/assets/newProducts/Chilli-Powder-170gms.png",
+    image: "/assets/newProducts/Chilli-Powder-170gms.webp",
     description: "Our signature high-heat powder in a larger pantry size.",
     isHot: true,
   },
@@ -37,7 +37,7 @@ export const products = [
     category: "Chillies",
     // price: 20000,
     origin: "Luwero",
-    image: "/assets/newProducts/Hot-Chilli-Powder-170gms and 50gms.png",
+    image: "/assets/newProducts/Hot-Chilli-Powder-170gms and 50gms.webp",
     description: "Our custom combination bundle pack for both standard and pantry use.",
     isHot: true,
   },
@@ -48,7 +48,7 @@ export const products = [
     category: "Chillies",
     // price: 15000,
     origin: "Luwero",
-    image: "/assets/newProducts/Deli Kamulali Chilli Oil 60ml.png",
+    image: "/assets/newProducts/Deli Kamulali Chilli Oil 60ml.webp",
     description: "Infused chili oil with a deep red hue and a slow, creeping heat.",
     isHot: true
   },
@@ -59,7 +59,7 @@ export const products = [
     category: "Chillies",
     // price: 25000,
     origin: "Luwero",
-    image: "/assets/newProducts/Deli kamulali Chilli Oil 100ml.png",
+    image: "/assets/newProducts/Deli kamulali Chilli Oil 100ml.webp",
     description: "Infused chili oil with a deep red hue and a slow, creeping heat.",
     isHot: true
   },
@@ -70,7 +70,7 @@ export const products = [
     category: "Chillies",
     // price: 15000,
     origin: "Luwero",
-    image: "/assets/newProducts/Lake-Salt-Chilli-Natural2-250gms.png",
+    image: "/assets/newProducts/Lake-Salt-Chilli-Natural2-250gms.webp",
     description: "Mineral-rich salt infused with natural crushed chili flakes.",
     isHot: true
   },
@@ -81,7 +81,7 @@ export const products = [
     category: "Chillies",
     // price: 20000,
     origin: "Luwero",
-    image: "/assets/newProducts/Lake-Salt-Chilli-Natural2-340gms.png",
+    image: "/assets/newProducts/Lake-Salt-Chilli-Natural2-340gms.webp",
     description: "Mineral-rich salt infused with natural crushed chili flakes in a larger bottle.",
     isHot: true
   },
@@ -92,7 +92,7 @@ export const products = [
     category: "Chillies",
     // price: 18000,
     origin: "Luwero",
-    image: "/assets/newProducts/Lake-Salt-Chilli-Spiced2-250gms.png",
+    image: "/assets/newProducts/Lake-Salt-Chilli-Spiced2-250gms.webp",
     description: "Mineral-rich salt blended with aromatic botanicals and spiced heat.",
     isHot: true
   },
@@ -105,7 +105,7 @@ export const products = [
     category: "Masalas",
     // price: 25000,
     origin: "Luwero",
-    image: "/assets/newProducts/Pilau Masala 100g.png",
+    image: "/assets/newProducts/Pilau Masala 100g.webp",
     description: "A fragrant, warm blend of cloves, cardamom, and cinnamon for the perfect rice.",
     isOrganic: true
   },
@@ -116,7 +116,7 @@ export const products = [
     category: "Masalas",
     // price: 22000,
     origin: "Luwero",
-    image: "/assets/newProducts/Garam Masala 100g.png",
+    image: "/assets/newProducts/Garam Masala 100g.webp",
     description: "A finishing spice blend to add warmth and depth to dishes.",
     isOrganic: true
   },
@@ -127,7 +127,7 @@ export const products = [
     category: "Masalas",
     // price: 22000,
     origin: "Luwero",
-    image: "/assets/newProducts/Beef Masala 100g.png",
+    image: "/assets/newProducts/Beef Masala 100g.webp",
     description: "Spiced seasoning with a rich, complex flavor profile for beef.",
     isOrganic: true
   },
@@ -138,7 +138,7 @@ export const products = [
     category: "Masalas",
     // price: 18000,
     origin: "Luwero",
-    image: "/assets/newProducts/Chicken Masala 100g.png",
+    image: "/assets/newProducts/Chicken Masala 100g.webp",
     description: "Warm spices blended to perfection to elevate poultry dishes.",
     isOrganic: true
   },
@@ -149,7 +149,7 @@ export const products = [
     category: "Masalas",
     // price: 20000,
     origin: "Luwero",
-    image: "/assets/newProducts/Fish Masala 100g.png",
+    image: "/assets/newProducts/Fish Masala 100g.webp",
     description: "Bright and zesty spice profile to complement the delicate flavor of fresh fish.",
     isOrganic: true
   },
@@ -160,7 +160,7 @@ export const products = [
     category: "Masalas",
     // price: 12000,
     origin: "Luwero",
-    image: "/assets/newProducts/Tea Masala 100g.png",
+    image: "/assets/newProducts/Tea Masala 100g.webp",
     description: "Warming spices like ginger and cardamom to elevate your daily tea ritual.",
     isOrganic: true
   },
@@ -171,7 +171,7 @@ export const products = [
     category: "Masalas",
     // price: 24000,
     origin: "Luwero",
-    image: "/assets/newProducts/Deli Seasoned Beef Chilli Flakes 100g.png",
+    image: "/assets/newProducts/Deli Seasoned Beef Chilli Flakes 100g.webp",
     description: "A spicy, robust rub and seasoning to elevate roasted and fried beef.",
     isOrganic: true
   },
@@ -182,7 +182,7 @@ export const products = [
     category: "Masalas",
     // price: 24000,
     origin: "Luwero",
-    image: "/assets/newProducts/Deli Seasoned Chicken Chilli Flakes 100g.png",
+    image: "/assets/newProducts/Deli Seasoned Chicken Chilli Flakes 100g.webp",
     description: "A spicy seasoning mix formulated perfectly for rich chicken dishes.",
     isOrganic: true
   },
@@ -195,7 +195,7 @@ export const products = [
     category: "Powders",
     // price: 15000,
     origin: "Luwero",
-    image: "/assets/newProducts/Garlic Powder 100g.png",
+    image: "/assets/newProducts/Garlic Powder 100g.webp",
     description: "Pure, sharp, and aromatic dehydrated garlic powder.",
     isOrganic: true
   },
@@ -206,7 +206,7 @@ export const products = [
     category: "Powders",
     // price: 15000,
     origin: "Luwero",
-    image: "/assets/newProducts/Deli Onion Powder 100g.png",
+    image: "/assets/newProducts/Deli Onion Powder 100g.webp",
     description: "Sweet, savory onion powder base without the prep work.",
     isOrganic: true
   },
@@ -217,7 +217,7 @@ export const products = [
     category: "Powders",
     // price: 17000,
     origin: "Luwero",
-    image: "/assets/newProducts/Deli Onion Flakes 100g.png",
+    image: "/assets/newProducts/Deli Onion Flakes 100g.webp",
     description: "Crispy, aromatic onion flakes for savory meal toppings.",
     isOrganic: true
   },
@@ -228,7 +228,7 @@ export const products = [
     category: "Powders",
     // price: 12000,
     origin: "Luwero",
-    image: "/assets/newProducts/Chilli Flakes Natural 60g.png",
+    image: "/assets/newProducts/Chilli Flakes Natural 60g.webp",
     description: "Sun-dried natural crushed chili flakes.",
     isOrganic: true
   },
@@ -239,7 +239,7 @@ export const products = [
     category: "Powders",
     // price: 16000,
     origin: "Luwero",
-    image: "/assets/newProducts/Chilli Flakes 90g.png",
+    image: "/assets/newProducts/Chilli Flakes 90g.webp",
     description: "Sun-dried crushed chili flakes in a larger standard pack.",
     isOrganic: true
   },
@@ -250,7 +250,7 @@ export const products = [
     category: "Powders",
     // price: 15000,
     origin: "Luwero",
-    image: "/assets/newProducts/Cinnamon Powder 100g.png",
+    image: "/assets/newProducts/Cinnamon Powder 100g.webp",
     description: "Warm, sweet ground cinnamon spice.",
     isOrganic: true
   },
@@ -261,7 +261,7 @@ export const products = [
     category: "Powders",
     // price: 15000,
     origin: "Luwero",
-    image: "/assets/newProducts/Curry Powder 130g.png",
+    image: "/assets/newProducts/Curry Powder 130g.webp",
     description: "Our balanced house blend of turmeric, cumin, and coriander.",
     isOrganic: true
   },
@@ -272,7 +272,7 @@ export const products = [
     category: "Powders",
     // price: 25000,
     origin: "Luwero",
-    image: "/assets/newProducts/Curry Powder Natural 320g.png",
+    image: "/assets/newProducts/Curry Powder Natural 320g.webp",
     description: "Fragrant, natural house blend curry powder in a pantry size.",
     isOrganic: true
   },
@@ -283,7 +283,7 @@ export const products = [
     category: "Powders",
     // price: 18000,
     origin: "Luwero",
-    image: "/assets/newProducts/Curry Powder Chilli and Gravy 130g.png",
+    image: "/assets/newProducts/Curry Powder Chilli and Gravy 130g.webp",
     description: "A spicy twist on our classic curry mix for rich gravies.",
     isOrganic: true
   },
@@ -294,7 +294,7 @@ export const products = [
     category: "Powders",
     // price: 28000,
     origin: "Luwero",
-    image: "/assets/newProducts/Curry Powder Chilli and Gravy 320gms.png",
+    image: "/assets/newProducts/Curry Powder Chilli and Gravy 320gms.webp",
     description: "A spicy twist on our classic curry mix for rich gravies, pantry size.",
     isOrganic: true
   },
@@ -305,7 +305,7 @@ export const products = [
     category: "Powders",
     // price: 18000,
     origin: "Luwero",
-    image: "/assets/newProducts/Paprika Powder 100g.png",
+    image: "/assets/newProducts/Paprika Powder 100g.webp",
     description: "Sweet and smoky ground peppers for vibrant color and mild flavor.",
     isOrganic: true
   },
@@ -316,7 +316,7 @@ export const products = [
     category: "Powders",
     // price: 14000,
     origin: "Luwero",
-    image: "/assets/newProducts/Black Pepper Powder 60g.png",
+    image: "/assets/newProducts/Black Pepper Powder 60g.webp",
     description: "Premium fine-ground black pepper.",
     isOrganic: true
   },
@@ -327,7 +327,7 @@ export const products = [
     category: "Powders",
     // price: 20000,
     origin: "Luwero",
-    image: "/assets/newProducts/Black Pepper Powder 100g.png",
+    image: "/assets/newProducts/Black Pepper Powder 100g.webp",
     description: "Premium fine-ground black pepper in a standard jar.",
     isOrganic: true
   },
@@ -338,7 +338,7 @@ export const products = [
     category: "Powders",
     // price: 25000,
     origin: "Luwero",
-    image: "/assets/newProducts/Tomato-Power-Natural-170gms.png",
+    image: "/assets/newProducts/Tomato-Power-Natural-170gms.webp",
     description: "Concentrated natural tomato essence, perfect for sauces and stews.",
     isOrganic: true
   },
@@ -349,7 +349,7 @@ export const products = [
     category: "Powders",
     // price: 27000,
     origin: "Luwero",
-    image: "/assets/newProducts/Tomato-Power-Spiced-170gms.png",
+    image: "/assets/newProducts/Tomato-Power-Spiced-170gms.webp",
     description: "Concentrated spiced tomato essence for complex stew bases.",
     isOrganic: true
   },
@@ -362,7 +362,7 @@ export const products = [
     category: "Pantry",
     // price: 15000,
     origin: "Luwero",
-    image: "/assets/newProducts/Deli Libido Booster 40g.png",
+    image: "/assets/newProducts/Deli Libido Booster 40g.webp",
     description: "Our specialty holistic botanical formulation.",
     isOrganic: true
   },
@@ -373,7 +373,7 @@ export const products = [
     category: "Pantry",
     // price: 25000,
     origin: "Luwero",
-    image: "/assets/newProducts/Lemon Pepper 200g.png",
+    image: "/assets/newProducts/Lemon Pepper 200g.webp",
     description: "Bright citrus notes paired with premium cracked black pepper.",
     isOrganic: true
   },
@@ -384,7 +384,7 @@ export const products = [
     category: "Pantry",
     // price: 25000,
     origin: "Luwero",
-    image: "/assets/newProducts/Cloves 90g.png",
+    image: "/assets/newProducts/Cloves 90g.webp",
     description: "Premium aromatic whole cloves.",
     isOrganic: true
   },
@@ -395,7 +395,7 @@ export const products = [
     category: "Pantry",
     // price: 25000,
     origin: "Luwero",
-    image: "/assets/newProducts/Cinnamon Sticks 100g.png",
+    image: "/assets/newProducts/Cinnamon Sticks 100g.webp",
     description: "Authentic, sweet rolled bark cinnamon sticks.",
     isOrganic: true
   },
@@ -406,7 +406,7 @@ export const products = [
     category: "Pantry",
     // price: 10000,
     origin: "Luwero",
-    image: "/assets/newProducts/Cinnamon Leaves 40g.png",
+    image: "/assets/newProducts/Cinnamon Leaves 40g.webp",
     description: "Aromatic leaves perfect for slow-cooked stews and teas.",
     isOrganic: true
   },
@@ -417,7 +417,7 @@ export const products = [
     category: "Pantry",
     // price: 22000,
     origin: "Luwero",
-    image: "/assets/newProducts/Mixed Spices 100g.png",
+    image: "/assets/newProducts/Mixed Spices 100g.webp",
     description: "An exotic all-purpose balanced blend of culinary sweet and savory spices.",
     isOrganic: true
   },
@@ -428,7 +428,7 @@ export const products = [
     category: "Pantry",
     // price: 20000,
     origin: "Luwero",
-    image: "/assets/newProducts/Pure Natural Honey 450g.png",
+    image: "/assets/newProducts/Pure Natural Honey 450g.webp",
     description: "Rich, unfiltered natural honey sourced locally.",
     isOrganic: true
   },
@@ -439,7 +439,7 @@ export const products = [
     category: "Pantry",
     // price: 12000,
     origin: "Luwero",
-    image: "/assets/newProducts/Deli Mchuzi Mix Beef Powder 60g.png",
+    image: "/assets/newProducts/Deli Mchuzi Mix Beef Powder 60g.webp",
     description: "Rich savory beef gravy base for quick and delicious stews.",
     isOrganic: true
   },
@@ -450,7 +450,7 @@ export const products = [
     category: "Pantry",
     // price: 20000,
     origin: "Luwero",
-    image: "/assets/newProducts/Deli Mchuzi Mix Beef Powder 130g.png",
+    image: "/assets/newProducts/Deli Mchuzi Mix Beef Powder 130g.webp",
     description: "Rich savory beef gravy base for quick and delicious stews.",
     isOrganic: true
   },
@@ -461,7 +461,7 @@ export const products = [
     category: "Pantry",
     // price: 26000,
     origin: "Luwero",
-    image: "/assets/newProducts/Deli Mchuzi Mix Beef Powder 200g.png",
+    image: "/assets/newProducts/Deli Mchuzi Mix Beef Powder 200g.webp",
     description: "Rich savory beef gravy base for quick and delicious stews.",
     isOrganic: true
   },
@@ -472,7 +472,7 @@ export const products = [
     category: "Pantry",
     // price: 35000,
     origin: "Luwero",
-    image: "/assets/newProducts/Deli Mchuzi Mix Beef Powder 350g.png",
+    image: "/assets/newProducts/Deli Mchuzi Mix Beef Powder 350g.webp",
     description: "Rich savory beef gravy base for quick and delicious stews, pantry size.",
     isOrganic: true
   },
@@ -483,7 +483,7 @@ export const products = [
     category: "Pantry",
     // price: 12000,
     origin: "Luwero",
-    image: "/assets/newProducts/Deli Mchuzi Mix Chicken Powder 60g.png",
+    image: "/assets/newProducts/Deli Mchuzi Mix Chicken Powder 60g.webp",
     description: "Flavorful chicken gravy and sauce thickener mix.",
     isOrganic: true
   },
@@ -494,7 +494,7 @@ export const products = [
     category: "Pantry",
     // price: 20000,
     origin: "Luwero",
-    image: "/assets/newProducts/Deli Mchuzi Mix Chicken Powder 130g.png",
+    image: "/assets/newProducts/Deli Mchuzi Mix Chicken Powder 130g.webp",
     description: "Flavorful chicken gravy and sauce thickener mix.",
     isOrganic: true
   },
@@ -505,7 +505,7 @@ export const products = [
     category: "Pantry",
     // price: 26000,
     origin: "Luwero",
-    image: "/assets/newProducts/Deli Mchuzi Mix Chicken Powder 200g.png",
+    image: "/assets/newProducts/Deli Mchuzi Mix Chicken Powder 200g.webp",
     description: "Flavorful chicken gravy and sauce thickener mix.",
     isOrganic: true
   },
@@ -516,7 +516,7 @@ export const products = [
     category: "Pantry",
     // price: 35000,
     origin: "Luwero",
-    image: "/assets/newProducts/Deli Mchuzi Mix Chicken Powder 350g.png",
+    image: "/assets/newProducts/Deli Mchuzi Mix Chicken Powder 350g.webp",
     description: "Flavorful chicken gravy and sauce thickener mix, pantry size.",
     isOrganic: true
   }
@@ -524,10 +524,10 @@ export const products = [
 
 // UI Helper: Category Metadata
 export const categories = [
-  { title: "Chillies", itemCount: 8, image: "/assets/newProducts/Chilli-Powder-50gms.png" },
-  { title: "Masalas", itemCount: 8, image: "/assets/newProducts/Pilau Masala 100g.png" },
-  { title: "Powders", itemCount: 15, image: "/assets/newProducts/Garlic Powder 100g.png" },
-  { title: "Pantry", itemCount: 15, image: "/assets/newProducts/Lemon Pepper 200g.png" }
+  { title: "Chillies", itemCount: 8, image: "/assets/newProducts/Chilli-Powder-50gms.webp" },
+  { title: "Masalas", itemCount: 8, image: "/assets/newProducts/Pilau Masala 100g.webp" },
+  { title: "Powders", itemCount: 15, image: "/assets/newProducts/Garlic Powder 100g.webp" },
+  { title: "Pantry", itemCount: 15, image: "/assets/newProducts/Lemon Pepper 200g.webp" }
 ];
 
 export const formatPrice = (amount) => {

@@ -18,8 +18,8 @@ import TermsPrivacyPage from "./pages/TermsPrivacyPage";
 import StoryPage from "./pages/StoryPage";
 import CartPage from "./pages/CartPage";
 import ScrollToTop from "./components/ScrollToTop";
-import CareersPage from "./pages/CareersPage";
 import FeedbackModal from "./components/FeedbackModal";
+import Gallery from "./pages/Gallery";
 
 function App() {
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
@@ -52,7 +52,7 @@ function App() {
               <Route path="/terms" element={<TermsPrivacyPage />} />
               <Route path="/story" element={<StoryPage />} />
               <Route path="/cart" element={<CartPage />} />
-              <Route path="/careers" element={<CareersPage />} />
+              <Route path="/gallery" element={<Gallery />} />
             </Routes>
           </main>
 

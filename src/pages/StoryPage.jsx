@@ -71,8 +71,53 @@ export default function StoryPage() {
           The story of <span className="text-deli-red">Green Deli</span> begins
           in the fertile red soils of Mount Elgon. Here, the heat of the equator
           meets the cool mountain breeze, creating the perfect climate for our
-          signature botanicals.
+          signature botanicals. <br /> Our collection includes Delish Seasoning
+          (All-purpose seasoning) is a versatile blend of herbs and spices
+          designed to enhance the flavor of various savory dishes. It typically
+          includes MSG &anti- caking agent(INS551), black pepper, garlic powder,
+          onion powder, dehydrated vegetables, turmeric, cumin.
         </p>
+        <div className="bg-deli-cream/50 border border-deli-charcoal/10 rounded-2xl p-6 my-6 hover:border-deli-red/40 transition-all duration-300 shadow-sm group">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] bg-deli-red/10 text-deli-red px-2.5 py-1 rounded-full">
+              Press Coverage
+            </span>
+            <span className="font-sans text-xs text-deli-charcoal/50 uppercase tracking-wider">
+              New Vision • August 2026
+            </span>
+          </div>
+
+          <h3 className="font-display text-xl md:text-2xl uppercase text-deli-charcoal leading-snug mb-3 group-hover:text-deli-red transition-colors">
+            Green Deli Unveils Innovative Tomato Sauce
+          </h3>
+
+          <p className="font-sans text-xs text-deli-charcoal/70 leading-relaxed uppercase tracking-wider mb-4">
+            Featured in New Vision Agriculture: A look into Green Deli's latest
+            sustainable processing initiatives and product expansions in Uganda.
+          </p>
+
+          <a
+            href="https://www.newvision.co.ug/category/agriculture/green-deli-unveils-innovative-tomato-sauce-po-NV_205057_082026"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-[0.15em] text-deli-red hover:underline"
+          >
+            Read Full Article on New Vision
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+        </div>
         <blockquote className="mt-12 border-l-2 border-deli-red pl-6 py-2 text-left italic font-sans text-lg text-deli-charcoal/60">
           "We don’t just sell spices; we curate the very essence of our land,
           ensuring every leaf and seed tells the story of the hands that tended
