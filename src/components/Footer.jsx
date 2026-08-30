@@ -123,7 +123,8 @@ export default function Footer({ onOpenFeedback }) {
                 href="mailto:greendeli525@gmail.com"
                 className="font-sans text-[10px] uppercase tracking-widest opacity-80 hover:text-deli-red transition-colors"
               >
-                greendeli525@gmail.com
+                sales@greendelispicesug.com
+                admin@greendelispicesug.com
               </a>
             </div>
 

@@ -1,7 +1,24 @@
-import { motion } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
 import Button from "./Button";
 
 export default function HeroSection() {
+  const videoRef = useRef(null);
+  // Trigger when at least 30% of the video container is visible in the viewport
+  const isInView = useInView(videoRef, { amount: 0.3 });
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+
+    if (isInView) {
+      videoRef.current.play().catch(() => {
+        // Handle browser autoplay policy restrictions silently
+      });
+    } else {
+      videoRef.current.pause();
+    }
+  }, [isInView]);
+
   const scrollToRecipe = (e) => {
     e.preventDefault();
     const section = document.getElementById("recipe-section");
@@ -33,15 +50,15 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex items-center gap-3 mb-4"
           >
-            <span className="bg-deli-charcoal text-white text-[6px] md:text-[9px] font-sans font-bold px-3.5 py-1 rounded-full uppercase tracking-[0.2em] shadow-sm">
+            <span className="bg-deli-charcoal text-white text-[9px] font-sans font-bold px-3.5 py-1 rounded-full uppercase tracking-[0.2em] shadow-sm">
               Established 2022
             </span>
             <span className="font-sans text-[11px] uppercase tracking-[0.25em] text-deli-charcoal/60 font-semibold">
-              Uganda • Luwero Sourced
+              Uganda Sourced
             </span>
           </motion.div>
 
-          {/* Main Headline (Enhanced Framer Motion Animation) */}
+          {/* Main Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -61,7 +78,8 @@ export default function HeroSection() {
             >
               Uganda's
             </motion.span> <br />
-            Finest
+            Finest <br />
+            Spices
           </motion.h1>
 
           {/* Subtitle / Narrative */}
@@ -109,7 +127,7 @@ export default function HeroSection() {
           </motion.div>
         </motion.div>
 
-        {/* Right Side: Wider, Borderless Full-Height Video Showcase (Span 7) */}
+        {/* Right Side: Wider Video Showcase (Span 7) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96, x: 20 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
@@ -118,7 +136,7 @@ export default function HeroSection() {
         >
           <div className="relative w-full h-full min-h-[420px] lg:min-h-full overflow-hidden bg-deli-charcoal group">
             <video
-              autoPlay
+              ref={videoRef}
               loop
               muted
               playsInline

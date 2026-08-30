@@ -56,7 +56,53 @@ export default function Gallery() {
       {/* Press & Feature Articles Grid */}
       <div className="space-y-8">
         
-        {/* Article 1: Cookathon Sponsorship */}
+        {/* Article 1: Grill Wars Edition IX Co-Sponsorship */}
+        <div className="bg-deli-cream/50 border border-deli-charcoal/10 rounded-2xl p-6 md:p-8 hover:border-deli-red/40 transition-all duration-300 shadow-sm group">
+          <div className="flex flex-wrap items-center gap-3 mb-4">
+            <span className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] bg-deli-red/10 text-deli-red px-2.5 py-1 rounded-full">
+              Event Co-Sponsorship
+            </span>
+            <span className="font-sans text-xs text-deli-charcoal/50 uppercase tracking-wider">
+              Shisha Nyama • Bugolobi
+            </span>
+          </div>
+
+          <h3 className="font-display text-2xl md:text-3xl uppercase text-deli-charcoal leading-snug mb-3 group-hover:text-deli-red transition-colors">
+            Green Deli Co-Sponsors Grill Wars Edition IX
+          </h3>
+
+          <p className="font-sans text-xs md:text-sm text-deli-charcoal/70 leading-relaxed uppercase tracking-wider mb-6">
+            Seasoning the flames! Green Deli Spices took center stage as a main co-sponsor for the August Edition IX of the Grill Wars hosted at Shisha Nyama Bar and Restaurant in Bugolobi. Watch the video highlights from the action packed grill competition below.
+          </p>
+
+          {/* TikTok Video Player Section */}
+          <div className="max-w-md mx-auto mb-6 rounded-2xl overflow-hidden border border-deli-charcoal/10 shadow-md bg-black">
+            <video 
+              controls 
+              className="w-full h-auto rounded-2xl" 
+              poster="/assets/gallery/grill-wars-thumb.webp"
+              preload="metadata"
+            >
+              <source src="/assets/gallery/grill-wars-edition-9.MP4" type="video/mp4" />
+              Your browser does not support video playback.
+            </video>
+          </div>
+
+          <a 
+            href="https://www.tiktok.com/@Greendeli256"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-[0.15em] text-deli-red hover:underline"
+          >
+            Watch & Follow on TikTok
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        {/* Article 2: Cookathon Sponsorship */}
         <div className="bg-deli-cream/50 border border-deli-charcoal/10 rounded-2xl p-6 md:p-8 hover:border-deli-red/40 transition-all duration-300 shadow-sm group">
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <span className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] bg-deli-red/10 text-deli-red px-2.5 py-1 rounded-full">
@@ -75,7 +121,7 @@ export default function Gallery() {
             Proudly powering Ugandan culinary excellence! Green Deli joined forces as an official sponsor, supplying artisanal spices and botanicals to fuel Mama D's historic marathon cooking attempt.
           </p>
 
-          {/* Provision for 3 photos (placeholders until you upload images) */}
+          {/* Provision for 3 photos */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-deli-charcoal/5 border border-deli-charcoal/10 flex items-center justify-center">
               <img 
@@ -128,7 +174,7 @@ export default function Gallery() {
           </a>
         </div>
 
-        {/* Article 2: Product Launch Feature */}
+        {/* Article 3: Product Launch Feature */}
         <div className="bg-deli-cream/50 border border-deli-charcoal/10 rounded-2xl p-6 md:p-8 hover:border-deli-red/40 transition-all duration-300 shadow-sm group">
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <span className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] bg-deli-red/10 text-deli-red px-2.5 py-1 rounded-full">

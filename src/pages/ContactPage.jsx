@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FormInput from "../components/FormInput";
 import FormSelect from "../components/FormSelect";
 import Button from "../components/Button";
@@ -6,6 +6,38 @@ import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function ContactPage() {
   useDocumentTitle("Contact Us | Green Deli");
+
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setErrorMessage("");
+
+    const formData = new FormData(e.target);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xdeoaank", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        setErrorMessage("Failed to send message. Please check your inputs and try again.");
+      }
+    } catch (error) {
+      setErrorMessage("Network error. Please check your connection.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-16">
@@ -31,35 +63,87 @@ export default function ContactPage() {
             <h2 className="font-display text-2xl uppercase mb-10">
               Send a Message
             </h2>
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <FormInput label="Full Name" placeholder="e.g. Brian" />
-              <FormInput
-                label="Email Address"
-                placeholder="e.g. brian@example.com"
-              />
-              <div className="md:col-span-2">
-                <FormSelect
-                  label="Inquiry Type"
-                  options={[
-                    { label: "General Query", value: "general" },
-                    { label: "Wholesale Inquiry", value: "wholesale" },
-                    { label: "Retail Partnership", value: "partnership" },
-                  ]}
-                />
+
+            {submitted ? (
+              <div className="py-12 text-center space-y-4">
+                <h3 className="font-display text-2xl uppercase text-deli-red">
+                  Message Sent!
+                </h3>
+                <p className="font-sans text-sm text-deli-charcoal/80 leading-relaxed max-w-md mx-auto">
+                  Thank you for reaching out to Green Deli. Your message has been forwarded directly to our team. We will get back to you shortly.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setSubmitted(false)}
+                  className="mt-6 inline-block bg-deli-charcoal text-white px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-deli-red transition-colors cursor-pointer"
+                >
+                  Send Another Message
+                </button>
               </div>
-              <div className="md:col-span-2">
-                <label className="font-sans text-[10px] uppercase tracking-widest text-deli-charcoal/50 font-bold mb-2 block">
-                  Your Message
-                </label>
-                <textarea
-                  className="w-full bg-transparent border-b border-deli-charcoal/20 py-3 px-1 font-sans text-sm focus:outline-none focus:border-deli-red h-32 resize-none"
-                  placeholder="How can we help you today?"
+            ) : (
+              <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="New Contact Us Inquiry - Green Deli"
                 />
-              </div>
-              <Button variant="primary" className="md:w-fit">
-                Submit Inquiry
-              </Button>
-            </form>
+
+                <FormInput 
+                  name="fullName" 
+                  label="Full Name" 
+                  placeholder="e.g. Brian" 
+                  required 
+                />
+                <FormInput
+                  name="email"
+                  label="Email Address"
+                  type="email"
+                  placeholder="e.g. brian@example.com"
+                  required
+                />
+                
+                <div className="md:col-span-2">
+                  <FormSelect
+                    name="inquiryType"
+                    label="Inquiry Type"
+                    options={[
+                      { label: "General Query", value: "general" },
+                      { label: "Wholesale Inquiry", value: "wholesale" },
+                      { label: "Retail Partnership", value: "partnership" },
+                    ]}
+                  />
+                </div>
+
+                <div className="md:col-span-2">
+                  <label className="font-sans text-[10px] uppercase tracking-widest text-deli-charcoal/50 font-bold mb-2 block">
+                    Your Message
+                  </label>
+                  <textarea
+                    name="message"
+                    required
+                    className="w-full bg-transparent border-b border-deli-charcoal/20 py-3 px-1 font-sans text-sm focus:outline-none focus:border-deli-red h-32 resize-none text-deli-charcoal"
+                    placeholder="How can we help you today?"
+                  />
+                </div>
+
+                {errorMessage && (
+                  <div className="md:col-span-2 text-deli-red font-sans text-xs font-semibold">
+                    {errorMessage}
+                  </div>
+                )}
+
+                <div className="md:col-span-2">
+                  <Button 
+                    type="submit" 
+                    variant="primary" 
+                    disabled={loading}
+                    className="w-full md:w-auto disabled:opacity-50"
+                  >
+                    {loading ? "Submitting..." : "Submit Inquiry"}
+                  </Button>
+                </div>
+              </form>
+            )}
           </div>
 
           {/* Retail Partners Section */}
@@ -96,7 +180,7 @@ export default function ContactPage() {
               <span className="font-sans text-[9px] uppercase tracking-[0.2em] font-bold opacity-60">WhatsApp</span>
             </a>
             <a
-              href="mailto:greendeli525@gmail.com"
+              href="mailto:sales@greendelispicesug.com"
               className="bg-white p-6 rounded-[2rem] border border-deli-charcoal/10 flex flex-col items-center justify-center text-center hover:scale-[1.02] transition-transform shadow-sm"
             >
               <img src="/assets/email-icon.png" alt="Email" className="w-10 h-auto mb-2" />
