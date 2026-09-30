@@ -41,7 +41,7 @@ const MainHeader = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-50 bg-deli-red/90 backdrop-blur-md border-b border-white/10 text-white">
+      <header className="fixed top-0 left-0 w-full z-50 bg-deli-botanical/95 backdrop-blur-md border-b border-white/10 text-white shadow-md">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           
           {/* Hamburger Menu (Mobile Only) */}

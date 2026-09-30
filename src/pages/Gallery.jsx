@@ -9,10 +9,10 @@ export default function Gallery() {
         <span className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-deli-red mb-2 block">
           Press & Live Updates
         </span>
-        <h1 className="font-display text-4xl md:text-6xl uppercase text-deli-charcoal mb-4">
+        <h1 className="font-display text-4xl md:text-6xl uppercase text-deli-botanical mb-4">
           Green Deli In The News
         </h1>
-        <p className="font-sans text-sm uppercase tracking-wider text-deli-charcoal/70">
+        <p className="font-sans text-sm uppercase tracking-wider text-deli-botanical font-medium">
           Discover our latest milestones, community events, and feature stories across Uganda.
         </p>
       </div>
@@ -20,13 +20,13 @@ export default function Gallery() {
       {/* Social Media Bridge Banner */}
       <div className="bg-[#2A1E1A] text-deli-cream p-8 md:p-10 rounded-3xl mb-12 flex flex-col md:flex-row justify-between items-center gap-6 shadow-lg">
         <div>
-          <span className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-deli-red mb-2 block">
+          <span className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-deli-orange mb-2 block">
             Media & Live Gallery
           </span>
-          <h2 className="font-display text-2xl md:text-3xl uppercase text-deli-botanical mb-2">
+          <h2 className="font-display text-2xl md:text-3xl uppercase text-deli-gold mb-2">
             Looking for Photos & Behind-the-Scenes Clips?
           </h2>
-          <p className="font-sans text-xs uppercase tracking-widest text-deli-cream/70 max-w-xl">
+          <p className="font-sans text-xs uppercase tracking-widest text-deli-cream/90 max-w-xl leading-relaxed">
             We post daily video shorts, spice preparation guides, farm updates, and recipes directly on our social pages. Connect with us on Instagram and TikTok for full visual content!
           </p>
         </div>

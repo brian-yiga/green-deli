@@ -19,13 +19,13 @@ export default function FeatureBlock({
 
       {/* Text Side */}
       <div className="w-full md:w-1/2 text-center md:text-left flex flex-col items-center md:items-start">
-        <span className="font-sans text-[14px] uppercase tracking-[0.4em] text-deli-red mb-4">
+        <span className="font-sans text-[14px] uppercase tracking-[0.4em] text-deli-orange font-bold mb-4">
           {subtitle}
         </span>
-        <h2 className="font-display text-4xl md:text-6xl uppercase leading-[0.9] text-deli-charcoal mb-6">
+        <h2 className="font-display text-4xl md:text-6xl uppercase leading-[0.9] text-deli-botanical mb-6">
           {title}
         </h2>
-        <p className="font-sans text-lg leading-relaxed text-deli-charcoal/60 mb-8 max-w-md">
+        <p className="font-sans text-base md:text-lg leading-relaxed text-deli-charcoal/80 mb-8 max-w-md">
           {description}
         </p>
         <Button variant="primary" to="/shop">

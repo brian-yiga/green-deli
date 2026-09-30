@@ -8,10 +8,12 @@ export default {
   theme: {
     extend: {
       colors: {
-          'deli-red': '#B11E23',
+          'deli-red': '#DC2626',
+          'deli-green': '#2D5A27',
+          'deli-botanical': '#2D5A27',
+          'deli-orange': '#E86C1E',
           'deli-cream': '#F9F5EB',
           'deli-charcoal': '#1A1A1A',
-          'deli-botanical': '#4B6B40',
           'deli-gold': '#C5A059',
       },
       fontFamily: {

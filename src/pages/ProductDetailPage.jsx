@@ -76,7 +76,7 @@ export default function ProductDetailPage() {
         <img
           src={product.image}
           alt={product.name}
-          className="w-40 sm:w-52 md:w-64 lg:w-72 h-auto object-contain"
+          className="w-40 sm:w-52 md:w-64 lg:w-72 h-auto object-contain drop-shadow-[0_20px_35px_rgba(160,50,20,0.38)]"
         />
 
         <div className="absolute bottom-6 left-6 flex gap-2">
@@ -89,10 +89,10 @@ export default function ProductDetailPage() {
       <section className="max-w-7xl mx-auto p-3 -mt-10 md:mt-12 relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Info Column */}
         <div className="bg-white p-6 md:p-0 rounded-[2.5rem] md:rounded-none shadow-xl md:shadow-none md:p-10">
-          <span className="font-sans text-[10px] uppercase tracking-[0.4em] text-deli-red mb-3 block">
+          <span className="font-sans text-[10px] uppercase tracking-[0.4em] text-deli-orange font-bold mb-3 block">
             {product.origin}
           </span>
-          <h1 className="font-display text-4xl md:text-7xl uppercase leading-none mb-6">
+          <h1 className="font-display text-4xl md:text-7xl uppercase leading-none mb-6 text-deli-botanical">
             {product.name}
           </h1>
 
@@ -104,12 +104,12 @@ export default function ProductDetailPage() {
             />
           </div>
 
-          <p className="font-sans text-lg leading-relaxed text-deli-charcoal/70 mb-8">
+          <p className="font-sans text-lg leading-relaxed text-deli-charcoal/80 mb-8">
             {product.description}
           </p>
 
           <div className="flex flex-col gap-2 mb-10">
-            <h4 className="font-sans text-sm uppercase tracking-widest font-bold opacity-40">
+            <h4 className="font-sans text-sm uppercase tracking-widest font-bold text-deli-botanical">
               Specifications
             </h4>
             <ul className="text-sm font-sans flex flex-col gap-2">

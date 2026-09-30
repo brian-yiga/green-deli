@@ -32,10 +32,10 @@ export default function PromoBanner() {
 
             <h3 className="font-display text-3xl md:text-5xl uppercase tracking-tight leading-[1.05] text-white mb-4">
               Bulk & Wholesale <br className="hidden md:inline" />
-              <span className="text-deli-gold">Export Orders</span>
+              <span className="text-deli-orange">Export Orders</span>
             </h3>
 
-            <p className="font-sans text-sm md:text-base text-white/70 leading-relaxed max-w-xl mb-4">
+            <p className="font-sans text-sm md:text-base text-white/90 leading-relaxed max-w-xl mb-4">
               Equip your restaurant, hotel, culinary brand, or supermarket chain with peak-potency Ugandan spices. We offer custom commercial blends, private labeling, and pallet/container export shipping.
             </p>
 

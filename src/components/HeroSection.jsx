@@ -50,10 +50,10 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex items-center gap-3 mb-4"
           >
-            <span className="bg-deli-charcoal text-white text-[9px] font-sans font-bold px-3.5 py-1 rounded-full uppercase tracking-[0.2em] shadow-sm">
+            <span className="bg-deli-botanical text-white text-[9px] font-sans font-bold px-3.5 py-1 rounded-full uppercase tracking-[0.2em] shadow-sm">
               Established 2022
             </span>
-            <span className="font-sans text-[11px] uppercase tracking-[0.25em] text-deli-charcoal/60 font-semibold">
+            <span className="font-sans text-[11px] uppercase tracking-[0.25em] text-deli-botanical font-semibold">
               Uganda Sourced
             </span>
           </motion.div>
@@ -67,7 +67,7 @@ export default function HeroSection() {
               delay: 0.2, 
               ease: [0.215, 0.61, 0.355, 1.0] 
             }}
-            className="font-display text-5xl sm:text-6xl md:text-7xl uppercase leading-[0.92] text-deli-charcoal mb-6 tracking-tight"
+            className="font-display text-5xl sm:text-6xl md:text-7xl uppercase leading-[0.92] text-deli-botanical mb-6 tracking-tight"
           >
             Explore <br />
             <motion.span 
@@ -87,9 +87,9 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="font-sans text-base md:text-lg text-deli-charcoal/70 leading-relaxed mb-8 max-w-lg"
+            className="font-sans text-base md:text-lg text-deli-charcoal/80 leading-relaxed mb-8 max-w-lg"
           >
-            Single-origin, peak-potency botanicals, handcrafted masalas, and pure sun-dried spices cultivated in the fertile soils of Luwero and Mount Elgon.
+            Welcome to Green Deli, a 100% Ugandan-owned agro-processing, value-addition, export and distribution company. Established in 2023, Green Deli operates within Uganda's food processing and agricultural value-addition industry.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -108,7 +108,7 @@ export default function HeroSection() {
             </Button>
             <button
               onClick={scrollToRecipe}
-              className="px-8 py-4 font-sans text-[12px] font-bold uppercase tracking-[0.2em] transition-all duration-300 text-center border border-deli-charcoal/25 text-deli-charcoal hover:bg-deli-charcoal hover:text-white rounded-none cursor-pointer w-full sm:w-auto"
+              className="px-8 py-4 font-sans text-[12px] font-bold uppercase tracking-[0.2em] transition-all duration-300 text-center border border-deli-botanical text-deli-botanical hover:bg-deli-botanical hover:text-white rounded-none cursor-pointer w-full sm:w-auto"
             >
               View Recipe of the Week
             </button>
@@ -119,7 +119,7 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-wrap gap-4 mt-8 pt-6 border-t border-deli-charcoal/10 text-deli-charcoal/60 font-sans text-[10px] uppercase tracking-widest"
+            className="flex flex-wrap gap-4 mt-8 pt-6 border-t border-deli-charcoal/10 text-deli-botanical font-sans text-[10px] uppercase tracking-widest font-semibold"
           >
             <span>✓ 100% Organically Grown</span>
             <span>✓ Hand-Harvested</span>
@@ -140,7 +140,8 @@ export default function HeroSection() {
               loop
               muted
               playsInline
-              src="/hero-video.mp4"
+              poster="/assets/hero-video-poster.png"
+              src="/hero-video2.MP4"
               className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-700 ease-out"
             />
 

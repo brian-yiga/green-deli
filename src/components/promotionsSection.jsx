@@ -54,15 +54,15 @@ export default function PromotionsSection() {
     <section className="px-6 max-w-7xl mx-auto w-full my-5">
       <div className="flex justify-between items-end mb-10">
         <div>
-           <h2 className="font-display text-3xl uppercase leading-none">Limited Promotions</h2>
-           <p className="font-sans text-[9px] uppercase tracking-[0.2em] opacity-40 mt-2">
+           <h2 className="font-display text-3xl uppercase leading-none text-deli-botanical">Limited Promotions</h2>
+           <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-deli-botanical font-semibold mt-2">
              Special seasonal selection
            </p>
         </div>
 
         <Link
           to="/shop"
-          className="font-sans text-[10px] uppercase tracking-widest border-b border-deli-charcoal pb-1 hover:text-deli-red hover:border-deli-red transition-colors"
+          className="font-sans text-[10px] uppercase tracking-widest border-b border-deli-botanical text-deli-botanical pb-1 hover:text-deli-red hover:border-deli-red transition-colors font-bold"
         >
           View All
         </Link>

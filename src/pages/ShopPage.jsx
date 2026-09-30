@@ -43,12 +43,18 @@ export default function ShopPage() {
     <div className="px-4 md:px-10 py-10 max-w-7xl mx-auto">
       {/* Header Section */}
       <header className="mb-12 text-center md:text-left">
-        <h1 className="font-display text-4xl md:text-6xl uppercase mb-4 tracking-tighter">
+        <h1 className="font-display text-4xl md:text-6xl uppercase mb-4 tracking-tighter text-deli-botanical">
           The Collection
         </h1>
-        <p className="font-sans text-lg uppercase tracking-[0.3em] text-deli-charcoal/40">
+        <p className="font-sans text-sm md:text-base uppercase tracking-[0.25em] text-deli-botanical font-semibold">
           Sourced from the fertile soils of Uganda
         </p>
+        <blockquote className="my-10 border-l-4 border-deli-red pl-6 py-6 text-left italic font-sans text-lg md:text-xl text-deli-charcoal/90 bg-white/80 rounded-r-3xl shadow-sm">
+          <span className="font-sans text-xs not-italic uppercase tracking-[0.2em] font-bold text-deli-red block mb-2">
+            Our Products, Our Promise
+          </span>
+          Green Deli is developing a diverse portfolio of value-added food products inspired by Uganda's agricultural resources. The portfolio is being developed progressively, with ongoing products listed first and new product categories introduced as production and distribution capacity grows.
+        </blockquote>
       </header>
 
       <div className="flex flex-col md:flex-row gap-10">
@@ -59,10 +65,10 @@ export default function ShopPage() {
               <button
                 key={tab}
                 onClick={() => handleCategoryChange(tab)}
-                className={`whitespace-nowrap font-sans text-[10px] uppercase tracking-[0.2em] font-bold pb-1 transition-all text-left
+                className={`whitespace-nowrap font-sans text-[11px] uppercase tracking-[0.2em] font-bold pb-1 transition-all text-left
                   ${activeCategory === tab 
                     ? 'text-deli-red border-b-2 border-deli-red' 
-                    : 'text-deli-charcoal/30 border-b-2 border-transparent hover:text-deli-charcoal'
+                    : 'text-deli-botanical/70 border-b-2 border-transparent hover:text-deli-botanical'
                   }`}
               >
                 {tab}
@@ -72,23 +78,23 @@ export default function ShopPage() {
           
           {/* Desktop Only: Fully Functional Filters */}
           <div className="hidden md:block mt-12 pt-12 border-t border-deli-charcoal/10">
-            <h4 className="font-sans text-[10px] uppercase tracking-widest font-bold mb-6">Filter By</h4>
+            <h4 className="font-sans text-[11px] uppercase tracking-widest font-bold text-deli-botanical mb-6">Filter By</h4>
             <div className="flex flex-col gap-4">
-              <label className="flex items-center gap-3 font-sans text-[10px] uppercase tracking-widest cursor-pointer opacity-60 hover:opacity-100 transition-opacity">
+              <label className="flex items-center gap-3 font-sans text-[11px] uppercase tracking-widest cursor-pointer text-deli-botanical font-semibold hover:text-deli-charcoal transition-colors">
                 <input 
                   type="checkbox" 
                   checked={organicOnly}
                   onChange={(e) => setOrganicOnly(e.target.checked)}
-                  className="accent-deli-red h-3 w-3 rounded border-deli-charcoal/10 focus:ring-0 cursor-pointer" 
+                  className="accent-deli-red h-3.5 w-3.5 rounded border-deli-charcoal/20 focus:ring-0 cursor-pointer" 
                 /> 
                 Single Origin
               </label>
-              <label className="flex items-center gap-3 font-sans text-[10px] uppercase tracking-widest cursor-pointer opacity-60 hover:opacity-100 transition-opacity">
+              <label className="flex items-center gap-3 font-sans text-[11px] uppercase tracking-widest cursor-pointer text-deli-botanical font-semibold hover:text-deli-charcoal transition-colors">
                 <input 
                   type="checkbox" 
                   checked={highHeat}
                   onChange={(e) => setHighHeat(e.target.checked)}
-                  className="accent-deli-red h-3 w-3 rounded border-deli-charcoal/10 focus:ring-0 cursor-pointer" 
+                  className="accent-deli-red h-3.5 w-3.5 rounded border-deli-charcoal/20 focus:ring-0 cursor-pointer" 
                 /> 
                 High Heat
               </label>

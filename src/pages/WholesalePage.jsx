@@ -30,12 +30,12 @@ export default function WholesalePage() {
           >
             <Badge variant="hot" className="mb-4">B2B Partnerships</Badge>
             
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl uppercase leading-[1.05] text-deli-charcoal mb-6">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl uppercase leading-[1.05] text-deli-botanical mb-6">
               Spice the <br /> 
               <span className="text-deli-red">Hospitality</span> Sector
             </h1>
             
-            <p className="font-sans text-base sm:text-lg text-deli-charcoal/70 leading-relaxed tracking-wide mb-8 max-w-lg">
+            <p className="font-sans text-base sm:text-lg text-deli-charcoal/80 leading-relaxed tracking-wide mb-8 max-w-lg">
               Supplying Uganda's top chefs, lodges, and retailers with the most vibrant, 
               biologically active botanicals from the region.
             </p>
@@ -44,12 +44,12 @@ export default function WholesalePage() {
             <div className="flex items-center gap-6 border-t border-deli-charcoal/10 pt-6 w-full">
               <div>
                 <span className="font-display text-2xl text-deli-red block">100%</span>
-                <span className="font-sans text-[10px] uppercase tracking-widest text-deli-charcoal/60">Pure Sourcing</span>
+                <span className="font-sans text-[10px] uppercase tracking-widest text-deli-botanical font-semibold">Pure Sourcing</span>
               </div>
               <div className="h-8 w-[1px] bg-deli-charcoal/10" />
               <div>
-                <span className="font-display text-2xl text-deli-charcoal block">Bulk</span>
-                <span className="font-sans text-[10px] uppercase tracking-widest text-deli-charcoal/60">Tier Pricing</span>
+                <span className="font-display text-2xl text-deli-botanical block">Bulk</span>
+                <span className="font-sans text-[10px] uppercase tracking-widest text-deli-botanical font-semibold">Tier Pricing</span>
               </div>
             </div>
           </motion.div>

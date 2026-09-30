@@ -26,14 +26,14 @@ export default function Footer({ onOpenFeedback }) {
           {/* Navigation Links */}
           <div className="grid grid-cols-2 gap-8 col-span-1 md:col-span-2">
             <div>
-              <h3 className="font-sans text-sm font-bold uppercase tracking-[0.2em] mb-6 text-deli-red">
+              <h3 className="font-sans text-sm font-bold uppercase tracking-[0.2em] mb-6 text-deli-orange">
                 Shop
               </h3>
               <ul className="flex flex-col gap-4 font-sans text-[11px] uppercase tracking-widest opacity-80">
                 <li>
                   <Link
                     to="/shop"
-                    className="hover:text-deli-red transition-colors"
+                    className="hover:text-deli-gold transition-colors"
                   >
                     All Spices
                   </Link>
@@ -41,7 +41,7 @@ export default function Footer({ onOpenFeedback }) {
                 <li>
                   <Link
                     to="/shop"
-                    className="hover:text-deli-red transition-colors"
+                    className="hover:text-deli-gold transition-colors"
                   >
                     Chili Oils
                   </Link>
@@ -49,7 +49,7 @@ export default function Footer({ onOpenFeedback }) {
                 <li>
                   <Link
                     to="/shop"
-                    className="hover:text-deli-red transition-colors"
+                    className="hover:text-deli-gold transition-colors"
                   >
                     Apothecary
                   </Link>
@@ -57,7 +57,7 @@ export default function Footer({ onOpenFeedback }) {
                 <li>
                   <Link
                     to="/shop"
-                    className="hover:text-deli-red transition-colors"
+                    className="hover:text-deli-gold transition-colors"
                   >
                     Gift Sets
                   </Link>
@@ -65,14 +65,14 @@ export default function Footer({ onOpenFeedback }) {
               </ul>
             </div>
             <div>
-              <h3 className="font-sans text-sm font-bold uppercase tracking-[0.2em] mb-6 text-deli-red">
+              <h3 className="font-sans text-sm font-bold uppercase tracking-[0.2em] mb-6 text-deli-orange">
                 Company
               </h3>
               <ul className="flex flex-col gap-4 font-sans text-[11px] uppercase tracking-widest opacity-80">
                 <li>
                   <Link
                     to="/story"
-                    className="hover:text-deli-red transition-colors"
+                    className="hover:text-deli-gold transition-colors"
                   >
                     Our Story
                   </Link>
@@ -80,7 +80,7 @@ export default function Footer({ onOpenFeedback }) {
                 <li>
                   <Link
                     to="/gallery"
-                    className="hover:text-deli-red transition-colors font-bold"
+                    className="hover:text-deli-gold transition-colors font-bold"
                   >
                     Gallery
                   </Link>
@@ -88,7 +88,7 @@ export default function Footer({ onOpenFeedback }) {
                 <li>
                   <Link
                     to="/wholesale"
-                    className="hover:text-deli-red transition-colors"
+                    className="hover:text-deli-gold transition-colors"
                   >
                     Wholesale
                   </Link>
@@ -96,7 +96,7 @@ export default function Footer({ onOpenFeedback }) {
                 <li>
                   <Link
                     to="/contact"
-                    className="hover:text-deli-red transition-colors"
+                    className="hover:text-deli-gold transition-colors"
                   >
                     Contact
                   </Link>
@@ -107,13 +107,13 @@ export default function Footer({ onOpenFeedback }) {
 
           {/* Feedback & Connect */}
           <div className="col-span-1">
-            <h3 className="font-sans text-sm font-bold uppercase tracking-[0.2em] mb-6 text-deli-red">
+            <h3 className="font-sans text-sm font-bold uppercase tracking-[0.2em] mb-6 text-deli-orange">
               Connect
             </h3>
 
             <div className="mb-8 space-y-2">
-              <p className="font-sans text-[10px] uppercase tracking-widest opacity-60">
-                <span className="block font-bold text-deli-red mb-1">
+              <p className="font-sans text-[10px] uppercase tracking-widest opacity-80">
+                <span className="block font-bold text-deli-gold mb-1">
                   Contact Lines:
                 </span>
                 0772 502605 | 0790 117910 <br />
@@ -121,7 +121,7 @@ export default function Footer({ onOpenFeedback }) {
               </p>
               <a
                 href="mailto:greendeli525@gmail.com"
-                className="font-sans text-[10px] uppercase tracking-widest opacity-80 hover:text-deli-red transition-colors"
+                className="font-sans text-[10px] uppercase tracking-widest opacity-80 hover:text-deli-gold transition-colors"
               >
                 sales@greendelispicesug.com
                 admin@greendelispicesug.com
@@ -131,15 +131,15 @@ export default function Footer({ onOpenFeedback }) {
             {/* wired to FeedbackModal.jsx via onOpenFeedback prop */}
             <button
               onClick={onOpenFeedback}
-              className="w-full mb-8 bg-white/5 border border-white/10 hover:border-deli-red/50 p-6 rounded-2xl text-left group transition-all active:scale-95"
+              className="w-full mb-8 bg-white/5 border border-white/10 hover:border-deli-orange/50 p-6 rounded-2xl text-left group transition-all active:scale-95"
             >
-              <span className="block font-sans text-[9px] uppercase tracking-[0.2em] text-deli-red font-bold mb-1">
+              <span className="block font-sans text-[9px] uppercase tracking-[0.2em] text-deli-orange font-bold mb-1">
                 Talk to us
               </span>
-              <span className="block font-display text-xl uppercase leading-tight group-hover:text-deli-red transition-colors">
+              <span className="block font-display text-xl uppercase leading-tight group-hover:text-deli-gold transition-colors">
                 any suggestions or feedback?
               </span>
-              <span className="block font-sans text-[8px] uppercase tracking-widest opacity-40 mt-3 border-b border-white/20 inline-block">
+              <span className="block font-sans text-[8px] uppercase tracking-widest opacity-60 mt-3 border-b border-white/20 inline-block">
                 Share your thoughts
               </span>
             </button>

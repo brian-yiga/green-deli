@@ -42,13 +42,13 @@ export default function ContactPage() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-16">
       <header className="text-center mb-16">
-        <span className="font-sans text-sm uppercase tracking-[0.4em] text-deli-charcoal/40 mb-4 block">
+        <span className="font-sans text-sm uppercase tracking-[0.4em] text-deli-orange font-bold mb-4 block">
           Get in Touch
         </span>
-        <h1 className="font-display text-4xl md:text-6xl uppercase leading-none">
+        <h1 className="font-display text-4xl md:text-6xl uppercase leading-none text-deli-botanical">
           Connect with our <span className="text-deli-red italic">Atelier</span>
         </h1>
-        <p className="font-sans text-lg text-deli-charcoal/60 mt-6 max-w-2xl mx-auto leading-relaxed">
+        <p className="font-sans text-lg text-deli-charcoal/80 mt-6 max-w-2xl mx-auto leading-relaxed">
           Whether you are an artisanal chef seeking a wholesale partnership or a
           home cook with a spice query, we are here to assist you.
         </p>
