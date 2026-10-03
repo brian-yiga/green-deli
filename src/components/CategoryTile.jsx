@@ -1,58 +1,96 @@
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 
-const MotionLink = motion.create(Link);
+export default function CategoryTile({ title, image, video, itemCount }) {
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
 
-export default function CategoryTile({ title, image, itemCount }) {
-  // Generate URL-friendly path from title
-  const categoryPath = title.toLowerCase().replace(/\s+/g, '-');
+  // Click handler to toggle sound on/off
+  const handleToggleSound = () => {
+    if (video && videoRef.current) {
+      const newMutedState = !isMuted;
+      videoRef.current.muted = newMutedState;
+      setIsMuted(newMutedState);
+    }
+  };
 
   return (
-    <MotionLink 
-      to={`/shop?category=${categoryPath}`}
-      whileHover={{ y: -8, scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+    <motion.div 
+      onClick={handleToggleSound}
+      whileHover={{ y: -6, scale: 1.02 }}
+      whileTap={{ scale: 0.97 }}
       transition={{ type: "spring", stiffness: 300, damping: 22 }}
-      /* Reduced height on mobile: aspect-[4/3] mobile, aspect-square on tablet/desktop */
-      className="group relative aspect-[4/3] overflow-hidden bg-deli-charcoal rounded-[1rem] block shadow-xl border border-white/5 hover:border-deli-gold/40 hover:shadow-[0_25px_50px_rgba(0,0,0,0.45)] transition-colors duration-500"
+      className="group relative aspect-[3/4] overflow-hidden bg-deli-charcoal rounded-[1.25rem] md:rounded-[1.5rem] block shadow-xl border border-white/10 hover:border-deli-gold/50 hover:shadow-[0_25px_50px_rgba(0,0,0,0.45)] transition-colors duration-500 cursor-pointer select-none"
     >
-      {/* Background Image with Overlay */}
-      <img 
-        src={image} 
-        alt={title} 
-        className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-110 group-hover:opacity-55 transition-all duration-700 ease-out"
-      />
+      {/* Background Video with Poster Fallback */}
+      {video ? (
+        <video 
+          ref={videoRef}
+          src={video}
+          poster={image}
+          autoPlay
+          loop
+          muted={isMuted}
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:scale-105 group-hover:opacity-75 transition-all duration-700 ease-out pointer-events-none"
+        />
+      ) : (
+        <img 
+          src={image} 
+          alt={title} 
+          className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:scale-105 group-hover:opacity-75 transition-all duration-700 ease-out"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 300 400'><rect width='100%' height='100%' fill='%23283328'/><text x='50%' y='50%' fill='%23EFE9DF' font-family='sans-serif' font-size='14' text-anchor='middle'>Video Placeholder</text></svg>";
+          }}
+        />
+      )}
       
       {/* Dynamic Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-deli-charcoal via-deli-charcoal/25 to-transparent transition-opacity duration-500 group-hover:opacity-90" />
+      <div className="absolute inset-0 bg-gradient-to-t from-deli-charcoal/90 via-deli-charcoal/30 to-transparent transition-opacity duration-500 group-hover:opacity-95" />
 
-      {/* Floating Top-Right Action Pill */}
-      <div className="absolute top-4 right-4 md:top-6 md:right-6 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-60 group-hover:opacity-100 group-hover:bg-deli-red group-hover:border-deli-red transition-all duration-300 transform group-hover:rotate-45 shadow-md">
-        <svg width="12" height="12" className="md:w-3.5 md:h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M7 17L17 7M17 7H7M17 7V17" />
-        </svg>
-      </div>
+      {/* Audio Status Pill (Top Right) */}
+      {video && (
+        <div className="absolute top-3 right-3 md:top-4 md:right-4 z-10 p-2 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-white group-hover:bg-deli-red group-hover:border-deli-red transition-all duration-300 shadow-md flex items-center gap-1.5 px-3">
+          {isMuted ? (
+            <>
+              {/* Muted Icon */}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" />
+              </svg>
+              <span className="text-[10px] font-sans font-bold uppercase tracking-wider">Tap Sound</span>
+            </>
+          ) : (
+            <>
+              {/* Sound On Icon */}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+              </svg>
+              <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-deli-gold">Audio On</span>
+            </>
+          )}
+        </div>
+      )}
 
-      {/* Text Content */}
-      <div className="absolute bottom-5 left-5 right-5 md:bottom-8 md:left-8 md:right-8">
-        <span className="text-[11px] md:text-[13px] font-sans font-bold uppercase tracking-[0.2em] text-deli-gold mb-1 md:mb-2 block transform transition-transform duration-500 group-hover:-translate-y-1">
-          {itemCount} Products
-        </span>
-        <h3 className="font-display text-2xl sm:text-3xl md:text-5xl text-white uppercase leading-none mb-2 md:mb-4 tracking-tight drop-shadow-sm">
+      {/* Card Text Content */}
+      <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6">
+        {itemCount && (
+          <span className="text-[10px] md:text-[12px] font-sans font-bold uppercase tracking-[0.2em] text-deli-gold mb-1 block transform transition-transform duration-500 group-hover:-translate-y-1">
+            {itemCount}
+          </span>
+        )}
+        <h3 className="font-display text-2xl sm:text-3xl md:text-4xl text-white uppercase leading-none mb-2 md:mb-3 tracking-tight drop-shadow-sm">
           {title}
         </h3>
         
-        {/* Animated "Explore Collection" link */}
-        <div className="flex items-center gap-2 md:gap-3 text-white/50 group-hover:text-white transition-all duration-500 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
-          <span className="text-[9px] md:text-[11px] uppercase tracking-[0.3em] font-sans font-bold">
-            Explore Collection
+        {/* Visual Callout for Audio Control */}
+        <div className="flex items-center gap-2 text-white/80 group-hover:text-white transition-all duration-500 transform translate-y-1 md:translate-y-2 opacity-90 md:opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+          <span className="text-[9px] md:text-[10px] uppercase tracking-[0.25em] font-sans font-bold">
+            {isMuted ? "Tap to Play Sound" : "Tap to Mute"}
           </span>
-          <div className="w-6 md:w-8 h-[1px] bg-deli-red transform origin-left transition-transform duration-500 scale-x-0 group-hover:scale-x-100" />
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="transform transition-transform duration-500 group-hover:translate-x-1">
-            <path d="M5 12h14M12 5l7 7-7 7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <div className="w-5 md:w-6 h-[1px] bg-deli-red transform origin-left transition-transform duration-500 scale-x-100 md:scale-x-0 group-hover:scale-x-100" />
         </div>
       </div>
-    </MotionLink>
+    </motion.div>
   );
 }
