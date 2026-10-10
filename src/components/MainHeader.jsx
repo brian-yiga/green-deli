@@ -149,6 +149,33 @@ const MainHeader = () => {
                 </Link>
               ))}
             </nav>
+
+            {/* Contact Email Inquiries (Strictly Lowercase) */}
+            <div className="mt-8 pt-6 border-t border-deli-charcoal/10 space-y-2">
+              <span className="block font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-deli-orange">
+                Quick Inquiries
+              </span>
+              <div className="space-y-1">
+                <a
+                  href="mailto:sales@greendelispicesug.com"
+                  className="font-sans text-[11px] lowercase tracking-normal text-deli-charcoal/80 hover:text-deli-red block"
+                >
+                  sales@greendelispicesug.com
+                </a>
+                <a
+                  href="mailto:admin@greendelispicesug.com"
+                  className="font-sans text-[11px] lowercase tracking-normal text-deli-charcoal/80 hover:text-deli-red block"
+                >
+                  admin@greendelispicesug.com
+                </a>
+                <a
+                  href="mailto:greendeli525@gmail.com"
+                  className="font-sans text-[11px] lowercase tracking-normal text-deli-charcoal/80 hover:text-deli-red block"
+                >
+                  greendeli525@gmail.com
+                </a>
+              </div>
+            </div>
           </aside>
         </div>
       )}

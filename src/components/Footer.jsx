@@ -111,21 +111,44 @@ export default function Footer({ onOpenFeedback }) {
               Connect
             </h3>
 
-            <div className="mb-8 space-y-2">
+            <div className="mb-8 space-y-3">
               <p className="font-sans text-[10px] uppercase tracking-widest opacity-80">
                 <span className="block font-bold text-deli-gold mb-1">
                   Contact Lines:
                 </span>
-                0772 502605 | 0790 117910 <br />
-                0749 076687 | 0701 602605
+                0792171150 | 0740010845 | 0772502605
               </p>
-              <a
-                href="mailto:greendeli525@gmail.com"
-                className="font-sans text-[10px] uppercase tracking-widest opacity-80 hover:text-deli-gold transition-colors"
-              >
-                sales@greendelispicesug.com
-                admin@greendelispicesug.com
-              </a>
+              <div>
+                <span className="block font-bold text-deli-gold text-[10px] uppercase tracking-widest mb-1.5">
+                  Email Inquiries:
+                </span>
+                <ul className="space-y-1">
+                  <li>
+                    <a
+                      href="mailto:sales@greendelispicesug.com"
+                      className="font-sans text-xs lowercase tracking-normal opacity-85 hover:opacity-100 hover:text-deli-gold transition-colors block"
+                    >
+                      sales@greendelispicesug.com
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="mailto:admin@greendelispicesug.com"
+                      className="font-sans text-xs lowercase tracking-normal opacity-85 hover:opacity-100 hover:text-deli-gold transition-colors block"
+                    >
+                      admin@greendelispicesug.com
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="mailto:greendeli525@gmail.com"
+                      className="font-sans text-xs lowercase tracking-normal opacity-85 hover:opacity-100 hover:text-deli-gold transition-colors block"
+                    >
+                      greendeli525@gmail.com
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             {/* wired to FeedbackModal.jsx via onOpenFeedback prop */}

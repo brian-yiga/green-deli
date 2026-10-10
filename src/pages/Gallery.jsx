@@ -1,29 +1,6 @@
 import React from 'react';
-
-// Lugogo Independence Trade Show Media Assets
-const tradeShowPhotos = [
-  '/assets/uma-trade-show/uma1.jpeg',
-  '/assets/uma-trade-show/uma2.jpeg',
-  '/assets/uma-trade-show/uma3.jpeg',
-  '/assets/uma-trade-show/uma4.jpeg',
-  '/assets/uma-trade-show/uma5.jpeg',
-  '/assets/uma-trade-show/uma6.jpeg',
-  '/assets/uma-trade-show/uma7.jpeg',
-  '/assets/uma-trade-show/uma8.jpeg',
-];
-
-const tradeShowVideos = [
-  {
-    src: '/assets/uma-trade-show/uma-video.mp4',
-    poster: '/video-thumbs/uma-video-thumb.png',
-    title: 'Exhibition Booth Showcase',
-  },
-  {
-    src: '/assets/uma-trade-show/uma-video2.mp4',
-    poster: '/video-thumbs/uma-video-thumb2.png',
-    title: 'Live Product Demos & Customer Interactions',
-  },
-];
+import VideoFrame from '../components/VideoFrame';
+import { tradeShowGallery } from '../data/eventMedia';
 
 export default function Gallery() {
   return (
@@ -58,7 +35,7 @@ export default function Gallery() {
 
         <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
           <a
-            href="https://www.instagram.com/greendelispices?igsi=MXhjZTlkNmZ3N3Y4ag=="
+            href={tradeShowGallery.socialLinks.instagram}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-3 bg-white/10 hover:bg-deli-red px-6 py-3.5 rounded-2xl text-xs font-bold uppercase tracking-widest transition-all border border-white/10 hover:border-deli-red"
@@ -67,7 +44,7 @@ export default function Gallery() {
             Instagram
           </a>
           <a
-            href="https://www.tiktok.com/@Greendeli256"
+            href={tradeShowGallery.socialLinks.tiktok}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-3 bg-white/10 hover:bg-deli-red px-6 py-3.5 rounded-2xl text-xs font-bold uppercase tracking-widest transition-all border border-white/10 hover:border-deli-red"
@@ -81,56 +58,50 @@ export default function Gallery() {
       {/* Press & Feature Articles Grid */}
       <div className="space-y-12">
         
-        {/* NEW SECTION: Independence Trade Show at Lugogo Grounds */}
-        <div className="bg-gradient-to-br from-amber-500/10 via-deli-cream/60 to-red-500/10 border-2 border-deli-red/30 rounded-3xl p-6 md:p-10 shadow-md">
+        {/* DEDICATED SECTION: Independence Trade Show 2026 */}
+        <section 
+          id="trade-show-section"
+          className="bg-gradient-to-br from-amber-500/10 via-deli-cream/60 to-red-500/10 border-2 border-deli-red/30 rounded-3xl p-6 md:p-10 shadow-md scroll-mt-24"
+        >
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
             <div className="flex items-center gap-3">
               <span className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] bg-deli-red text-white px-3 py-1 rounded-full">
-                Featured Event
+                {tradeShowGallery.badge}
               </span>
               <span className="font-sans text-xs text-deli-charcoal/70 uppercase tracking-wider font-semibold">
-                Lugogo Show Grounds • Kampala
+                {tradeShowGallery.location}
               </span>
             </div>
             <span className="font-sans text-xs text-deli-red font-bold uppercase tracking-wider">
-              Independence Trade Show Week
+              Uganda Manufacturers Association (UMA) Grounds
             </span>
           </div>
 
           <h2 className="font-display text-3xl md:text-5xl uppercase text-deli-charcoal leading-snug mb-3">
-            Experience Green Deli Live at Lugogo!
+            {tradeShowGallery.sectionTitle}
           </h2>
 
           <p className="font-sans text-xs md:text-sm text-deli-charcoal/80 leading-relaxed uppercase tracking-wider mb-8 max-w-3xl">
-            Highlights and live footage from our booth at the Lugogo Trade Show Grounds. Check out our photo gallery and video reels showcasing customer tasting sessions, live product demos, and our full organic spice lineup.
+            {tradeShowGallery.description}
           </p>
 
           {/* Videos Grid */}
-          <div className="mb-8">
+          <div className="mb-10">
             <h3 className="font-sans text-xs font-bold uppercase tracking-[0.15em] text-deli-botanical mb-4">
               Event Video Reels
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {tradeShowVideos.map((video, idx) => (
-                <div key={idx} className="bg-black rounded-2xl overflow-hidden border border-deli-charcoal/10 shadow-md">
-                  <div className="aspect-[9/16] max-h-[460px] mx-auto relative">
-                    <video 
-                      controls 
-                      playsInline
-                      preload="metadata"
-                      poster={video.poster || undefined}
-                      className="w-full h-full object-cover"
-                    >
-                      <source src={video.src} type="video/mp4" />
-                      Your browser does not support video playback.
-                    </video>
-                  </div>
-                  <div className="p-3 bg-deli-charcoal/90 text-center">
-                    <p className="font-sans text-xs text-deli-cream uppercase tracking-wider font-medium">
-                      {video.title}
-                    </p>
-                  </div>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {tradeShowGallery.videos.map((video) => (
+                <VideoFrame
+                  key={video.id}
+                  src={video.src}
+                  poster={video.poster}
+                  title={video.title}
+                  subtitle={video.badge}
+                  aspectRatio="aspect-[9/16]"
+                  maxHeightClass="max-h-[500px]"
+                  objectFit="object-contain"
+                />
               ))}
             </div>
           </div>
@@ -141,20 +112,24 @@ export default function Gallery() {
               Trade Show Highlights Photo Gallery
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-              {tradeShowPhotos.map((photo, idx) => (
+              {tradeShowGallery.photos.map((photo, idx) => (
                 <div 
-                  key={idx} 
+                  key={photo.id || idx} 
                   className="relative aspect-square rounded-2xl overflow-hidden bg-deli-charcoal/5 border border-deli-charcoal/10 shadow-sm group"
                 >
                   <img 
-                    src={photo} 
-                    alt={`Independence Trade Show Photo ${idx + 1}`}
+                    src={photo.src} 
+                    alt={photo.alt || `Independence Trade Show Photo ${idx + 1}`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 300 300'><rect width='100%' height='100%' fill='%23F4EFE6'/><text x='50%' y='48%' fill='%23666' font-family='sans-serif' font-size='12' font-weight='bold' text-anchor='middle'>PHOTO PLACEHOLDER</text><text x='50%' y='58%' fill='%23999' font-family='sans-serif' font-size='10' text-anchor='middle'>#${idx + 1}</text></svg>`;
+                    }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3 pointer-events-none">
                     <span className="text-[10px] text-white font-sans uppercase tracking-widest font-bold">
-                      Photo #{idx + 1}
+                      {photo.alt || `Photo #${idx + 1}`}
                     </span>
                   </div>
                 </div>
@@ -169,7 +144,7 @@ export default function Gallery() {
             </p>
             <div className="flex gap-4">
               <a 
-                href="https://www.tiktok.com/@Greendeli256"
+                href={tradeShowGallery.socialLinks.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-[0.15em] text-deli-red hover:underline"
@@ -181,7 +156,7 @@ export default function Gallery() {
                 </svg>
               </a>
               <a 
-                href="https://www.instagram.com/greendelispices?igsi=MXhjZTlkNmZ3N3Y4ag=="
+                href={tradeShowGallery.socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-[0.15em] text-deli-red hover:underline"
@@ -194,7 +169,7 @@ export default function Gallery() {
               </a>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Article 1: Grill Wars Edition IX Co-Sponsorship */}
         <div className="bg-deli-cream/50 border border-deli-charcoal/10 rounded-2xl p-6 md:p-8 hover:border-deli-red/40 transition-all duration-300 shadow-sm group">

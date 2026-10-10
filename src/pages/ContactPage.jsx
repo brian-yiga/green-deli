@@ -213,10 +213,57 @@ export default function ContactPage() {
                 href="https://maps.app.goo.gl/3Xz1U6tXpLdG9D2H9" 
                 target="_blank"
                 rel="noreferrer"
-                className="font-sans text-[10px] font-bold text-deli-red uppercase tracking-widest flex items-center gap-2 hover:gap-3 transition-all"
+                className="font-sans text-[10px] font-bold text-deli-red uppercase tracking-widest flex items-center gap-2 hover:gap-3 transition-all mb-6"
               >
                 Get Directions <span>→</span>
               </a>
+
+              {/* Direct Email Inquiries (Strictly Lowercase) */}
+              <div className="pt-6 border-t border-deli-charcoal/10">
+                <span className="block font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-deli-orange mb-3">
+                  Direct Email Inquiries
+                </span>
+                <ul className="space-y-2">
+                  <li>
+                    <a
+                      href="mailto:sales@greendelispicesug.com"
+                      className="font-sans text-xs lowercase tracking-normal text-deli-charcoal hover:text-deli-red font-medium transition-colors flex items-center gap-2"
+                    >
+                      <span className="text-[10px] font-sans font-bold uppercase text-deli-charcoal/50 w-14">Sales:</span>
+                      sales@greendelispicesug.com
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="mailto:admin@greendelispicesug.com"
+                      className="font-sans text-xs lowercase tracking-normal text-deli-charcoal hover:text-deli-red font-medium transition-colors flex items-center gap-2"
+                    >
+                      <span className="text-[10px] font-sans font-bold uppercase text-deli-charcoal/50 w-14">Admin:</span>
+                      admin@greendelispicesug.com
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="mailto:greendeli525@gmail.com"
+                      className="font-sans text-xs lowercase tracking-normal text-deli-charcoal hover:text-deli-red font-medium transition-colors flex items-center gap-2"
+                    >
+                      <span className="text-[10px] font-sans font-bold uppercase text-deli-charcoal/50 w-14">General:</span>
+                      greendeli525@gmail.com
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Direct Telephone Lines */}
+              <div className="pt-4 border-t border-deli-charcoal/10 mt-4">
+                <span className="block font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-deli-orange mb-1.5">
+                  Direct Telephone Lines
+                </span>
+                <p className="font-sans text-xs text-deli-charcoal/80 leading-relaxed">
+                  0772 502605 | 0790 117910 <br />
+                  0749 076687 | 0701 602605
+                </p>
+              </div>
             </div>
           </div>
 
