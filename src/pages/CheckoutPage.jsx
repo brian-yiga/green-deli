@@ -8,6 +8,8 @@ export default function CheckoutPage() {
   useDocumentTitle('Checkout | Green Deli');
   const { cart, clearCart } = useCart();
   const [orderStatus, setOrderStatus] = useState('idle');
+  const [selectedLine, setSelectedLine] = useState("256772502605");
+  const [lastOrderMessage, setLastOrderMessage] = useState("");
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -35,25 +37,46 @@ export default function CheckoutPage() {
       `*Items Ordered:*%0A${itemsList}%0A%0A` +
       `_I would like to confirm my order and arrange delivery context._`;
 
-    const businessNumber = "256772502605"; 
+    setLastOrderMessage(message);
 
     setTimeout(() => {
-      window.open(`https://wa.me/${businessNumber}?text=${message}`, '_blank');
+      window.open(`https://wa.me/${selectedLine}?text=${message}`, '_blank');
       setOrderStatus('success');
       clearCart();
     }, 1500);
   };
 
   if (orderStatus === 'success') {
+    const alternateNumber = selectedLine === "256772502605" ? "256792171150" : "256772502605";
+    const alternateLabel = selectedLine === "256772502605" ? "+256 792 171150 (Line 2)" : "+256 772 502605 (Line 1)";
+
     return (
       <div className="h-[80vh] flex flex-col items-center justify-center text-center px-6 animate-in fade-in zoom-in duration-500">
         <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
         </div>
         <h2 className="font-display text-4xl uppercase mb-4">Order Sent!</h2>
-        <p className="font-sans text-sm opacity-60 max-w-xs mb-8">
+        <p className="font-sans text-sm opacity-60 max-w-sm mb-6">
           Your order has been sent via WhatsApp. We will reply shortly to confirm your delivery slot.
         </p>
+
+        {lastOrderMessage && (
+          <div className="mb-8 p-5 bg-deli-charcoal/5 rounded-2xl max-w-sm text-center border border-deli-charcoal/10">
+            <span className="block font-sans text-[10px] uppercase tracking-wider font-bold text-deli-charcoal/60 mb-2">
+              Need urgent assistance or no response?
+            </span>
+            <a
+              href={`https://wa.me/${alternateNumber}?text=${lastOrderMessage}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white px-5 py-2.5 rounded-full font-sans text-[11px] font-bold uppercase tracking-wider hover:bg-[#20ba59] transition-colors"
+            >
+              <img src="/assets/whatsapp-logo.png" alt="WhatsApp" className="w-4 h-4 object-contain brightness-0 invert" />
+              Notify Alternate Line: {alternateLabel}
+            </a>
+          </div>
+        )}
+
         <button onClick={() => window.location.href = '/'} className="text-deli-red font-sans text-[10px] uppercase tracking-widest font-bold border-b border-deli-red pb-1">
           Back to Apothecary
         </button>
@@ -135,6 +158,43 @@ export default function CheckoutPage() {
                 placeholder="e.g. Muyenga, Tank Hill Rd" 
                 className="bg-white border border-deli-charcoal/10 rounded-xl px-4 py-3 outline-none focus:border-deli-red transition-colors" 
               />
+            </div>
+
+            <div className="mt-4">
+              <h3 className="font-sans text-[10px] uppercase tracking-[0.2em] font-bold mb-3">
+                Send Order To (WhatsApp Line)
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <label className={`flex items-center gap-3 p-3.5 border rounded-2xl cursor-pointer transition-all ${selectedLine === "256772502605" ? "border-deli-red bg-deli-red/5 text-deli-charcoal" : "border-deli-charcoal/10 bg-white text-deli-charcoal/70"}`}>
+                  <input 
+                    type="radio" 
+                    name="whatsappLine" 
+                    value="256772502605" 
+                    checked={selectedLine === "256772502605"} 
+                    onChange={() => setSelectedLine("256772502605")} 
+                    className="accent-deli-red" 
+                  />
+                  <div>
+                    <span className="block font-sans text-xs font-bold">Line 1 (Main)</span>
+                    <span className="block font-sans text-[10px] opacity-70">+256 772 502605</span>
+                  </div>
+                </label>
+
+                <label className={`flex items-center gap-3 p-3.5 border rounded-2xl cursor-pointer transition-all ${selectedLine === "256792171150" ? "border-deli-red bg-deli-red/5 text-deli-charcoal" : "border-deli-charcoal/10 bg-white text-deli-charcoal/70"}`}>
+                  <input 
+                    type="radio" 
+                    name="whatsappLine" 
+                    value="256792171150" 
+                    checked={selectedLine === "256792171150"} 
+                    onChange={() => setSelectedLine("256792171150")} 
+                    className="accent-deli-red" 
+                  />
+                  <div>
+                    <span className="block font-sans text-xs font-bold">Line 2 (Alternate)</span>
+                    <span className="block font-sans text-[10px] opacity-70">+256 792 171150</span>
+                  </div>
+                </label>
+              </div>
             </div>
 
             <div className="mt-4">

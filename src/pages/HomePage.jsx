@@ -13,7 +13,10 @@ import RecipeOfTheWeek from "../components/RecipeOfTheWeek";
 import PromoBanner from "../components/PromoBanner";
 
 // Central dynamic media configuration
-import { heroVideoHighlights, tradeShowFeaturedVideos } from "../data/eventMedia";
+import {
+  heroVideoHighlights,
+  tradeShowFeaturedVideos,
+} from "../data/eventMedia";
 
 export default function HomePage() {
   useDocumentTitle("Home");
@@ -45,9 +48,9 @@ export default function HomePage() {
         </div>
       </motion.section>
 
-      {/* 3. Sub-Hero Section: Independence Trade Show 2026 (Responsive 2-Column Video Grid) */}
+      {/* 3. Sub-Hero Section: Grill Wars Feature (Responsive 2-Column Grid: Flyer & Video) */}
       <motion.section
-        id="trade-show-feature"
+        id="grill-wars-feature"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -58,38 +61,55 @@ export default function HomePage() {
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto">
             <span className="inline-block bg-deli-red/10 text-deli-red text-xs font-semibold uppercase tracking-wider px-3.5 py-1 rounded-full mb-3 border border-deli-red/20">
-              Live Event Highlight • Lugogo Show Grounds
+              Upcoming Event Highlight • Grill Wars
             </span>
             <h2 className="text-2xl md:text-4xl font-bold text-gray-900 tracking-tight mb-3">
-              Fresh Flavors & Live Demos at the Independence Trade Show!
+              Seasoning the Flames at Grill Wars!
             </h2>
             <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-              Visit our booth at the Lugogo Show Grounds for the Independence
-              Trade Show week opposite Little Ritz! Watch live booth walkthroughs,
-              product demos, and discover our premium organic spice collection.
+              The trade show has wrapped up, and now Green Deli is bringing the
+              heat to Grill Wars! Catch the action, explore our premium spice
+              blends designed for the ultimate grill experience, and check out
+              the event details below.
             </p>
           </div>
 
-          {/* 2-Column Responsive Video Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto w-full">
-            {tradeShowFeaturedVideos.map((video) => (
-              <VideoFrame
-                key={video.id}
-                src={video.video}
-                poster={video.poster}
-                title={video.title}
-                subtitle={video.subtitle}
-                aspectRatio={video.aspectRatio || "aspect-[9/16]"}
-                maxHeightClass="max-h-[500px]"
-                objectFit="object-contain"
+          {/* 2-Column Responsive Grid: Flyer (Left) & Video Frame (Right) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto w-full items-center">
+            {/* Column 1: Event Flyer Card */}
+            <div className="relative rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-black aspect-[9/16] max-h-[500px] w-full flex flex-col justify-end group">
+              <img
+                src="/video-thumbs/grill-wars1.jpeg"
+                alt="Grill Wars Event Flyer"
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-            ))}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+              <div className="relative p-5 text-white z-10">
+                <span className="text-[10px] uppercase tracking-widest text-deli-gold font-bold block mb-1">
+                  Official Event Flyer
+                </span>
+                <h3 className="font-bold text-lg leading-snug">
+                  Grill Wars Showdown
+                </h3>
+              </div>
+            </div>
+
+            {/* Column 2: Video Frame */}
+            <VideoFrame
+              src="/category-videos/grill-wars1.mp4"
+              poster="/video-thumbs/grill-wars-thumb.png"
+              title="Grill Wars Action"
+              subtitle="Spice Up Your Grill Experience"
+              aspectRatio="aspect-[9/16]"
+              maxHeightClass="max-h-[500px]"
+              objectFit="object-contain"
+            />
           </div>
 
           {/* CTAs: Gallery & Social Media */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-2">
             <Link
-              to="/gallery#trade-show-section"
+              to="/gallery"
               className="inline-flex items-center justify-center px-6 py-3 bg-deli-red text-white font-medium rounded-lg shadow hover:bg-deli-red/90 transition-colors text-sm text-center"
             >
               View Full Photo & Video Gallery →
