@@ -16,6 +16,7 @@ import PromoBanner from "../components/PromoBanner";
 import {
   heroVideoHighlights,
   tradeShowFeaturedVideos,
+  octoberGrillWarsGallery,
 } from "../data/eventMedia";
 
 export default function HomePage() {
@@ -48,7 +49,7 @@ export default function HomePage() {
         </div>
       </motion.section>
 
-      {/* 3. Sub-Hero Section: Grill Wars Feature (Responsive 2-Column Grid: Flyer & Video) */}
+      {/* 3. Sub-Hero Section: October Grill Wars Highlights */}
       <motion.section
         id="grill-wars-feature"
         initial={{ opacity: 0, y: 20 }}
@@ -61,45 +62,47 @@ export default function HomePage() {
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto">
             <span className="inline-block bg-deli-red/10 text-deli-red text-xs font-semibold uppercase tracking-wider px-3.5 py-1 rounded-full mb-3 border border-deli-red/20">
-              Upcoming Event Highlight • Grill Wars
+              Event Highlights • October Grill Wars
             </span>
             <h2 className="text-2xl md:text-4xl font-bold text-gray-900 tracking-tight mb-3">
-              Seasoning the Flames at Grill Wars!
+              Flavors on Fire: October Grill Wars Highlights!
             </h2>
             <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-              The trade show has wrapped up, and now Green Deli is bringing the
-              heat to Grill Wars! Catch the action, explore our premium spice
-              blends designed for the ultimate grill experience, and check out
-              the event details below.
+              The October edition of Grill Wars took place last weekend, and Green Deli
+              brought the ultimate heat! Relive the live master grilling action, explore
+              our artisanal spice blends, and check out the full recap below.
             </p>
           </div>
 
-          {/* 2-Column Responsive Grid: Flyer (Left) & Video Frame (Right) */}
+          {/* 2-Column Responsive Grid: Featured Photo (Left) & Video Frame (Right) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto w-full items-center">
-            {/* Column 1: Event Flyer Card */}
+            {/* Column 1: Featured Event Photo Card */}
             <div className="relative rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-black aspect-[9/16] max-h-[500px] w-full flex flex-col justify-end group">
               <img
-                src="/video-thumbs/grill-wars1.jpeg"
-                alt="Grill Wars Event Flyer"
+                src={octoberGrillWarsGallery.featuredPhoto.src}
+                alt={octoberGrillWarsGallery.featuredPhoto.alt}
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
               <div className="relative p-5 text-white z-10">
                 <span className="text-[10px] uppercase tracking-widest text-deli-gold font-bold block mb-1">
-                  Official Event Flyer
+                  Live Action Shot
                 </span>
                 <h3 className="font-bold text-lg leading-snug">
-                  Grill Wars Showdown
+                  {octoberGrillWarsGallery.featuredPhoto.title}
                 </h3>
+                <p className="text-xs text-white/80 mt-1 font-sans">
+                  {octoberGrillWarsGallery.featuredPhoto.subtitle}
+                </p>
               </div>
             </div>
 
             {/* Column 2: Video Frame */}
             <VideoFrame
-              src="/category-videos/grill-wars1.mp4"
-              poster="/video-thumbs/grill-wars-thumb.png"
-              title="Grill Wars Action"
-              subtitle="Spice Up Your Grill Experience"
+              src={octoberGrillWarsGallery.video.src}
+              poster={octoberGrillWarsGallery.video.poster}
+              title={octoberGrillWarsGallery.video.title}
+              subtitle={octoberGrillWarsGallery.video.subtitle}
               aspectRatio="aspect-[9/16]"
               maxHeightClass="max-h-[500px]"
               objectFit="object-contain"
@@ -109,10 +112,10 @@ export default function HomePage() {
           {/* CTAs: Gallery & Social Media */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-2">
             <Link
-              to="/gallery"
+              to="/gallery#october-grill-wars"
               className="inline-flex items-center justify-center px-6 py-3 bg-deli-red text-white font-medium rounded-lg shadow hover:bg-deli-red/90 transition-colors text-sm text-center"
             >
-              View Full Photo & Video Gallery →
+              View Full Photo & Video Gallery (16 Photos) →
             </Link>
             <a
               href="https://www.tiktok.com/@Greendeli256"

@@ -1,6 +1,6 @@
 import React from 'react';
 import VideoFrame from '../components/VideoFrame';
-import { tradeShowGallery } from '../data/eventMedia';
+import { tradeShowGallery, octoberGrillWarsGallery } from '../data/eventMedia';
 
 export default function Gallery() {
   return (
@@ -58,6 +58,121 @@ export default function Gallery() {
       {/* Press & Feature Articles Grid */}
       <div className="space-y-12">
         
+        {/* DEDICATED SECTION: October Grill Wars Highlights */}
+        <section 
+          id="october-grill-wars"
+          className="bg-gradient-to-br from-amber-500/10 via-deli-cream/60 to-red-500/10 border-2 border-deli-red/30 rounded-3xl p-6 md:p-10 shadow-md scroll-mt-24"
+        >
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <div className="flex items-center gap-3">
+              <span className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] bg-deli-red text-white px-3 py-1 rounded-full">
+                {octoberGrillWarsGallery.badge}
+              </span>
+              <span className="font-sans text-xs text-deli-charcoal/70 uppercase tracking-wider font-semibold">
+                {octoberGrillWarsGallery.location}
+              </span>
+            </div>
+            <span className="font-sans text-xs text-deli-red font-bold uppercase tracking-wider">
+              {octoberGrillWarsGallery.editionTag}
+            </span>
+          </div>
+
+          <h2 className="font-display text-3xl md:text-5xl uppercase text-deli-charcoal leading-snug mb-3">
+            {octoberGrillWarsGallery.sectionTitle}
+          </h2>
+
+          <p className="font-sans text-xs md:text-sm text-deli-charcoal/80 leading-relaxed uppercase tracking-wider mb-8 max-w-3xl">
+            {octoberGrillWarsGallery.description}
+          </p>
+
+          {/* Event Video Showcase */}
+          <div className="mb-10">
+            <h3 className="font-sans text-xs font-bold uppercase tracking-[0.15em] text-deli-botanical mb-4">
+              Official Event Reel
+            </h3>
+            <div className="max-w-md mx-auto">
+              <VideoFrame
+                src={octoberGrillWarsGallery.video.src}
+                poster={octoberGrillWarsGallery.video.poster}
+                title={octoberGrillWarsGallery.video.title}
+                subtitle={octoberGrillWarsGallery.video.subtitle}
+                aspectRatio="aspect-[9/16]"
+                maxHeightClass="max-h-[500px]"
+                objectFit="object-contain"
+              />
+            </div>
+          </div>
+
+          {/* Photo Gallery Grid */}
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-sans text-xs font-bold uppercase tracking-[0.15em] text-deli-botanical">
+                October Grill Wars Photo Highlights
+              </h3>
+              <span className="font-sans text-[11px] uppercase tracking-wider text-deli-red font-bold">
+                16 Event Photos
+              </span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+              {octoberGrillWarsGallery.photos.map((photo, idx) => (
+                <div 
+                  key={photo.id || idx} 
+                  className="relative aspect-square rounded-2xl overflow-hidden bg-deli-charcoal/5 border border-deli-charcoal/10 shadow-sm group"
+                >
+                  <img 
+                    src={photo.src} 
+                    alt={photo.alt || `October Grill Wars Photo ${idx + 1}`}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 300 300'><rect width='100%' height='100%' fill='%23F4EFE6'/><text x='50%' y='48%' fill='%23666' font-family='sans-serif' font-size='12' font-weight='bold' text-anchor='middle'>GRILL WARS</text><text x='50%' y='58%' fill='%23999' font-family='sans-serif' font-size='10' text-anchor='middle'>#${idx + 1}</text></svg>`;
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3 pointer-events-none">
+                    <span className="text-[10px] text-white font-sans uppercase tracking-widest font-bold">
+                      {photo.alt || `Photo #${idx + 1}`}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Social Links Callout */}
+          <div className="mt-8 pt-6 border-t border-deli-charcoal/10 flex flex-wrap items-center justify-between gap-4">
+            <p className="font-sans text-xs uppercase tracking-wider text-deli-charcoal/70">
+              Want more live grill footage and behind-the-scenes?
+            </p>
+            <div className="flex gap-4">
+              <a 
+                href={octoberGrillWarsGallery.socialLinks.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-[0.15em] text-deli-red hover:underline"
+              >
+                Watch on TikTok
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+              <a 
+                href={octoberGrillWarsGallery.socialLinks.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-[0.15em] text-deli-red hover:underline"
+              >
+                View on Instagram
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* DEDICATED SECTION: Independence Trade Show 2026 */}
         <section 
           id="trade-show-section"

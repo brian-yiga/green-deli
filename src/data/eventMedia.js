@@ -9,11 +9,11 @@
 export const heroVideoHighlights = [
   {
     id: "hero-vid-1",
-    title: "grill wars",
-    count: "Factory Highlights",
-    video: "/category-videos/video-1.mp4",
-    img: "/video-thumbs/thumb-1.png",
-    link: "/shop?category=agro-processing",
+    title: "Grill Wars",
+    count: "October Highlights",
+    video: "/assets/gallery/grill-wars/october/oct-video.mp4",
+    img: "/assets/gallery/grill-wars/october/oct-vid-thumb.png",
+    link: "/gallery#october-grill-wars",
   },
   {
     id: "hero-vid-2",
@@ -99,6 +99,50 @@ export const tradeShowGallery = {
   ],
 
   // Social Channels
+  socialLinks: {
+    tiktok: "https://www.tiktok.com/@Greendeli256",
+    instagram: "https://www.instagram.com/greendelispices?igsi=MXhjZTlkNmZ3N3Y4ag==",
+  },
+};
+
+// 4. Dedicated Gallery Section: October Grill Wars Highlights
+export const octoberGrillWarsGallery = {
+  sectionTitle: "October Grill Wars Highlights",
+  badge: "Featured Event • October 2026",
+  location: "Shisha Nyama • Bugolobi, Kampala",
+  editionTag: "October Edition Live Recap",
+  description:
+    "The heat was on! Green Deli Spices powered the flames at the October edition of Grill Wars. Watch the live competition video reel and browse through all the exclusive photo highlights capturing the grill masters, customer tasting sessions, and our signature spice collection in action.",
+  video: {
+    src: "/assets/gallery/grill-wars/october/oct-video.mp4",
+    poster: "/assets/gallery/grill-wars/october/oct-vid-thumb.png",
+    title: "October Grill Wars Live Reel",
+    subtitle: "Live Action, Sizzling Flames & Artisanal Spices",
+  },
+  featuredPhoto: {
+    src: "/assets/gallery/grill-wars/october/oct-1.jpeg",
+    alt: "October Grill Wars Featured Photo",
+    title: "October Grill Wars Live",
+    subtitle: "Artisanal Spices Fueling the Flames at Shisha Nyama",
+  },
+  photos: [
+    { id: "oct-photo-1", src: "/assets/gallery/grill-wars/october/oct-1.jpeg", alt: "October Grill Wars Photo 1" },
+    { id: "oct-photo-2", src: "/assets/gallery/grill-wars/october/oct-2.jpeg", alt: "October Grill Wars Photo 2" },
+    { id: "oct-photo-3", src: "/assets/gallery/grill-wars/october/oct-3.jpeg", alt: "October Grill Wars Photo 3" },
+    { id: "oct-photo-4", src: "/assets/gallery/grill-wars/october/oct-4.jpeg", alt: "October Grill Wars Photo 4" },
+    { id: "oct-photo-5", src: "/assets/gallery/grill-wars/october/oct-5.jpeg", alt: "October Grill Wars Photo 5" },
+    { id: "oct-photo-6", src: "/assets/gallery/grill-wars/october/oct-6.jpeg", alt: "October Grill Wars Photo 6" },
+    { id: "oct-photo-7", src: "/assets/gallery/grill-wars/october/oct-7.jpeg", alt: "October Grill Wars Photo 7" },
+    { id: "oct-photo-8", src: "/assets/gallery/grill-wars/october/oct-8.jpeg", alt: "October Grill Wars Photo 8" },
+    { id: "oct-photo-9", src: "/assets/gallery/grill-wars/october/oct-9.jpeg", alt: "October Grill Wars Photo 9" },
+    { id: "oct-photo-10", src: "/assets/gallery/grill-wars/october/oct-10.jpeg", alt: "October Grill Wars Photo 10" },
+    { id: "oct-photo-11", src: "/assets/gallery/grill-wars/october/oct-11.jpeg", alt: "October Grill Wars Photo 11" },
+    { id: "oct-photo-12", src: "/assets/gallery/grill-wars/october/oct-12.jpeg", alt: "October Grill Wars Photo 12" },
+    { id: "oct-photo-13", src: "/assets/gallery/grill-wars/october/oct-13.jpeg", alt: "October Grill Wars Photo 13" },
+    { id: "oct-photo-14", src: "/assets/gallery/grill-wars/october/oct-14.jpeg", alt: "October Grill Wars Photo 14" },
+    { id: "oct-photo-15", src: "/assets/gallery/grill-wars/october/oct-15.jpeg", alt: "October Grill Wars Photo 15" },
+    { id: "oct-photo-16", src: "/assets/gallery/grill-wars/october/oct-16.jpeg", alt: "October Grill Wars Photo 16" },
+  ],
   socialLinks: {
     tiktok: "https://www.tiktok.com/@Greendeli256",
     instagram: "https://www.instagram.com/greendelispices?igsi=MXhjZTlkNmZ3N3Y4ag==",
