@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-// import { formatPrice } from '../data/products'; // Commented out to avoid unused variable warnings
+import { formatPrice } from '../data/products';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function CheckoutPage() {
   useDocumentTitle('Checkout | Green Deli');
-  const { cart, clearCart } = useCart();
+  const { cart, cartTotal, clearCart } = useCart();
   const [orderStatus, setOrderStatus] = useState('idle');
   const [selectedLine, setSelectedLine] = useState("256772502605");
   const [lastOrderMessage, setLastOrderMessage] = useState("");
@@ -27,15 +27,15 @@ export default function CheckoutPage() {
     e.preventDefault();
     setOrderStatus('loading');
 
-    // Structural calculations are bypassed for WhatsApp text since prices are disabled
-    const itemsList = cart.map(item => `- ${item.quantity}x ${item.name}`).join('%0A');
+    const itemsList = cart.map(item => `- ${item.quantity}x ${item.name}${item.price ? ` (${formatPrice(item.price * item.quantity)})` : ''}`).join('%0A');
 
     const message = `*NEW ORDER - GREEN DELI*%0A%0A` +
       `*Customer:* ${formData.firstName} ${formData.lastName}%0A` +
       `*Phone:* ${formData.phone}%0A` +
       `*Address:* ${formData.address}%0A%0A` +
       `*Items Ordered:*%0A${itemsList}%0A%0A` +
-      `_I would like to confirm my order and arrange delivery context._`;
+      `*Estimated Total (RRP):* ${formatPrice(cartTotal)}%0A%0A` +
+      `_I would like to confirm my order and arrange delivery._`;
 
     setLastOrderMessage(message);
 
@@ -207,12 +207,11 @@ export default function CheckoutPage() {
               </div>
             </div>
 
-            {/* CLIENT REQUEST: Price calculation removed from button label */}
             <button 
               disabled={orderStatus === 'loading' || cart.length === 0}
-              className="mt-6 bg-deli-red text-white py-5 rounded-full font-sans text-[10px] uppercase tracking-[0.2em] font-bold shadow-xl disabled:opacity-50 transition-transform active:scale-95"
+              className="mt-6 bg-deli-red hover:bg-red-600 text-white py-5 rounded-full font-sans text-[10px] uppercase tracking-[0.2em] font-bold shadow-xl disabled:opacity-50 transition-transform active:scale-95 cursor-pointer"
             >
-              {orderStatus === 'loading' ? 'Preparing Order...' : 'Send Order via WhatsApp'}
+              {orderStatus === 'loading' ? 'Preparing Order...' : `Send Order via WhatsApp • ${formatPrice(cartTotal)}`}
             </button>
           </form>
         </div>
@@ -227,31 +226,29 @@ export default function CheckoutPage() {
                   <span className="font-sans text-xs font-bold opacity-40">{item.quantity}x</span>
                   <span className="font-sans text-xs font-bold">{item.name}</span>
                 </div>
-                {/* CLIENT REQUEST: Individual item price subtotal commented out */}
-                {/* <span className="font-sans text-xs">{formatPrice(item.price * item.quantity)}</span> */}
+                {item.price && (
+                  <span className="font-sans text-xs font-bold text-deli-charcoal">{formatPrice(item.price * item.quantity)}</span>
+                )}
               </div>
             ))}
           </div>
 
-          {/* CLIENT REQUEST: Pricing breakdown and grand total commented out */}
-          {/* 
           <div className="flex flex-col gap-4 border-t border-deli-charcoal/10 pt-6">
             <div className="flex justify-between font-sans text-xs opacity-60">
-              <span>Subtotal</span>
-              <span>{formatPrice(cartTotal)}</span>
+              <span>Subtotal (RRP)</span>
+              <span className="font-bold">{formatPrice(cartTotal)}</span>
             </div>
             <div className="flex justify-between font-sans text-xs opacity-60">
               <span>Delivery</span>
-              <span>{cartTotal >= 100000 ? 'Free' : '10,000 UGX'}</span>
+              <span className="text-green-600 font-bold uppercase text-[10px] tracking-widest">{cartTotal >= 100000 ? 'Free' : 'Calculated via WhatsApp'}</span>
             </div>
             <div className="flex justify-between font-display text-xl uppercase pt-4 border-t border-deli-charcoal/5">
-              <span>Grand Total</span>
-              <span className="text-deli-red">{formatPrice(cartTotal + (cartTotal >= 100000 ? 0 : 10000))}</span>
+              <span>Total (RRP)</span>
+              <span className="text-deli-red font-sans font-bold">{formatPrice(cartTotal)}</span>
             </div>
-          </div> 
-          */}
+          </div>
 
-          <div className="border-t border-deli-charcoal/10 pt-6">
+          <div className="border-t border-deli-charcoal/10 pt-6 mt-6">
             <p className="font-sans text-xs text-deli-charcoal/60 leading-relaxed italic">
               Delivery logistics and any applicable fees will be calculated and finalized during order confirmation on WhatsApp.
             </p>

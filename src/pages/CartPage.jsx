@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-// import { formatPrice } from "../data/products"; // Commented out to avoid build warnings
+import { formatPrice } from "../data/products";
 import BackToTop from "../components/BackToTop";
 
 export default function CartPage() {
-  const { cart, removeFromCart, updateQuantity, emptyCart } = useCart();
+  const { cart, cartTotal, removeFromCart, updateQuantity, emptyCart } = useCart();
 
   if (cart.length === 0) {
     return (
@@ -93,12 +93,11 @@ export default function CartPage() {
                   <h3 className="font-display text-xl uppercase leading-tight">
                     {item.name}
                   </h3>
-                  {/* CLIENT REQUEST: Price calculation hidden */}
-                  {/* 
-                  <span className="font-sans text-sm font-bold">
-                    {formatPrice(item.price * item.quantity)}
-                  </span> 
-                  */}
+                  {item.price && (
+                    <span className="font-sans text-sm font-bold text-deli-charcoal">
+                      {formatPrice(item.price * item.quantity)}
+                    </span>
+                  )}
                 </div>
 
                 <p className="font-sans text-[10px] uppercase tracking-widest opacity-40 mb-6">
@@ -142,12 +141,10 @@ export default function CartPage() {
           <div className="bg-white p-8 rounded-[2.5rem] shadow-xl border border-deli-charcoal/5 sticky top-32">
             <h3 className="font-display text-2xl uppercase mb-6">Summary</h3>
 
-            {/* CLIENT REQUEST: Financial calculations commented out */}
-            {/* 
             <div className="flex flex-col gap-4 mb-8">
               <div className="flex justify-between font-sans text-sm">
                 <span className="opacity-60 uppercase tracking-tighter">
-                  Subtotal
+                  Subtotal (RRP)
                 </span>
                 <span className="font-bold">{formatPrice(cartTotal)}</span>
               </div>
@@ -162,12 +159,11 @@ export default function CartPage() {
             </div>
 
             <div className="border-t border-deli-charcoal/10 pt-6 mb-8 flex justify-between items-end">
-              <span className="font-display text-xl uppercase">Total</span>
+              <span className="font-display text-xl uppercase">Total (RRP)</span>
               <span className="font-sans text-xl font-bold text-deli-red">
                 {formatPrice(cartTotal)}
               </span>
-            </div> 
-            */}
+            </div>
 
             <div className="mb-8">
               <p className="font-sans text-xs text-deli-charcoal/60 leading-relaxed italic">

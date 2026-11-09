@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
-import { useParams, Link } from "react-router-dom"; // Added Link
+import { useParams, Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import { products } from "../data/products"; // formatPrice can be omitted if unused elsewhere
+import { products, formatPrice } from "../data/products";
 
 // UI Components
 import HeatScale from "../components/HeatScale";
@@ -119,6 +119,14 @@ export default function ProductDetailPage() {
                   {product.category}
                 </span>
               </li>
+              {product.availableSizes && (
+                <li className="flex justify-between border-b border-deli-charcoal/5 pb-2 text-sm">
+                  <span>Available Grammages</span>{" "}
+                  <span className="font-bold uppercase tracking-wider text-sm text-deli-botanical">
+                    {product.availableSizes.replace(/^AVAILABLE IN\s*/i, "")}
+                  </span>
+                </li>
+              )}
               <li className="flex justify-between border-b border-deli-charcoal/5 pb-2 text-sm">
                 <span>Ingredients</span>{" "}
                 <span className="font-bold">100% Organic {product.name}</span>
@@ -130,15 +138,22 @@ export default function ProductDetailPage() {
         {/* Purchase Column */}
         <div className="md:sticky md:top-32 h-fit">
           <div className="bg-white md:bg-transparent p-8 md:p-0 rounded-[2rem] border border-deli-charcoal/5 md:border-none shadow-lg md:shadow-none">
-            {/* CLIENT REQUEST: Temporarily disabled main product price tag */}
-            {/* 
-            <h2 className="font-display text-3xl mb-8">
-              {formatPrice(product.price)}
-            </h2> 
-            */}
-            
-            {/* Spacer replacement to keep layout balance clean */}
-            <div className="h-4 md:h-0" />
+            {/* Recommended Retail Price */}
+            {product.price && (
+              <div className="mb-6">
+                <span className="font-sans text-[10px] uppercase tracking-widest text-deli-charcoal/50 font-bold block mb-1">
+                  Recommended Retail Price (RRP)
+                </span>
+                <h2 className="font-display text-4xl text-deli-botanical">
+                  {formatPrice(product.price)}
+                </h2>
+                {product.availableSizes && (
+                  <p className="font-sans text-xs uppercase tracking-wider text-deli-orange font-bold mt-2">
+                    {product.availableSizes}
+                  </p>
+                )}
+              </div>
+            )}
 
             <div className="flex flex-col gap-6">
               <div className="flex items-center justify-between">
@@ -152,13 +167,12 @@ export default function ProductDetailPage() {
                 />
               </div>
 
-              {/* CLIENT REQUEST: Modified action button to avoid displaying price calculations */}
               <Button
                 variant="primary"
                 onClick={handleAddToCart}
-                className="w-full bg-deli-red text-white py-4 rounded-full font-sans text-[10px] uppercase tracking-widest font-bold shadow-xl active:scale-95 transition-all"
+                className="w-full bg-deli-red hover:bg-red-600 text-white py-4 rounded-full font-sans text-[10px] uppercase tracking-widest font-bold shadow-xl active:scale-95 transition-all cursor-pointer"
               >
-                Add {qty} to Cart
+                Add {qty} to Cart {product.price ? `• ${formatPrice(product.price * qty)}` : ""}
               </Button>
 
               <p className="text-[9px] uppercase tracking-widest text-center opacity-40 font-sans">

@@ -62,7 +62,7 @@ export default function ProductCard({ product }) {
       </Link>
 
       {/* 2. Content Details */}
-      <div className="p-5 flex flex-col gap-4">
+      <div className="p-5 flex flex-col flex-1 justify-between gap-4">
         <div>
           <span className="font-sans text-[9px] uppercase tracking-widest text-deli-gold font-bold block mb-1">
             {product.origin}
@@ -73,10 +73,27 @@ export default function ProductCard({ product }) {
               {product.name}
             </h4>
           </Link>
+
+          {product.availableSizes && (
+            <p className="font-sans text-[10px] uppercase tracking-wider text-deli-gold/90 font-medium mt-1.5 leading-snug">
+              {product.availableSizes}
+            </p>
+          )}
         </div>
 
-        {/* Cart Action */}
-        <div className="flex flex-col gap-3">
+        {/* Pricing & Cart Action */}
+        <div className="flex flex-col gap-3 mt-auto">
+          {product.price && (
+            <div className="flex items-baseline justify-between border-t border-white/10 pt-2.5">
+              <span className="font-sans text-[9px] uppercase tracking-wider text-white/50 font-bold">
+                RRP
+              </span>
+              <span className="font-sans text-base sm:text-lg font-bold text-white tracking-tight">
+                {product.price.toLocaleString()} UGX
+              </span>
+            </div>
+          )}
+
           <button
             onClick={handleQuickAdd}
             className="w-full bg-deli-red hover:bg-red-600 text-white py-3 rounded-full shadow-lg active:scale-95 transition-all duration-300 cursor-pointer"

@@ -1,10 +1,6 @@
 import React from 'react';
 
 export default function PriceDisplay({ price, salePrice, currency = "UGX", className = "" }) {
-  // --- CLIENT REQUEST: TEMPORARILY DISABLE ALL PRICE RENDERING ---
-  // To restore pricing in the future, simply comment out or remove the line below.
-  return null;
-
   const isSale = salePrice && salePrice < price;
 
   return (

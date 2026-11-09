@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import ProductCard from '../components/productCard';
+import ProductCard from '../components/ProductCard';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import BackToTop from '../components/BackToTop';
 
@@ -120,8 +120,9 @@ export default function ShopPage() {
       // 3. Organic Filter
       const matchesOrganic = !organicOnly || product.isOrganic;
       
-      // 4. Heat Filter
-      const matchesHeat = !highHeat || product.isHot;
+      // 4. Heat Filter (checks for isHot flag or chilli category fallback)
+      const isHotProduct = product.isHot || product.category === 'chillies';
+      const matchesHeat = !highHeat || isHotProduct;
 
       return matchesCategory && matchesOrganic && matchesHeat;
     });
@@ -130,14 +131,16 @@ export default function ShopPage() {
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
     if (urlCategory) {
-      searchParams.delete('category');
-      setSearchParams(searchParams);
+      const updatedParams = new URLSearchParams(searchParams);
+      updatedParams.delete('category');
+      setSearchParams(updatedParams);
     }
   };
 
   const handleClearSearch = () => {
-    searchParams.delete('search');
-    setSearchParams(searchParams);
+    const updatedParams = new URLSearchParams(searchParams);
+    updatedParams.delete('search');
+    setSearchParams(updatedParams);
   };
 
   const selectedCategoryConfig = useMemo(() => {
