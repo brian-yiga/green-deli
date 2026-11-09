@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import HeroSection from "../components/HeroSection";
 import CategoryTile from "../components/CategoryTile";
 import VideoFrame from "../components/VideoFrame";
+import ImageLightboxModal from "../components/ImageLightboxModal";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import PromotionsSection from "../components/promotionsSection";
 import BackToTop from "../components/BackToTop";
@@ -21,6 +22,8 @@ import {
 
 export default function HomePage() {
   useDocumentTitle("Home");
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   return (
     <div className="flex flex-col gap-0 overflow-hidden">
@@ -77,23 +80,33 @@ export default function HomePage() {
           {/* 2-Column Responsive Grid: Featured Photo (Left) & Video Frame (Right) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto w-full items-center">
             {/* Column 1: Featured Event Photo Card */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-black aspect-[9/16] max-h-[500px] w-full flex flex-col justify-end group">
+            <div 
+              onClick={() => { setLightboxIndex(0); setLightboxOpen(true); }}
+              className="relative rounded-none overflow-hidden shadow-lg border border-deli-charcoal/20 bg-black aspect-[9/16] max-h-[500px] w-full flex flex-col justify-end group cursor-pointer"
+              title="Click to view larger image"
+            >
               <img
                 src={octoberGrillWarsGallery.featuredPhoto.src}
                 alt={octoberGrillWarsGallery.featuredPhoto.alt}
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
-              <div className="relative p-5 text-white z-10">
-                <span className="text-[10px] uppercase tracking-widest text-deli-gold font-bold block mb-1">
-                  Live Action Shot
+              <div className="relative p-5 text-white z-10 flex items-end justify-between">
+                <div>
+                  <span className="text-[10px] uppercase tracking-widest text-deli-gold font-bold block mb-1">
+                    Live Action Shot
+                  </span>
+                  <h3 className="font-bold text-lg leading-snug">
+                    {octoberGrillWarsGallery.featuredPhoto.title}
+                  </h3>
+                  <p className="text-xs text-white/80 mt-1 font-sans">
+                    {octoberGrillWarsGallery.featuredPhoto.subtitle}
+                  </p>
+                </div>
+                <span className="text-[9px] text-deli-gold font-sans uppercase tracking-wider font-bold shrink-0 flex items-center gap-1 bg-black/60 px-2 py-1 border border-white/20 mb-1">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  Enlarge
                 </span>
-                <h3 className="font-bold text-lg leading-snug">
-                  {octoberGrillWarsGallery.featuredPhoto.title}
-                </h3>
-                <p className="text-xs text-white/80 mt-1 font-sans">
-                  {octoberGrillWarsGallery.featuredPhoto.subtitle}
-                </p>
               </div>
             </div>
 
@@ -157,6 +170,16 @@ export default function HomePage() {
       <div className="border-t border-deli-red/15 py-10">
         <PromotionsSection />
       </div>
+
+      {/* Interactive Lightbox Modal for Photo Viewing */}
+      <ImageLightboxModal
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        images={octoberGrillWarsGallery.photos}
+        currentIndex={lightboxIndex}
+        onNavigate={(idx) => setLightboxIndex(idx)}
+        galleryTitle="October Grill Wars"
+      />
 
       <BackToTop />
     </div>

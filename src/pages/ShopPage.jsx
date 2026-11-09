@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import ProductCard from '../components/ProductCard';
 import useDocumentTitle from '../hooks/useDocumentTitle';
-// import CatalogueSection from '../components/CatalogueSection'; // Commented out if unused
 
 // Import your real data
 import { products } from '../data/products';
@@ -15,14 +14,42 @@ export default function ShopPage() {
   const [organicOnly, setOrganicOnly] = useState(false);
   const [highHeat, setHighHeat] = useState(false);
   
-  // Categories for a balanced, multi-category spice store
-  const tabs = ['All', 'Chillies', 'Masalas', 'Powders', 'Pantry'];
+  // Updated tabs matching the new product category structure
+  const tabs = [
+    'All', 
+    'Tomatoes', 
+    'Chillies', 
+    'Seasonings', 
+    'Mchuzi Mixes', 
+    'Powders', 
+    'Flakes', 
+    'Peppers & Salts', 
+    'Masalas', 
+    'Specialty'
+  ];
+
+  // Helper to map display tab names to data category keys
+  const getCategoryKey = (tabName) => {
+    switch(tabName) {
+      case 'Tomatoes': return 'tomatoes';
+      case 'Chillies': return 'chillies';
+      case 'Seasonings': return 'seasonings';
+      case 'Mchuzi Mixes': return 'mchuzi-mixes';
+      case 'Powders': return 'powders';
+      case 'Flakes': return 'flakes';
+      case 'Peppers & Salts': return 'peppers-salts';
+      case 'Masalas': return 'masalas';
+      case 'Specialty': return 'specialty';
+      default: return 'all';
+    }
+  };
 
   // Filter logic: Handles Category, Organic, and Heat level states dynamically
   const filteredProducts = useMemo(() => {
     return products.filter(product => {
       // 1. Category Filter
-      const matchesCategory = activeCategory === 'All' || product.category === activeCategory;
+      const targetCategory = getCategoryKey(activeCategory);
+      const matchesCategory = activeCategory === 'All' || product.category === targetCategory;
       
       // 2. Organic Filter (checks product.isOrganic property)
       const matchesOrganic = !organicOnly || product.isOrganic;
@@ -34,7 +61,6 @@ export default function ShopPage() {
     });
   }, [activeCategory, organicOnly, highHeat]);
 
-  // Helper to reset sidebar filters when switching categories (optional, premium UX detail)
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
   };
@@ -59,15 +85,15 @@ export default function ShopPage() {
 
       <div className="flex flex-col md:flex-row gap-10">
         {/* Desktop Sidebar / Mobile Nav */}
-        <aside className="w-full md:w-48 shrink-0">
-          <div className="flex md:flex-col overflow-x-auto md:overflow-visible gap-4 md:gap-6 no-scrollbar pb-4 md:pb-0 border-b border-deli-charcoal/5 md:border-none">
+        <aside className="w-full md:w-56 shrink-0">
+          <div className="flex md:flex-col overflow-x-auto md:overflow-visible gap-4 md:gap-3 no-scrollbar pb-4 md:pb-0 border-b border-deli-charcoal/5 md:border-none">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => handleCategoryChange(tab)}
                 className={`whitespace-nowrap font-sans text-[11px] uppercase tracking-[0.2em] font-bold pb-1 transition-all text-left
                   ${activeCategory === tab 
-                    ? 'text-deli-red border-b-2 border-deli-red' 
+                    ? 'text-deli-red border-b-2 border-deli-red md:border-b-2' 
                     : 'text-deli-botanical/70 border-b-2 border-transparent hover:text-deli-botanical'
                   }`}
               >

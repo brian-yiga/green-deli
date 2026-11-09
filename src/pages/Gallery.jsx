@@ -1,8 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import VideoFrame from '../components/VideoFrame';
+import ImageLightboxModal from '../components/ImageLightboxModal';
 import { tradeShowGallery, octoberGrillWarsGallery } from '../data/eventMedia';
 
 export default function Gallery() {
+  const [lightbox, setLightbox] = useState({
+    isOpen: false,
+    images: [],
+    currentIndex: 0,
+    galleryTitle: '',
+  });
+
+  const openLightbox = (images, index, title) => {
+    setLightbox({
+      isOpen: true,
+      images,
+      currentIndex: index,
+      galleryTitle: title,
+    });
+  };
+
+  const closeLightbox = () => {
+    setLightbox((prev) => ({ ...prev, isOpen: false }));
+  };
+
+  const navigateLightbox = (newIndex) => {
+    setLightbox((prev) => ({ ...prev, currentIndex: newIndex }));
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
       
@@ -117,7 +142,9 @@ export default function Gallery() {
               {octoberGrillWarsGallery.photos.map((photo, idx) => (
                 <div 
                   key={photo.id || idx} 
-                  className="relative aspect-square rounded-2xl overflow-hidden bg-deli-charcoal/5 border border-deli-charcoal/10 shadow-sm group"
+                  onClick={() => openLightbox(octoberGrillWarsGallery.photos, idx, "October Grill Wars")}
+                  className="relative aspect-square rounded-none overflow-hidden bg-deli-charcoal/5 border border-deli-charcoal/15 shadow-sm group cursor-pointer"
+                  title="Click to view larger image"
                 >
                   <img 
                     src={photo.src} 
@@ -129,9 +156,13 @@ export default function Gallery() {
                       e.currentTarget.src = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 300 300'><rect width='100%' height='100%' fill='%23F4EFE6'/><text x='50%' y='48%' fill='%23666' font-family='sans-serif' font-size='12' font-weight='bold' text-anchor='middle'>GRILL WARS</text><text x='50%' y='58%' fill='%23999' font-family='sans-serif' font-size='10' text-anchor='middle'>#${idx + 1}</text></svg>`;
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3 pointer-events-none">
-                    <span className="text-[10px] text-white font-sans uppercase tracking-widest font-bold">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-3 pointer-events-none">
+                    <span className="text-[10px] text-white font-sans uppercase tracking-widest font-bold truncate pr-2">
                       {photo.alt || `Photo #${idx + 1}`}
+                    </span>
+                    <span className="text-[9px] text-deli-gold font-sans uppercase tracking-wider font-bold shrink-0 flex items-center gap-1 bg-black/60 px-2 py-0.5 border border-white/20">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      Enlarge
                     </span>
                   </div>
                 </div>
@@ -230,7 +261,9 @@ export default function Gallery() {
               {tradeShowGallery.photos.map((photo, idx) => (
                 <div 
                   key={photo.id || idx} 
-                  className="relative aspect-square rounded-2xl overflow-hidden bg-deli-charcoal/5 border border-deli-charcoal/10 shadow-sm group"
+                  onClick={() => openLightbox(tradeShowGallery.photos, idx, "Independence Trade Show 2026")}
+                  className="relative aspect-square rounded-none overflow-hidden bg-deli-charcoal/5 border border-deli-charcoal/15 shadow-sm group cursor-pointer"
+                  title="Click to view larger image"
                 >
                   <img 
                     src={photo.src} 
@@ -242,9 +275,13 @@ export default function Gallery() {
                       e.currentTarget.src = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 300 300'><rect width='100%' height='100%' fill='%23F4EFE6'/><text x='50%' y='48%' fill='%23666' font-family='sans-serif' font-size='12' font-weight='bold' text-anchor='middle'>PHOTO PLACEHOLDER</text><text x='50%' y='58%' fill='%23999' font-family='sans-serif' font-size='10' text-anchor='middle'>#${idx + 1}</text></svg>`;
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3 pointer-events-none">
-                    <span className="text-[10px] text-white font-sans uppercase tracking-widest font-bold">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-3 pointer-events-none">
+                    <span className="text-[10px] text-white font-sans uppercase tracking-widest font-bold truncate pr-2">
                       {photo.alt || `Photo #${idx + 1}`}
+                    </span>
+                    <span className="text-[9px] text-deli-gold font-sans uppercase tracking-wider font-bold shrink-0 flex items-center gap-1 bg-black/60 px-2 py-0.5 border border-white/20">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                      Enlarge
                     </span>
                   </div>
                 </div>
@@ -438,6 +475,16 @@ export default function Gallery() {
         </div>
 
       </div>
+
+      {/* Interactive Lightbox Modal for Photo Viewing */}
+      <ImageLightboxModal
+        isOpen={lightbox.isOpen}
+        onClose={closeLightbox}
+        images={lightbox.images}
+        currentIndex={lightbox.currentIndex}
+        onNavigate={navigateLightbox}
+        galleryTitle={lightbox.galleryTitle}
+      />
     </div>
   );
 }
