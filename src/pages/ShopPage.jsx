@@ -46,8 +46,8 @@ const CATEGORIES_CONFIG = [
   },
   { 
     key: 'masalas', 
-    title: 'Masalas', 
-    subtitle: 'Traditional fragrant blends for curries, pilau, meats & spiced tea' 
+    title: 'Curries & Masalas', 
+    subtitle: 'Traditional aromatic curry blends, pilau, meats & spiced tea' 
   },
   { 
     key: 'specialty', 

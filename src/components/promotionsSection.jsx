@@ -54,7 +54,7 @@ export default function PromotionsSection() {
     <section className="px-6 max-w-7xl mx-auto w-full my-5">
       <div className="flex justify-between items-end mb-10">
         <div>
-           <h2 className="font-display text-3xl uppercase leading-none text-deli-botanical">Limited Promotions</h2>
+           <h2 className="font-display text-3xl uppercase leading-none text-deli-botanical">Seasonal Promotions</h2>
            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-deli-botanical font-semibold mt-2">
              Special seasonal selection
            </p>
