@@ -37,11 +37,11 @@ export default function ProductCard({ product }) {
 
         {/* Signature Bottom Stamp */}
         <div className="absolute bottom-3 inset-x-0 flex items-center justify-between px-5 z-20 pointer-events-none">
-          <span className="font-sans text-[8px] font-bold uppercase tracking-[0.2em] text-deli-charcoal/60 bg-white/80 backdrop-blur-xs px-2.5 py-0.5 rounded-full border border-black/5">
+          {/* <span className="font-sans text-[8px] font-bold uppercase tracking-[0.2em] text-deli-charcoal/60 bg-white/80 backdrop-blur-xs px-2.5 py-0.5 rounded-full border border-black/5">
             Single Origin
-          </span>
+          </span> */}
           <span className="font-sans text-[8px] font-bold uppercase tracking-[0.2em] text-deli-red font-bold">
-            Uganda • 100% Pure
+            Ugandan • 100% Pure
           </span>
         </div>
 
