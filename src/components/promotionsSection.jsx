@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "./productCard";
 
 export default function PromotionsSection() {
   const promoProducts = [
@@ -9,8 +9,7 @@ export default function PromotionsSection() {
       name: "Cinnamon Sticks 100g",
       slug: "cinnamon-sticks-100g",
       category: "Masalas",
-      // price: 25000,
-      origin: "Luwero",
+      price: 11000,
       image: "/assets/newProducts/Cinnamon Sticks 100g.webp",
       description: "A fragrant, warm blend of cloves, cardamom, and cinnamon for the perfect rice.",
       isOrganic: true
@@ -20,8 +19,7 @@ export default function PromotionsSection() {
       name: "Curry Powder 130g",
       slug: "curry-powder-130g",
       category: "Powders",
-      // price: 15000,
-      origin: "Luwero",
+      price: 7000,
       image: "/assets/newProducts/Curry Powder 130g.webp",
       description: "Our balanced house blend of turmeric, cumin, and coriander.",
       isOrganic: true
@@ -29,10 +27,9 @@ export default function PromotionsSection() {
     {
       id: 'gd-10',
       name: "Deli Onion Flakes 100g",
-      slug: "dеli-onion-flakes-100g",
+      slug: "deli-onion-flakes-100g",
       category: "Masalas",
-      // price: 22000,
-      origin: "Luwero",
+      price: 6800,
       image: "/assets/newProducts/Deli Onion Flakes 100g.webp",
       description: "A finishing spice blend to add warmth and depth to any North Indian-style dish.",
       isOrganic: true
@@ -42,8 +39,7 @@ export default function PromotionsSection() {
       name: "Lake Salt Chilli Spiced 250g",
       slug: "lake-salt-chilli-spiced-250g",
       category: "Pantry",
-      // price: 22000,
-      origin: "Luwero",
+      price: 8400,
       image: "/assets/newProducts/Lake-Salt-Chilli-Spiced-250gms.webp",
       description: "Rich gravy base specifically formulated for red meat stews.",
       isOrganic: true

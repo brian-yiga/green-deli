@@ -13,13 +13,13 @@ export default function ProductCard({ product }) {
 
   return (
     <div className="group flex flex-col rounded-[2.5rem] overflow-hidden bg-deli-botanical text-white border border-white/10 shadow-md hover:shadow-2xl hover:border-deli-gold/30 transition-all duration-500">
-      {/* 1. Green Deli Custom Botanical Stage */}
+      {/* 1. Green Deli Custom Botanical Stage (Rounded at top, straight at bottom) */}
       <Link
         to={`/product/${product.slug}`}
-        className="relative aspect-[4/5] overflow-hidden bg-[#FAF7F2] flex items-center justify-center p-3 m-2 rounded-[2rem]"
+        className="relative aspect-[4/5] overflow-hidden bg-[#FAF7F2] flex items-center justify-center p-3 m-0 rounded-t-[2.5rem] rounded-b-none"
       >
         {/* Architectural Arch Line Frame */}
-        <div className="absolute inset-2.5 rounded-[1.8rem] border border-deli-charcoal/10 pointer-events-none" />
+        <div className="absolute inset-2.5 rounded-t-[2.2rem] rounded-b-none border border-deli-charcoal/10 pointer-events-none" />
 
         {/* Ambient Warm Spotlight Glow */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/95 via-[#FAF7F2] to-[#EFE7D8] pointer-events-none" />
@@ -61,13 +61,9 @@ export default function ProductCard({ product }) {
         </div>
       </Link>
 
-      {/* 2. Content Details */}
-      <div className="p-5 flex flex-col flex-1 justify-between gap-4">
+      {/* 2. Content Details with Reduced Padding & Spacing */}
+      <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between gap-2.5">
         <div>
-          <span className="font-sans text-[9px] uppercase tracking-widest text-deli-gold font-bold block mb-1">
-            {product.origin}
-          </span>
-
           <Link to={`/product/${product.slug}`}>
             <h4 className="font-display sm:text-base md:text-lg uppercase leading-tight text-white group-hover:text-deli-gold transition-colors">
               {product.name}
@@ -75,16 +71,16 @@ export default function ProductCard({ product }) {
           </Link>
 
           {product.availableSizes && (
-            <p className="font-sans text-[10px] uppercase tracking-wider text-deli-gold/90 font-medium mt-1.5 leading-snug">
+            <p className="font-sans text-[10px] uppercase tracking-wider text-deli-gold/90 font-medium mt-1 leading-snug">
               {product.availableSizes}
             </p>
           )}
         </div>
 
         {/* Pricing & Cart Action */}
-        <div className="flex flex-col gap-3 mt-auto">
+        <div className="flex flex-col gap-2 mt-auto">
           {product.price && (
-            <div className="flex items-baseline justify-between border-t border-white/10 pt-2.5">
+            <div className="flex items-baseline justify-between border-t border-white/10 pt-2">
               <span className="font-sans text-[9px] uppercase tracking-wider text-white/50 font-bold">
                 RRP
               </span>
@@ -96,10 +92,10 @@ export default function ProductCard({ product }) {
 
           <button
             onClick={handleQuickAdd}
-            className="w-full bg-deli-red hover:bg-red-600 text-white py-3 rounded-full shadow-lg active:scale-95 transition-all duration-300 cursor-pointer"
+            className="w-full bg-deli-red hover:bg-red-600 text-white py-2 sm:py-2.5 rounded-full shadow-lg active:scale-95 transition-all duration-300 cursor-pointer"
             aria-label={`Add ${product.name} to cart`}
           >
-            <span className="font-sans text-[10px] uppercase tracking-[0.25em] font-bold">
+            <span className="font-sans text-xs sm:text-sm uppercase tracking-[0.2em] font-bold">
               Cart +
             </span>
           </button>
