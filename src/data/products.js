@@ -95,7 +95,7 @@ export const products = [
     availableSizes: 'AVAILABLE IN 50gms and 170gms',
     image: '/assets/new-products/Hot-Chilli-Powder-Natural-50g.webp',
     description: 'Fiery ground hot chilli powder in 50g pack.',
-    isOrganic: true,
+    isOrganic: false,
     isHot: true,
   },
   {
@@ -107,7 +107,7 @@ export const products = [
     availableSizes: 'AVAILABLE IN 50gms and 170gms',
     image: '/assets/new-products/Hot-Chilli-Powder-Spiced-50g.png',
     description: 'Spiced hot chilli powder blend in 50g pack.',
-    isOrganic: true,
+    isOrganic: false,
     isHot: true,
   },
   {
@@ -119,7 +119,7 @@ export const products = [
     availableSizes: 'AVAILABLE IN 50gms and 170gms',
     image: '/assets/new-products/Hot-Chilli-Powder-170g.webp',
     description: 'Large size natural hot chilli powder for extra heat.',
-    isOrganic: true,
+    isOrganic: false,
     isHot: true,
   },
   {
@@ -131,7 +131,7 @@ export const products = [
     availableSizes: 'AVAILABLE IN 50gms and 170gms',
     image: '/assets/new-products/Hot-Chilli-Powder-Spiced-170g.webp',
     description: 'Spiced hot chilli powder blend in 170g jar.',
-    isOrganic: true,
+    isOrganic: false,
     isHot: true,
   },
   {
@@ -143,7 +143,7 @@ export const products = [
     availableSizes: 'AVAILABLE IN 60gms and 90gms',
     image: '/assets/new-products/Chilli-Flakes-Natural-60g.webp',
     description: 'Crushed natural red chilli flakes in 60g shaker jar.',
-    isOrganic: true,
+    isOrganic: false,
     isHot: true,
   },
   {
@@ -155,7 +155,7 @@ export const products = [
     availableSizes: 'AVAILABLE IN 60gms and 90gms',
     image: '/assets/new-products/Chilli-Flakes-90g.webp',
     description: '100% natural red chilli flakes in 90g jar.',
-    isOrganic: true,
+    isOrganic: false,
     isHot: true,
   },
   {
@@ -167,7 +167,7 @@ export const products = [
     availableSizes: 'AVAILABLE IN 60gms and 90gms',
     image: '/assets/new-products/Chilli-Flakes-120g.webp',
     description: 'Large pack of crushed chilli flakes.',
-    isOrganic: true,
+    isOrganic: false,
     isHot: true,
   },
   {
@@ -179,7 +179,7 @@ export const products = [
     availableSizes: 'AVAILABLE IN 60ml and 100ml',
     image: '/assets/new-products/Deli-Kamulali-Chilli-Oil-60ml.webp',
     description: 'Infused Kamulali chilli oil in 60ml bottle.',
-    isOrganic: true,
+    isOrganic: false,
     isHot: true,
   },
   {
@@ -191,7 +191,7 @@ export const products = [
     availableSizes: 'AVAILABLE IN 60ml and 100ml',
     image: '/assets/new-products/Deli-Kamulali-Chilli-Oil-100ml.webp',
     description: 'Infused Kamulali chilli oil in 100ml bottle.',
-    isOrganic: true,
+    isOrganic: false,
     isHot: true,
   },
 
