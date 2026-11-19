@@ -19,11 +19,20 @@ import {
   tradeShowFeaturedVideos,
   octoberGrillWarsGallery,
 } from "../data/eventMedia";
+import { grillWars12Feature } from "../data/eventMedia";
 
 export default function HomePage() {
   useDocumentTitle("Home");
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const grillWars12Slides = [
+    {
+      src: grillWars12Feature.featuredPhoto.src,
+      alt: grillWars12Feature.featuredPhoto.alt,
+      title: grillWars12Feature.featuredPhoto.title,
+    },
+  ];
 
   return (
     <div className="flex flex-col gap-0 overflow-hidden">
@@ -52,7 +61,7 @@ export default function HomePage() {
         </div>
       </motion.section>
 
-      {/* 3. Sub-Hero Section: October Grill Wars Highlights */}
+      {/* 3. Sub-Hero Section: Grill Wars Edition XII */}
       <motion.section
         id="grill-wars-feature"
         initial={{ opacity: 0, y: 20 }}
@@ -65,46 +74,59 @@ export default function HomePage() {
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto">
             <span className="inline-block bg-deli-red/10 text-deli-red text-xs font-semibold uppercase tracking-wider px-3.5 py-1 rounded-full mb-3 border border-deli-red/20">
-              Event Highlights • October Grill Wars
+              Upcoming Event • Grill Wars Edition XII
             </span>
             <h2 className="text-2xl md:text-4xl font-bold text-gray-900 tracking-tight mb-3">
-              Flavors on Fire: October Grill Wars Highlights!
+              Grill Wars Edition XII: Mathew vs. Eleanor Nabwiso!
             </h2>
             <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-              The October edition of Grill Wars took place last weekend, and Green Deli
-              brought the ultimate heat! Relive the live master grilling action, explore
-              our artisanal spice blends, and check out the full recap below.
+              Catch Grill Wars Edition XII on Saturday, November 21st from 2:00
+              PM at Shisa Nyama Village, followed by the 50th Birthday Party for
+              a Macosian. Bring the heat with Green Deli spices and watch who
+              rules the grill!
             </p>
           </div>
 
-          {/* 2-Column Responsive Grid: Featured Photo (Left) & Video Frame (Right) */}
+          {/* 2-Column Responsive Grid: Featured Poster (Left) & Video Frame (Right) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto w-full items-center">
-            {/* Column 1: Featured Event Photo Card */}
-            <div 
-              onClick={() => { setLightboxIndex(0); setLightboxOpen(true); }}
+            {/* Column 1: Featured Event Poster Card */}
+            <div
+              onClick={() => {
+                setLightboxIndex(0);
+                setLightboxOpen(true);
+              }}
               className="relative rounded-none overflow-hidden shadow-lg border border-deli-charcoal/20 bg-black aspect-[9/16] max-h-[500px] w-full flex flex-col justify-end group cursor-pointer"
               title="Click to view larger image"
             >
               <img
-                src={octoberGrillWarsGallery.featuredPhoto.src}
-                alt={octoberGrillWarsGallery.featuredPhoto.alt}
+                src={grillWars12Feature.featuredPhoto.src}
+                alt={grillWars12Feature.featuredPhoto.alt}
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
-              <div className="relative p-5 text-white z-10 flex items-end justify-between">
+              <div className="relative p-5 text-white z-10 flex items-end justify-between gap-3">
                 <div>
                   <span className="text-[10px] uppercase tracking-widest text-deli-gold font-bold block mb-1">
-                    Live Action Shot
+                    Edition XII Poster
                   </span>
                   <h3 className="font-bold text-lg leading-snug">
-                    {octoberGrillWarsGallery.featuredPhoto.title}
+                    {grillWars12Feature.featuredPhoto.title}
                   </h3>
                   <p className="text-xs text-white/80 mt-1 font-sans">
-                    {octoberGrillWarsGallery.featuredPhoto.subtitle}
+                    {grillWars12Feature.featuredPhoto.subtitle}
                   </p>
                 </div>
                 <span className="text-[9px] text-deli-gold font-sans uppercase tracking-wider font-bold shrink-0 flex items-center gap-1 bg-black/60 px-2 py-1 border border-white/20 mb-1">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                  >
+                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                  </svg>
                   Enlarge
                 </span>
               </div>
@@ -112,10 +134,10 @@ export default function HomePage() {
 
             {/* Column 2: Video Frame */}
             <VideoFrame
-              src={octoberGrillWarsGallery.video.src}
-              poster={octoberGrillWarsGallery.video.poster}
-              title={octoberGrillWarsGallery.video.title}
-              subtitle={octoberGrillWarsGallery.video.subtitle}
+              src={grillWars12Feature.video.src}
+              poster={grillWars12Feature.video.poster}
+              title={grillWars12Feature.video.title}
+              subtitle={grillWars12Feature.video.subtitle}
               aspectRatio="aspect-[9/16]"
               maxHeightClass="max-h-[500px]"
               objectFit="object-contain"
@@ -125,10 +147,10 @@ export default function HomePage() {
           {/* CTAs: Gallery & Social Media */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-2">
             <Link
-              to="/gallery#october-grill-wars"
+              to="/gallery"
               className="inline-flex items-center justify-center px-6 py-3 bg-deli-red text-white font-medium rounded-lg shadow hover:bg-deli-red/90 transition-colors text-sm text-center"
             >
-              View Full Photo & Video Gallery (16 Photos) →
+              Explore Event Gallery →
             </Link>
             <a
               href="https://www.tiktok.com/@Greendeli256"
@@ -136,7 +158,7 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-5 py-3 border border-gray-300 bg-white text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors text-sm text-center shadow-sm"
             >
-              TikTok Highlights
+              TikTok Updates
             </a>
             <a
               href="https://www.instagram.com/greendelispices?igsi=MXhjZTlkNmZ3N3Y4ag=="
@@ -144,7 +166,7 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-5 py-3 border border-gray-300 bg-white text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors text-sm text-center shadow-sm"
             >
-              Instagram Highlights
+              Instagram Updates
             </a>
           </div>
         </div>
@@ -175,10 +197,10 @@ export default function HomePage() {
       <ImageLightboxModal
         isOpen={lightboxOpen}
         onClose={() => setLightboxOpen(false)}
-        images={octoberGrillWarsGallery.photos}
+        images={grillWars12Slides}
         currentIndex={lightboxIndex}
         onNavigate={(idx) => setLightboxIndex(idx)}
-        galleryTitle="October Grill Wars"
+        galleryTitle="Grill Wars Edition XII"
       />
 
       <BackToTop />

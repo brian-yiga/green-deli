@@ -149,3 +149,18 @@ export const octoberGrillWarsGallery = {
   },
 };
 
+export const grillWars12Feature = {
+  featuredPhoto: {
+    src: "/video-thumbs/grill-wars12-thumb.png",
+    alt: "Grill Wars Edition XII - Mathew Nabwiso vs Eleanor Nabwiso at Shisa Nyama Village",
+    title: "Mathew Nabwiso vs. Eleanor Nabwiso",
+    subtitle: "Sat, Nov 21 • 2:00 PM • Shisa Nyama Village",
+  },
+  video: {
+    src: "/category-videos/grill-wars12-edition.mp4",
+    poster: "/video-thumbs/grill-wars12-video-poster.png",
+    title: "Grill Wars Edition XII Promo",
+    subtitle: "Marriage-Grill Wars • Shisa Nyama Village",
+  },
+};
+
